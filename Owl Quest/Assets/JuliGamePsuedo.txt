@@ -1,0 +1,92 @@
+Quest[4][3] zeroed out
+QuestList[12][4] = 1 for each quest, and then the 4 resources
+probability[6] probability for all of the locations.
+occupied[6] zeroed out
+locations[6] text for each spot //1 = water, 2 = food, 3 = shelter, 4 = treasure, 5 = random, 6 = job board
+JobBoard[3] = Randomized numbers between 1 and 12
+bonusSpace = 0;
+
+
+firstPlayer = 0;
+turnArray[4][4]
+turnArray[0] = { 0, 1, 2, 3}
+turnArray[1] = { 1, 2, 3, 0}
+turnArray[2] = { 2, 3, 0, 1}
+turnArray[3] = { 3, 0, 1, 2}
+
+
+Resources[4][4] zeroed out
+//1 = water, 2 = food, 3 = shelter, 4 = treasure
+
+
+//Each round, randomize 1-4 for the bonus space
+bonus space = random number
+
+//For Each player
+	//At beginning of turn, prompt players to submit a quest
+	questToTurnIn = input //0 means none of the above
+	//Check to see if the quest they selected is fulfilled
+		//if so, remove the items from the inventory
+	if(questToTurnIn != 0)
+		handleQuests(player #, Quest[player#][questToTurnIn - 1])
+	//have them pick their location to travel
+		//Roll for resources
+	/////OR
+		//Have them look at a random 3 quests
+			//Have them select one of the quests
+		LocationHandler(int player,(input - 1), bonusNumber)
+	//End Turn
+	
+//reset all occupied values to 0
+for(int i = 0; i < 6; i++)
+	occupied[i] = 0;
+
+//Advance firstPlayer
+firstPlayer = (firstPlayer + 1) % 4
+
+
+
+LocationHandler(int player, int location, int bonusNumber)
+	occupied[location] = 1;
+	
+	//Handle Quests
+	if(location = 6)
+		//Let players pick the quest they want
+		questNumber = input
+		//insert card into their hand
+		quests[player][0, 1, or 2] = jobBoard[questNumber - 1]
+		
+		for(int i=0; i < 3; i++)
+			if(quests[player][i] == 0)
+				//Free Space Found
+				quests[player][i] = jobBoard[questNumber - 1]
+				//Replenish Job Board
+				jobBoard[questNumber] = Randomized numbers between 1 and 12
+				return;
+		
+		//If here then quests are full
+		provide error message and return;
+		
+	if(location = 5)
+		location = bonusNumber;
+		
+	//roll for resource 1-4
+	if Math.Rand() > probability[location] 
+		Resources[player][location]++
+	
+	
+	
+handleQuests(int player, int quest)
+	
+	//For each Resources
+	for(int i = 0; i < 4; i++){
+		if( Resources[player][i] < questList[quest][i])
+			Not enough to turn in, return and give error
+	
+	//If at this point, player has resources
+	for(int i = 0; i < 4; i++){
+		resources[player][i] -= questList[quest][i]
+		
+	return;
+	
+	
