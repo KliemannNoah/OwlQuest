@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\backend.cs" />
+     <Compile Include="Assets\PlayerStats.cs" />
+     <Compile Include="Assets\Turn.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/Github/OwlQuest/Owl Quest/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

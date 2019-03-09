@@ -25,17 +25,17 @@ public class backend : MonoBehaviour {
 	
 	int bonusSpace = 0; //tradingPost
 
-	int firstPlayer = 0;
+	//int firstPlayer = 0;
 	
 	
 	//Array looped through for player turns
-	int[,] turnArray = new int[4,4] {
+	/*int[,] turnArray = new int[4,4] {
 			{ 0, 1, 2, 3},
 			{ 1, 2, 3, 0},
 			{ 2, 3, 0, 1},
 			{ 3, 0, 1, 2}
 			};
-	
+	*/
 	//1 = water, 2 = food, 3 = shelter, 4 = treasure, 5 Points
 	int[,] resources = new int[4,5];
 
@@ -51,18 +51,28 @@ public class backend : MonoBehaviour {
 		jobBoard[2] = Random.Range(0,19);
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	
+	public void PostTurn () {
+		//reset all occupied values to 0
+		for(int j = 0; j < 6; j++){
+			occupied[j] = 0;
+		}
 		
-		int location = -1;
+	}
+	
+	public void PreTurn () {
 		//Each round, randomize 1-4 for the bonus space
 		bonusSpace = Random.Range(0,3);
 		
-		
-			//For Each player
-			for(int i = 0; i < 4; i++){
-				int player = turnArray[firstPlayer,i];
+	}
+	
+	// Update is called once per frame
+	public void Round (int player) {
+				//i = player number
+				//int player = turnArray[firstPlayer,i];
 				//have them pick their location to travel
+				
+				int location = -1;
 				//Get their input 1-6
 				//input-1 = array
 				location =  3;
@@ -89,18 +99,6 @@ public class backend : MonoBehaviour {
 				if(resources[player,4] >= 7){
 						Debug.Log("GAME OVER, YOU WIN!");					
 				}
-			}
-			//End Turn	
-		
-		
-		
-		//reset all occupied values to 0
-		for(int i = 0; i < 6; i++){
-			occupied[i] = 0;
-		}
-		
-		//Advance firstPlayer
-		firstPlayer = (firstPlayer + 1) % 4;
 	
 	}
 	
