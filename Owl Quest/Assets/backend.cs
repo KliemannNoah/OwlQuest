@@ -80,6 +80,7 @@ public class backend : MonoBehaviour {
 				occupied[location] = 1;
 				
 				//Handle Trading Post
+				//Rework
 				if(location == 4){
 					location = bonusSpace - 1;
 				}
@@ -96,7 +97,7 @@ public class backend : MonoBehaviour {
 		
 		
 				//Check if they have won
-				if(resources[player,4] >= 7){
+				if(resources[player,4] >= 9){
 						Debug.Log("GAME OVER, YOU WIN!");					
 				}
 	

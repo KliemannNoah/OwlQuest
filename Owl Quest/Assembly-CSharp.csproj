@@ -62,11 +62,11 @@
  <Reference Include="Unity.PackageManagerUI.Editor">
  <HintPath>D:/Github/OwlQuest/Owl Quest/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Github/OwlQuest/Owl Quest/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>D:/Github/OwlQuest/Owl Quest/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>D:/Github/OwlQuest/Owl Quest/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
  <HintPath>D:/Github/OwlQuest/Owl Quest/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
@@ -272,9 +272,6 @@
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>D:/Github/OwlQuest/Owl Quest/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>D:/Github/OwlQuest/Owl Quest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -283,9 +280,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>D:/Github/OwlQuest/Owl Quest/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>D:/Github/OwlQuest/Owl Quest/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
