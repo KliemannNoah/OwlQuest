@@ -1,24 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static backend;
+
 
 public class Turn : MonoBehaviour
 {
-    public PlayerStats player;
-    public PlayerStats.Player currentPlayer = PlayerStats.Player.ONE;
+	public backend b;
+	public Player1 p1;
+	
+	
+    public TurnDefs player;
+    public TurnDefs.Player currentPlayer = TurnDefs.Player.ONE;
     private float completedRound = 0;
     void OnGUI()
     {
         string display;
-        //string display = (currentPlayer == PlayerStats.ONE) ? "Player One" : "Player Two";
-        if (currentPlayer == PlayerStats.Player.ONE){
+        if (currentPlayer == TurnDefs.Player.ONE){
             display = "Player One";
         }
-        else if (currentPlayer == PlayerStats.Player.TWO)
+        else if (currentPlayer == TurnDefs.Player.TWO)
         {
             display = "Player Two";
         }
-        else if(currentPlayer == PlayerStats.Player.THREE)
+        else if(currentPlayer == TurnDefs.Player.THREE)
         {
             display = "Player Three";
         }
@@ -37,61 +42,63 @@ public class Turn : MonoBehaviour
 
     void NextPlayer()
     {
-        if (currentPlayer == PlayerStats.Player.ONE)
+        if (currentPlayer == TurnDefs.Player.ONE)
         {
             if (completedRound >= 3)
             {
                 completedRound = 0;
-                currentPlayer = PlayerStats.Player.THREE;
+                currentPlayer = TurnDefs.Player.THREE;
             }
             else
             {
-                currentPlayer = PlayerStats.Player.TWO;
+                currentPlayer = TurnDefs.Player.TWO;
+                completedRound++;
+				b.completedAction = false;
+				b.preturnDone = false;
+            }
+        }
+
+
+        else if (currentPlayer == TurnDefs.Player.TWO)
+        {
+            if (completedRound >= 3)
+            {
+                completedRound = 0;
+                currentPlayer = TurnDefs.Player.FOUR;
+            }
+            else
+            {
+                currentPlayer = TurnDefs.Player.THREE;
                 completedRound++;
             }
         }
 
 
-        else if (currentPlayer == PlayerStats.Player.TWO)
+        else if (currentPlayer == TurnDefs.Player.THREE)
         {
             if (completedRound >= 3)
             {
                 completedRound = 0;
-                currentPlayer = PlayerStats.Player.FOUR;
+                currentPlayer = TurnDefs.Player.ONE;
             }
             else
             {
-                currentPlayer = PlayerStats.Player.THREE;
+                currentPlayer = TurnDefs.Player.FOUR;
                 completedRound++;
             }
         }
 
 
-        else if (currentPlayer == PlayerStats.Player.THREE)
+        else if (currentPlayer == TurnDefs.Player.FOUR)
         {
             if (completedRound >= 3)
             {
                 completedRound = 0;
-                currentPlayer = PlayerStats.Player.ONE;
+                currentPlayer = TurnDefs.Player.TWO;
             }
             else
             {
-                currentPlayer = PlayerStats.Player.FOUR;
-                completedRound++;
-            }
-        }
-
-
-        else if (currentPlayer == PlayerStats.Player.FOUR)
-        {
-            if (completedRound >= 3)
-            {
-                completedRound = 0;
-                currentPlayer = PlayerStats.Player.TWO;
-            }
-            else
-            {
-                currentPlayer = PlayerStats.Player.ONE;
+                currentPlayer = TurnDefs.Player.ONE;
                 completedRound++;
             }
         }
