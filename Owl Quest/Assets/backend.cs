@@ -39,8 +39,8 @@ public class backend : MonoBehaviour {
 	 
 	int questNumber = 0;
 	int quest = 0;
-	int[] jobBoard = new int[3];
-	
+	//int[] jobBoard = new int[3];
+	public Quests[] jobBoard = new Quests[3];
 	int bonusSpace = 0; //tradingPost
 
 	//int firstPlayer = 0;
@@ -55,7 +55,7 @@ public class backend : MonoBehaviour {
 			};
 	*/
 	//1 = water, 2 = food, 3 = shelter, 4 = treasure, 5 Points
-	int[,] resources = new int[4,5];
+	public int[,] resources = new int[4,5];
 
 	// Use this for initialization
 	void Start () {
@@ -65,11 +65,14 @@ public class backend : MonoBehaviour {
 		//turnArray[2] = { 2, 3, 0, 1};
 		//turnArray[3] = { 3, 0, 1, 2};
 		*/
-		jobBoard[0] = Random.Range(0,19);
-		jobBoard[1] = Random.Range(0,19);
-		jobBoard[2] = Random.Range(0,19);
-		
-		//quest1 = new Quests(1,1,1,1,1,1);
+		//jobBoard[0] = Random.Range(0,19);
+		//jobBoard[1] = Random.Range(0,19);
+		//jobBoard[2] = Random.Range(0,19);
+
+		jobBoard[0] = new Quests("1 water 2 food",1,2,0,0,1);
+		jobBoard[1] = new Quests("2 water 1 food",2,1,0,0,1);
+		jobBoard[2] = new Quests("Trail Mix",1,1,1,1,2);
+
 	}
 	
 	void Update() {
@@ -104,55 +107,54 @@ public class backend : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Round (int player) {
-				int location = -1;
-				//have them pick their location to travel
-				//Get their input 0-5
-				if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5")))
-				{
-					if(Input.GetKeyDown("0")){
-						location = 0;
-					}else if(Input.GetKeyDown("1")){
-						location = 1;
-					}else if(Input.GetKeyDown("2")){
-						location = 2;
-					}else if(Input.GetKeyDown("3")){
-						location = 3;
-					}else if(Input.GetKeyDown("4")){
-						location = 4;
-					}else if(Input.GetKeyDown("5")){
-						location = 5;
-					}
+		int location = -1;
+		//have them pick their location to travel
+		//Get their input 0-5
+		if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5")))
+		{
+			if(Input.GetKeyDown("0")){
+				location = 0;
+			}else if(Input.GetKeyDown("1")){
+				location = 1;
+			}else if(Input.GetKeyDown("2")){
+				location = 2;
+			}else if(Input.GetKeyDown("3")){
+				location = 3;
+			}else if(Input.GetKeyDown("4")){
+				location = 4;
+			}else if(Input.GetKeyDown("5")){
+				location = 5;
+			}
 
-					text2.text = "Location " + location;	
-					occupied[location] = 1;
-					text3.text = occupied[0] + "\t" + occupied[1] + "\t" + occupied[2] + "\t" + occupied[3] + "\t" + occupied[4]+ "\t" + occupied[5];
-					
-					
-					//TODO: Handle Trading Post
-					//Rework
-					if(location == 4){
-						location = bonusSpace;
-					}
-						
-					//TODO: Handle Quests
-					if(location == 5){
-						//Let players pick the quest they want
-						//questNumber -1 = input;
-						questLocation = true;
-						//handleQuests(questNumber, player, questNumber);
-					}else{
-						locationHandler(player, location, bonusSpace);
-						completedAction = true;
-					}
+			text2.text = "Location " + location;	
+			occupied[location] = 1;
+			text3.text = occupied[0] + "\t" + occupied[1] + "\t" + occupied[2] + "\t" + occupied[3] + "\t" + occupied[4]+ "\t" + occupied[5];
 			
 			
-					//Check if they have won
-					if(resources[player,4] >= 9){
-					//if(player1.points >= 9){
-							Debug.Log("GAME OVER, YOU WIN!");					
-					}
-					
-				}
+			//TODO: Handle Trading Post
+			//Rework
+			if(location == 4){
+				location = bonusSpace;
+			}
+				
+			//TODO: Handle Quests
+			if(location == 5){
+				//Let players pick the quest they want
+				//questNumber -1 = input;
+				questLocation = true;
+			}else{
+				locationHandler(player, location, bonusSpace);
+				completedAction = true;
+			}
+	
+	
+			//Check if they have won
+			if(resources[player,4] >= 9){
+			//if(player1.points >= 9){
+					Debug.Log("GAME OVER, YOU WIN!");					
+			}
+			
+		}
 	
 	}
 	
@@ -188,39 +190,61 @@ public class backend : MonoBehaviour {
 	*/
 	//public bool handleQuests(int questNumber, int player, int quest){	
 	public int handleQuests(int player){	
-
+		//quest = jobBoard[questNumber];
 		//For each Resources
 		if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
-				if(Input.GetKeyDown("0")){
-					questNumber = 0;
-				}else if(Input.GetKeyDown("1")){
-					questNumber = 1;
-				}else if(Input.GetKeyDown("2")){
-					questNumber = 2;
+			questLocation = false;
+			if(Input.GetKeyDown("0")){
+				questNumber = 0;
+			}else if(Input.GetKeyDown("1")){
+				questNumber = 1;
+			}else if(Input.GetKeyDown("2")){
+				questNumber = 2;
+			}
+			/*	
+			for(int i = 0; i < 4; i++){
+				if( resources[player,i] < questList[quest,i]){
+					Debug.Log("Don't have the resources.");
+					return 1; //false
 				}
-					
-				for(int i = 0; i < 4; i++){
-					if( resources[player,i] < questList[quest,i]){
-						Debug.Log("Don't have the resources.");
-						return 1; //false
-					}
-				}
-				
-				//If at this point, player has resources
-				Debug.Log("Quest Complete.");
-				
-				//Remove resources from player
-				for(int i = 0; i < 4; i++){
-					resources[player,i] -= questList[quest,i];
-				}
-				
-				//Award player the points
-				resources[player,4] += questList[quest,4];
-				
-				//Replenish Job Board
-				jobBoard[questNumber] = Random.Range(1, 20);
+			}
+			*/
+			if(resources[player,0] < jobBoard[questNumber].water){
+				Debug.Log("Don't have the water.");
+				return 1; //false
+			}
+			if(resources[player,1] < jobBoard[questNumber].food){
+				Debug.Log("Don't have the food.");
+				return 1; //false
+			}
+			if(resources[player,2] < jobBoard[questNumber].shelter){
+				Debug.Log("Don't have the shelter.");
+				return 1; //false
+			}
+			if(resources[player,3] < jobBoard[questNumber].treasure){
+				Debug.Log("Don't have the treasure.");
+				return 1; //false
+			}
+			
+			//If at this point, player has resources
+			Debug.Log("Quest Complete.");
+			
+			//Remove resources from player
+			//for(int i = 0; i < 4; i++){
+			//	resources[player,i] -= questList[quest,i];
+			//}
+			resources[player,0] -= jobBoard[questNumber].water;
+			resources[player,1] -= jobBoard[questNumber].food; 
+			resources[player,2] -= jobBoard[questNumber].shelter;
+			resources[player,3] -= jobBoard[questNumber].treasure;
+			
+			//Award player the points
+			resources[player,4] += jobBoard[questNumber].points;
+			Debug.Log(resources[player,4]);
+			//Replenish Job Board
+			//jobBoard[questNumber] = Random.Range(1, 20);
 
-				return 2; //true
+			return 2; //true
 		}
 		return 0;
 	}

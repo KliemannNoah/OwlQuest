@@ -48,6 +48,8 @@ public class Turn : MonoBehaviour
             {
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.THREE;
+				b.completedAction = false;
+				b.preturnDone = false;
             }
             else
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Quests : MonoBehaviour
 {
-	public int number = 0;
+	public string title = "";
 	public int food = 0;
 	public int water = 0;
 	public int shelter = 0;
@@ -16,8 +16,8 @@ public class Quests : MonoBehaviour
 		
     }
 
-	public Quests(int numb, int foo, int wat, int shel, int trea, int poi){
-		this.number = numb;
+	public Quests(string titl, int foo, int wat, int shel, int trea, int poi){
+		this.title = titl;
 		this.food = foo;
 		this.water = wat;
 		this.shelter = shel;
