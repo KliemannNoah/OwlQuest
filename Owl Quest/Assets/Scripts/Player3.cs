@@ -99,7 +99,7 @@ public class Player3 : MonoBehaviour
 
 			if(b.occupied[location] == 0){
 				b.text2.text = "Location " + location;	
-				b.occupied[location] = 1;
+				b.occupied[location] = 3;
 				b.text3.text = b.occupied[0] + "\t" + b.occupied[1] + "\t" + b.occupied[2] + "\t" + b.occupied[3] + "\t" + b.occupied[4]+ "\t" + b.occupied[5];
 				
 				
