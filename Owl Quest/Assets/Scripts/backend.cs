@@ -14,19 +14,16 @@ public class backend : MonoBehaviour {
 	public Text QuestText2;
 	public Text QuestText3;
 
-	
 	public bool completedAction = false;
 	public bool preturnDone = false;
     public bool questLocation = false;
 	public bool selectingCard = false;
     public bool canPurchase = false;
     public Turn turn;
-
-	//int[,] questListEasy = new int[7,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-	//int[,] questListMedium = new int[7,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-	//int[,] questListHard = new int[7,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-
 	public Player1 player1;
+	//public Player2 player2;
+	//public Player3 player3;
+	//public Player4 player4;
 
 	//probability for all of the locations.	
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
@@ -38,7 +35,7 @@ public class backend : MonoBehaviour {
 	string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"}; 
 	 
 	int questNumber = 0;
-	int quest = 0;
+	//int quest = 0;
 	int questsComplete = 0;
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
@@ -247,8 +244,6 @@ public class backend : MonoBehaviour {
 			//Award player the points
 			player1.points += jobBoard[questNumber].points;
 			
-			//player1.completedQuests[System.Array.IndexOf(player1.completedQuests, 0)] = jobBoard[questNumber];
-			//player1.completedQuests[System.Array.IndexOf(player1.completedQuests, System.Array.Find(player1.completedQuests, null))] = jobBoard[questNumber];
 			player1.completedQuests[System.Array.FindIndex(player1.completedQuests, i => i == null)] = jobBoard[questNumber];
 			//Replenish Job Board
 			if(questsComplete < 4){
