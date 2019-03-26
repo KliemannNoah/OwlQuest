@@ -48,29 +48,29 @@ public class backend : MonoBehaviour {
 		//												Wa  Fo  Sh  Tr Pnt eff
 
 		//Easy Quests
-		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1, 1);
-		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1, 2);
-		questList[2] = new Quests("Refreshing Snack",	1,	1,	0,	0,	1, 0);
-		questList[3] = new Quests("Riverside Home",		1,	0,	1,	0,	1, 3);
-		questList[4] = new Quests("Baby Hero",			0,	0,	0,	1,	1, 0);
-		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2, 0);
-		questList[6] = new Quests("Winter Stockpile",	0,	3,	0,	0,	2, 4);
+		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1, 1, "Passive Ability: Add +1 to all Water Hole rolls");
+		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1, 2, "Immediate Ability: Gain 1 Food Token");
+		questList[2] = new Quests("Refreshing Snack",	1,	1,	0,	0,	1, 0, "");
+		questList[3] = new Quests("Riverside Home",		1,	0,	1,	0,	1, 3, "Immediate Ability: Gain 1 Shelter Token");
+		questList[4] = new Quests("Baby Hero",			0,	0,	0,	1,	1, 0, "");
+		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2, 0, "");
+		questList[6] = new Quests("Winter Stockpile",	0,	3,	0,	0,	2, 4, "Passive Ability:  Add +1 to all Orchard rolls");
 		//Medium Quests
-		questList[7] = new Quests("Soup",				3,	1,	0,	0,	2, 0);
-		questList[8] = new Quests("Dinner for 1",		1,	1,	1,	0,	2, 8);
-		questList[9] = new Quests("The Vault",			0,	0,	1,	1,	2, 5);
-		questList[10] = new Quests("Town Mayor",		2,	1,	1,	0,	2, 0);
-		questList[11] = new Quests("Quartermaster",		1,	2,	1,	0,	2, 6);
-		questList[12] = new Quests("Ocean Dungeon",		3,	0,	0,	1,	3, 0);
-		questList[13] = new Quests("Deputy Sheriff",	0,	0,	0,	2,	3, 7);
+		questList[7] = new Quests("Soup",				3,	1,	0,	0,	2, 0, "");
+		questList[8] = new Quests("Dinner for 1",		1,	1,	1,	0,	2, 8, "Active Ability: If you wish, you may flip the trading post card again.");
+		questList[9] = new Quests("The Vault",			0,	0,	1,	1,	2, 5, "Passive Ability: Add +1 to all Trading Post rolls");
+		questList[10] = new Quests("Town Mayor",		2,	1,	1,	0,	2, 0, "");
+		questList[11] = new Quests("Quartermaster",		1,	2,	1,	0,	2, 6, "Passive Ability: Roll 2 dice at the Trading Post and take the higher value");
+		questList[12] = new Quests("Ocean Dungeon",		3,	0,	0,	1,	3, 0, "");
+		questList[13] = new Quests("Deputy Sheriff",	0,	0,	0,	2,	3, 7, "Passive Ability: Add +1 to all Foxes rolls");
 		//Hard Quests
-		questList[14] = new Quests("Flood Shelter",		2,	0,	2,	0,	3, 0);
-		questList[15] = new Quests("Dinner for 2",		2,	2,	1,	0,	3, 0);
-		questList[16] = new Quests("Great Rewards",		1,	0,	0,	2,	3, 12);
-		questList[17] = new Quests("Village Picnic",	0,	2,	2,	0,	3, 0);
-		questList[18] = new Quests("Owl Yacht",			3,	0,	1,	1,	4, 0);
-		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4, 11);
-		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4, 10);
+		questList[14] = new Quests("Flood Shelter",		2,	0,	2,	0,	3, 0, "");
+		questList[15] = new Quests("Dinner for 2",		2,	2,	1,	0,	3, 0, "");
+		questList[16] = new Quests("Great Rewards",		1,	0,	0,	2,	3, 12, "Active Ability: Every turn, select any ability from a quest on the quest board and use it. Chosen Ability effect expires at the end of the round.");
+		questList[17] = new Quests("Village Picnic",	0,	2,	2,	0,	3, 0, "");
+		questList[18] = new Quests("Owl Yacht",			3,	0,	1,	1,	4, 0, "");
+		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4, 11, "Passive Effect: Gain +1 to rolls at a location of your choice. You must choose that location when the card is picked up and lasts the rest of the game.");
+		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4, 10, "Active Ability: Place any quest from the quest board on the bottom of the deck");
 
 
 		jobBoard[0] = questList[Random.Range(0,7)];
