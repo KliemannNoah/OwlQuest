@@ -141,7 +141,6 @@ public class Turn : MonoBehaviour
 	
 	public void resetVariables(){
 		b.completedAction = false;
-		b.preturnDone = false;
 		b.questLocation = false;
 		b.selectingCard = false;
 		b.canPurchase = false;

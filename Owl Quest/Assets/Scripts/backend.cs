@@ -15,7 +15,6 @@ public class backend : MonoBehaviour {
 	public Text QuestText3;
 
 	public bool completedAction = false;
-	public bool preturnDone = false;
     public bool questLocation = false;
 	public bool selectingCard = false;
     public bool canPurchase = false;
@@ -40,38 +39,38 @@ public class backend : MonoBehaviour {
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
 	public int tradingResource = 0; //tradingPost
-
+	//public Quests[] replaced = new Quests[21]; for sheriiff
 
 	// Use this for initialization
 	void Start () {
 		turn = GetComponent<Turn>();
 		tradingResource = Random.Range(0,4);
-		//												Wa  Fo  Sh  Tr Points
+		//												Wa  Fo  Sh  Tr Pnt eff
 
 		//Easy Quests
-		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1);
-		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1);
-		questList[2] = new Quests("Refreshing Snack",	1,	1,	0,	0,	1);
-		questList[3] = new Quests("Riverside Home",		1,	0,	1,	0,	1);
-		questList[4] = new Quests("Baby Hero",			0,	0,	0,	1,	1);
-		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2);
-		questList[6] = new Quests("Winter Stockpile",	0,	3,	0,	0,	2);
+		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1, 1);
+		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1, 2);
+		questList[2] = new Quests("Refreshing Snack",	1,	1,	0,	0,	1, 0);
+		questList[3] = new Quests("Riverside Home",		1,	0,	1,	0,	1, 3);
+		questList[4] = new Quests("Baby Hero",			0,	0,	0,	1,	1, 0);
+		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2, 0);
+		questList[6] = new Quests("Winter Stockpile",	0,	3,	0,	0,	2, 4);
 		//Medium Quests
-		questList[7] = new Quests("Soup",				3,	1,	0,	0,	2);
-		questList[8] = new Quests("Dinner for 1",		1,	1,	1,	0,	2);
-		questList[9] = new Quests("The Vault",			0,	0,	1,	1,	2);
-		questList[10] = new Quests("Town Mayor",		2,	1,	1,	0,	2);
-		questList[11] = new Quests("Quartermaster",		1,	2,	1,	0,	2);
-		questList[12] = new Quests("Ocean Dungeon",		3,	0,	0,	1,	3);
-		questList[13] = new Quests("Deputy Sheriff",	0,	0,	0,	2,	3);
+		questList[7] = new Quests("Soup",				3,	1,	0,	0,	2, 0);
+		questList[8] = new Quests("Dinner for 1",		1,	1,	1,	0,	2, 8);
+		questList[9] = new Quests("The Vault",			0,	0,	1,	1,	2, 5);
+		questList[10] = new Quests("Town Mayor",		2,	1,	1,	0,	2, 0);
+		questList[11] = new Quests("Quartermaster",		1,	2,	1,	0,	2, 6);
+		questList[12] = new Quests("Ocean Dungeon",		3,	0,	0,	1,	3, 0);
+		questList[13] = new Quests("Deputy Sheriff",	0,	0,	0,	2,	3, 7);
 		//Hard Quests
-		questList[14] = new Quests("Flood Shelter",		2,	0,	2,	0,	3);
-		questList[15] = new Quests("Dinner for 2",		2,	2,	1,	0,	3);
-		questList[16] = new Quests("Great Rewards",		1,	0,	0,	2,	3);
-		questList[17] = new Quests("Village Picnic",	0,	2,	2,	0,	3);
-		questList[18] = new Quests("Owl Yacht",			3,	0,	1,	1,	4);
-		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4);
-		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4);
+		questList[14] = new Quests("Flood Shelter",		2,	0,	2,	0,	3, 0);
+		questList[15] = new Quests("Dinner for 2",		2,	2,	1,	0,	3, 0);
+		questList[16] = new Quests("Great Rewards",		1,	0,	0,	2,	3, 12);
+		questList[17] = new Quests("Village Picnic",	0,	2,	2,	0,	3, 0);
+		questList[18] = new Quests("Owl Yacht",			3,	0,	1,	1,	4, 0);
+		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4, 11);
+		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4, 10);
 
 
 		jobBoard[0] = questList[Random.Range(0,7)];

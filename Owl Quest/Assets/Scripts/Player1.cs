@@ -15,7 +15,17 @@ public class Player1 : MonoBehaviour
 	public int points = 0;
 	public Text PlayerQuests;
 	public Quests[] completedQuests = new Quests[10];
+	int[] rollProbability = new int[5] {2,3,4,5,0};
+	int tradingPostModifier = 0;
+	int advantage = 1;
+	bool trailMix = false;
 	
+	bool sheriff = false;
+	bool rewards = false;
+	bool reroll = false;
+	bool tempSheriff = false;
+	bool tempRewards = false;
+	bool tempReroll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,25 +47,34 @@ public class Player1 : MonoBehaviour
 	void Update() {
 		TurnDefs.Player currentTurn = b.turn.GetCurrentTurn();
 		if(currentTurn == TurnDefs.Player.ONE){
-			if(!b.preturnDone){
-				PreTurn();
-			}
-			if(!b.completedAction && !b.questLocation){
+			if(trailMix){
+				selectSpot();
+			}else if(rewards && tempRewards){
+				
+				//if succesfull
+				tempRewards = false;
+				
+			}else if(sheriff && tempSheriff){
+				
+				//if succesfull
+				tempSheriff = false;
+				
+			}else if(reroll && tempReroll){
+				
+				//if succesfull
+				tempReroll = false;
+				
+			}else if(!b.completedAction && !b.questLocation){
 				Round();
-			}
-			if(!b.completedAction && b.questLocation){
+				
+			}if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
+			
 		}
 	}
 	
 	
-	public void PreTurn () {
-		//Each round, randomize 1-4 for the bonus space
-		b.text5.text = "Pre Turn";
-		b.preturnDone = true;
-		b.text5.text = "Current Turn";
-	}
 	
 	// Update is called once per frame
 	public void Round () {
@@ -136,8 +155,12 @@ public class Player1 : MonoBehaviour
 
 	public void TradingPost(int resource) {
         int randomNumber = Random.Range(1, 7);
+		int randomNumber2 = Random.Range(1,7);
+		if(randomNumber2 > randomNumber && advantage == 2){
+			randomNumber = randomNumber2;
+		}
         b.text1.text = "Roll of " + randomNumber.ToString() + "\n";
-        if (randomNumber >= 4) {
+        if (randomNumber >= (4-tradingPostModifier)) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
             if (resource == 2) this.shelter++;
@@ -145,7 +168,7 @@ public class Player1 : MonoBehaviour
             b.text1.text += b.locationsText[resource].ToString() + " Gained.";
             b.text4.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
-        else if (randomNumber == 3 && resource < 2) {
+        else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
             b.text1.text += b.locationsText[resource].ToString() + " Gained.";
@@ -207,7 +230,13 @@ public class Player1 : MonoBehaviour
 			//Award player the points
 			this.points += b.jobBoard[b.questNumber].points;
 			
+			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
+			
+			//Apply Effects
+			questEffects(b.jobBoard[b.questNumber].effect);
+
+			
 			//Replenish Job Board
 			if(b.questsComplete < 4){
 				b.jobBoard[b.questNumber] = b.questList[Random.Range(0,7)];
@@ -221,5 +250,61 @@ public class Player1 : MonoBehaviour
 			return 2; //true
 		}
 		return 0;
+	}
+	
+	public void questEffects(int effectNumber){
+		//8, 10, and 12 are active
+		if(effectNumber == 0){
+			return;
+		}else if(effectNumber == 1){ //Passive
+			rollProbability[0]--;
+		}else if(effectNumber == 2){ //Immediate
+			this.food++;
+		}else if(effectNumber == 3){ //Immediate
+			this.shelter++;
+		}else if(effectNumber == 4){ //Passive
+			rollProbability[1]--;
+		}else if(effectNumber == 5){ //Passive
+			tradingPostModifier = 1;
+		}else if(effectNumber == 6){ //Passive
+			advantage = 2;
+		}else if(effectNumber == 7){ //Passive
+			rollProbability[3]--;
+		}else if(effectNumber == 8){ //Active Ability: Reroll trading post
+			reroll = true;
+			tempReroll = true;
+		}else if(effectNumber == 9){ //
+		
+		}else if(effectNumber == 10){ // Active Ability: Place any quest from the quest board on the bottom of the deck
+			sheriff = true;
+			tempSheriff = true;
+		}else if(effectNumber == 11){ // Passive Effect: Gain +1 to rolls at a location of your choice. You must choose that location when the card is picked up and lasts the rest of the game.
+			trailMix = true;
+		}else if(effectNumber == 12){ // Active Ability: Every turn, select any ability from a quest on the quest board and use it. Chosen Ability effect expires at the end of the round.
+			rewards = true;
+			tempRewards = true;
+		}
+	}
+	
+	public void selectSpot(){
+		if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4")))
+		{
+			if(Input.GetKeyDown("0")){
+				rollProbability[0]--;
+				trailMix = false;
+			}else if(Input.GetKeyDown("1")){
+				rollProbability[1]--;
+				trailMix = false;
+			}else if(Input.GetKeyDown("2")){
+				rollProbability[2]--;
+				trailMix = false;
+			}else if(Input.GetKeyDown("3")){
+				rollProbability[3]--;
+				trailMix = false;
+			}else if(Input.GetKeyDown("4")){
+				tradingPostModifier++;
+				trailMix = false;
+			}
+		}
 	}
 }
