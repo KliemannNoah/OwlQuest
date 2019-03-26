@@ -55,19 +55,34 @@ public class Player4 : MonoBehaviour
 				tempRewards = false;
 				
 			}else if(sheriff && tempSheriff){
-				
-				//if succesfull
-				tempSheriff = false;
-				
+				if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
+					b.questsComplete++;
+
+					if(Input.GetKeyDown("0")){
+						b.replaced[System.Array.FindIndex(b.replaced, i => i == null)] = b.jobBoard[0];
+						newQuest(0);
+					}else if(Input.GetKeyDown("1")){
+						b.replaced[System.Array.FindIndex(b.replaced, i => i == null)] = b.jobBoard[1];
+						newQuest(1);
+					}else if(Input.GetKeyDown("2")){
+						b.replaced[System.Array.FindIndex(b.replaced, i => i == null)] = b.jobBoard[2];
+						newQuest(2);
+					}
+					tempSheriff = false;
+				}
 			}else if(reroll && tempReroll){
-				
-				//if succesfull
-				tempReroll = false;
-				
+				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
+					if(Input.GetKeyDown("y")){
+						b.tradingResource = Random.Range(0,4);
+						tempReroll = false;
+					}else if(Input.GetKeyDown("n")){
+						tempReroll = false;
+					}
+				}
 			}else if(!b.completedAction && !b.questLocation){
 				Round();
 				
-			}if(!b.completedAction && b.questLocation){
+			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
 			
@@ -99,7 +114,7 @@ public class Player4 : MonoBehaviour
 
 			if(b.occupied[location] == 0){
 				b.text2.text = "Location " + location;	
-				b.occupied[location] = 1;
+				b.occupied[location] = 4;
 				b.text3.text = b.occupied[0] + "\t" + b.occupied[1] + "\t" + b.occupied[2] + "\t" + b.occupied[3] + "\t" + b.occupied[4]+ "\t" + b.occupied[5];
 				
 				
@@ -236,21 +251,28 @@ public class Player4 : MonoBehaviour
 			//Apply Effects
 			questEffects(b.jobBoard[b.questNumber].effect);
 
-			
+			newQuest(b.questNumber);
 			//Replenish Job Board
-			if(b.questsComplete < 4){
-				b.jobBoard[b.questNumber] = b.questList[Random.Range(0,7)];
-			}else if(b.questsComplete >= 4 && b.questsComplete < 10){
-				b.jobBoard[b.questNumber] = b.questList[Random.Range(7,14)];
-			}else{
-				b.jobBoard[b.questNumber] = b.questList[Random.Range(14,21)];
-			}
+			
 			b.questPrinter();
 			this.completed();
 			return 2; //true
 		}
 		return 0;
 	}
+	
+	
+	public void newQuest(int questNumber){
+		if(b.questsComplete < 4){
+			b.jobBoard[questNumber] = b.questList[Random.Range(0,7)];
+		}else if(b.questsComplete >= 4 && b.questsComplete < 10){
+			b.jobBoard[questNumber] = b.questList[Random.Range(7,14)];
+		}else{
+			b.jobBoard[questNumber] = b.questList[Random.Range(14,21)];
+		}
+		
+	}
+	
 	
 	public void questEffects(int effectNumber){
 		//8, 10, and 12 are active

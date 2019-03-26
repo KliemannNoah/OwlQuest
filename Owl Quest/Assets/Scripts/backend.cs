@@ -39,7 +39,8 @@ public class backend : MonoBehaviour {
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
 	public int tradingResource = 0; //tradingPost
-	//public Quests[] replaced = new Quests[21]; for sheriiff
+	public Quests[] replaced = new Quests[21]; //for sheriiff
+	public int replacedTracker = 0;
 
 	// Use this for initialization
 	void Start () {
