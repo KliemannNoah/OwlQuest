@@ -32,7 +32,7 @@ public class backend : MonoBehaviour {
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
 	int[] probability = new int[5] {2,3,4,5,0}; 
 	
-	int[] occupied = new int[6]; //Who is at what location
+	public int[] occupied = new int[6]; //Who is at what location
 	
 	//text for each spot
 	string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"}; 
@@ -86,16 +86,16 @@ public class backend : MonoBehaviour {
 			handleQuests(1);
 		}
 		if(completedAction){
-			PostTurn();
+			//PostTurn();
 		}
 	}
-	public void PostTurn () {
+	/*public void PostTurn () {
 		text5.text = "Post Turn";
 		//reset all occupied values to 0
 		for(int j = 0; j < 6; j++){
 			occupied[j] = 0;
 		}
-	}
+	}*/
 	
 	public void PreTurn () {
 		//Each round, randomize 1-4 for the bonus space
