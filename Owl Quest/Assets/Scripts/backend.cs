@@ -25,29 +25,29 @@ public class backend : MonoBehaviour {
 	public Player3 player3;
 	public Player4 player4;
 
-	//probability for all of the locations.	
+	//probability for all of the locations.
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
-	public int[] probability = new int[5] {2,3,4,5,0}; 
-	
+	public int[] probability = new int[5] {2,3,4,5,0};
+
 	public int[] occupied = new int[6]; //Who is at what location
-	
+
 	//text for each spot
-	public string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"}; 
-	 
+	public string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"};
+
 	public int questNumber = 0;
 	//int quest = 0;
 	public int questsComplete = 0;
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
-	public int bonusSpace = 0; //tradingPost
+	int tradingResource = 0; //tradingPost
 
 
 	// Use this for initialization
 	void Start () {
 		turn = GetComponent<Turn>();
-		
+
 		//												Wa  Fo  Sh  Tr Points
-		
+
 		//Easy Quests
 		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1);
 		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1);
@@ -72,16 +72,16 @@ public class backend : MonoBehaviour {
 		questList[18] = new Quests("Owl Yacht",			3,	0,	1,	1,	4);
 		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4);
 		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4);
-		
-		
+
+
 		jobBoard[0] = questList[Random.Range(0,7)];
 		jobBoard[1] = questList[Random.Range(0,7)];
 		jobBoard[2] = questList[Random.Range(0,7)];
-		
+
 		questPrinter();
 
 	}
-	
+
 	public void questPrinter(){
 		QuestText1.text = jobBoard[0].title + "\n" + jobBoard[0].water.ToString() + " Water \n"+ jobBoard[0].food.ToString() + " Food \n"+ jobBoard[0].shelter.ToString() + " Shelter \n" + jobBoard[0].treasure.ToString() + " Treasure \n";
 		QuestText2.text = jobBoard[1].title + "\n" + jobBoard[1].water.ToString() + " Water \n"+ jobBoard[1].food.ToString() + " Food \n"+ jobBoard[1].shelter.ToString() + " Shelter \n" + jobBoard[1].treasure.ToString() + " Treasure \n";
