@@ -10,6 +10,9 @@ public class backend : MonoBehaviour {
 	public Text text3;
 	public Text text4;
 	public Text text5;
+	public Text QuestText1;
+	public Text QuestText2;
+	public Text QuestText3;
 
 	
 	public bool completedAction = false;
@@ -18,15 +21,12 @@ public class backend : MonoBehaviour {
 	public bool selectingCard = false;
     public bool canPurchase = false;
     public Turn turn;
-	int[,] questList = new int[20,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-	/*
-	//int[,] questListEasy = new int[20,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-	//int[,] questListMedium = new int[20,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-	//int[,] questListHard = new int[20,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
-	*/
-	//public Player1 player1;
-    //public Quests quest;
-	//Quests quest1;
+
+	//int[,] questListEasy = new int[7,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
+	//int[,] questListMedium = new int[7,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
+	//int[,] questListHard = new int[7,5];  // 1 row for each quest, and then the 4 columns of resources and 1 column of points
+
+	public Player1 player1;
 
 	//probability for all of the locations.	
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
@@ -39,39 +39,47 @@ public class backend : MonoBehaviour {
 	 
 	int questNumber = 0;
 	int quest = 0;
-	//int[] jobBoard = new int[3];
+	int questsComplete = 0;
 	public Quests[] jobBoard = new Quests[3];
+	public Quests[] questList = new Quests[21];
 	int bonusSpace = 0; //tradingPost
 
-	//int firstPlayer = 0;
-	
-	
-	//Array looped through for player turns
-	/*int[,] turnArray = new int[4,4] {
-			{ 0, 1, 2, 3},
-			{ 1, 2, 3, 0},
-			{ 2, 3, 0, 1},
-			{ 3, 0, 1, 2}
-			};
-	*/
-	//1 = water, 2 = food, 3 = shelter, 4 = treasure, 5 Points
-	public int[,] resources = new int[4,5];
 
 	// Use this for initialization
 	void Start () {
-		/*
-		//turnArray[0] = { 0, 1, 2, 3};
-		//turnArray[1] = { 1, 2, 3, 0};
-		//turnArray[2] = { 2, 3, 0, 1};
-		//turnArray[3] = { 3, 0, 1, 2};
-		*/
-		//jobBoard[0] = Random.Range(0,19);
-		//jobBoard[1] = Random.Range(0,19);
-		//jobBoard[2] = Random.Range(0,19);
-
-		jobBoard[0] = new Quests("1 water 2 food",1,2,0,0,1);
-		jobBoard[1] = new Quests("2 water 1 food",2,1,0,0,1);
-		jobBoard[2] = new Quests("Trail Mix",1,1,1,1,2);
+		//												Wa  Fo  Sh  Tr Points
+		
+		//Easy Quests
+		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1);
+		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1);
+		questList[2] = new Quests("Refreshing Snack",	1,	1,	0,	0,	1);
+		questList[3] = new Quests("Riverside Home",		1,	0,	1,	0,	1);
+		questList[4] = new Quests("Baby Hero",			0,	0,	0,	1,	1);
+		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2);
+		questList[6] = new Quests("Winter Stockpile",	0,	3,	0,	0,	2);
+		//Medium Quests
+		questList[7] = new Quests("Soup",				3,	1,	0,	0,	2);
+		questList[8] = new Quests("Dinner for 1",		1,	1,	1,	0,	2);
+		questList[9] = new Quests("The Vault",			0,	0,	1,	1,	2);
+		questList[10] = new Quests("Town Mayor",		2,	1,	1,	0,	2);
+		questList[11] = new Quests("Quartermaster",		1,	2,	1,	0,	2);
+		questList[12] = new Quests("Ocean Dungeon",		3,	0,	0,	1,	3);
+		questList[13] = new Quests("Deputy Sheriff",	0,	0,	0,	2,	3);
+		//Hard Quests
+		questList[14] = new Quests("Flood Shelter",		2,	0,	2,	0,	3);
+		questList[15] = new Quests("Dinner for 2",		2,	2,	1,	0,	3);
+		questList[16] = new Quests("Great Rewards",		1,	0,	0,	2,	3);
+		questList[17] = new Quests("Village Picnic",	0,	2,	2,	0,	3);
+		questList[18] = new Quests("Owl Yacht",			3,	0,	1,	1,	4);
+		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4);
+		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4);
+		
+		
+		jobBoard[0] = questList[Random.Range(0,7)];
+		jobBoard[1] = questList[Random.Range(0,7)];
+		jobBoard[2] = questList[Random.Range(0,7)];
+		
+		questPrinter();
 
 	}
 	
@@ -149,7 +157,7 @@ public class backend : MonoBehaviour {
 	
 	
 			//Check if they have won
-			if(resources[player,4] >= 9){
+			if(player1.points >= 9){
 			//if(player1.points >= 9){
 					Debug.Log("GAME OVER, YOU WIN!");					
 			}
@@ -167,17 +175,24 @@ public class backend : MonoBehaviour {
 		int randomNumber = Random.Range(1,7);
 		text1.text = "Roll of " + randomNumber.ToString() + "\n";
 		if(location !=4){
-			if (randomNumber >= probability[location]){ 
-						resources[player,location]++;
+			if (randomNumber >= probability[location]){
+						if(location == 0) player1.water++;
+						if(location == 1) player1.food++;
+						if(location == 2) player1.shelter++;
+						if(location == 3) player1.treasure++;
+
 						text1.text += locationsText[location].ToString() + " Gained.";
-						text4.text = resources[1,0] + "\t" + resources[1,1] + "\t" + resources[1,2] + "\t" + resources[1,3] + "\t" + resources[1,4];
+						text4.text = player1.water + "\t" + player1.food + "\t" +player1.shelter + "\t" + player1.treasure + "\t" + player1.points;
 						
 			}
 		}else{
 			if(randomNumber >= probability[bonusNumber]){
-						resources[player,bonusNumber]++;
+						if(bonusNumber == 0) player1.water++;
+						if(bonusNumber == 1) player1.food++;
+						if(bonusNumber == 2) player1.shelter++;
+						if(bonusNumber == 3) player1.treasure++;
 						text1.text += locationsText[location].ToString() + " Gained.";	
-						text4.text = resources[1,0] + "\t" + resources[1,1] + "\t" + resources[1,2] + "\t" + resources[1,3] + "\t" + resources[1,4];
+						text4.text = player1.water + "\t" + player1.food + "\t" +player1.shelter + "\t" + player1.treasure + "\t" + player1.points;
 			}
 		}	
 	}
@@ -201,52 +216,58 @@ public class backend : MonoBehaviour {
 			}else if(Input.GetKeyDown("2")){
 				questNumber = 2;
 			}
-			/*	
-			for(int i = 0; i < 4; i++){
-				if( resources[player,i] < questList[quest,i]){
-					Debug.Log("Don't have the resources.");
-					return 1; //false
-				}
-			}
-			*/
-			if(resources[player,0] < jobBoard[questNumber].water){
+
+			if(player1.water < jobBoard[questNumber].water){
 				Debug.Log("Don't have the water.");
 				return 1; //false
 			}
-			if(resources[player,1] < jobBoard[questNumber].food){
+			if(player1.food < jobBoard[questNumber].food){
 				Debug.Log("Don't have the food.");
 				return 1; //false
 			}
-			if(resources[player,2] < jobBoard[questNumber].shelter){
+			if(player1.shelter < jobBoard[questNumber].shelter){
 				Debug.Log("Don't have the shelter.");
 				return 1; //false
 			}
-			if(resources[player,3] < jobBoard[questNumber].treasure){
+			if(player1.treasure < jobBoard[questNumber].treasure){
 				Debug.Log("Don't have the treasure.");
 				return 1; //false
 			}
 			
 			//If at this point, player has resources
 			Debug.Log("Quest Complete.");
+			questsComplete++;
 			
 			//Remove resources from player
-			//for(int i = 0; i < 4; i++){
-			//	resources[player,i] -= questList[quest,i];
-			//}
-			resources[player,0] -= jobBoard[questNumber].water;
-			resources[player,1] -= jobBoard[questNumber].food; 
-			resources[player,2] -= jobBoard[questNumber].shelter;
-			resources[player,3] -= jobBoard[questNumber].treasure;
+			player1.water -= jobBoard[questNumber].water;
+			player1.food -= jobBoard[questNumber].food; 
+			player1.shelter -= jobBoard[questNumber].shelter;
+			player1.treasure -= jobBoard[questNumber].treasure;
 			
 			//Award player the points
-			resources[player,4] += jobBoard[questNumber].points;
-			Debug.Log(resources[player,4]);
+			player1.points += jobBoard[questNumber].points;
+			
+			//player1.completedQuests[System.Array.IndexOf(player1.completedQuests, 0)] = jobBoard[questNumber];
+			//player1.completedQuests[System.Array.IndexOf(player1.completedQuests, System.Array.Find(player1.completedQuests, null))] = jobBoard[questNumber];
+			player1.completedQuests[System.Array.FindIndex(player1.completedQuests, i => i == null)] = jobBoard[questNumber];
 			//Replenish Job Board
-			//jobBoard[questNumber] = Random.Range(1, 20);
-
+			if(questsComplete < 4){
+				jobBoard[questNumber] = questList[Random.Range(0,7)];
+			}else if(questsComplete >= 4 && questsComplete < 10){
+				jobBoard[questNumber] = questList[Random.Range(7,14)];
+			}else{
+				jobBoard[questNumber] = questList[Random.Range(14,21)];
+			}
+			questPrinter();
+			player1.completed();
 			return 2; //true
 		}
 		return 0;
 	}
 	
+	public void questPrinter(){
+		QuestText1.text = jobBoard[0].title + "\n" + jobBoard[0].water.ToString() + " Water \n"+ jobBoard[0].food.ToString() + " Food \n"+ jobBoard[0].shelter.ToString() + " Shelter \n" + jobBoard[0].treasure.ToString() + " Treasure \n";
+		QuestText2.text = jobBoard[1].title + "\n" + jobBoard[1].water.ToString() + " Water \n"+ jobBoard[1].food.ToString() + " Food \n"+ jobBoard[1].shelter.ToString() + " Shelter \n" + jobBoard[1].treasure.ToString() + " Treasure \n";
+		QuestText3.text = jobBoard[2].title + "\n" + jobBoard[2].water.ToString() + " Water \n"+ jobBoard[2].food.ToString() + " Food \n"+ jobBoard[2].shelter.ToString() + " Shelter \n" + jobBoard[2].treasure.ToString() + " Treasure \n";
+	}
 }
