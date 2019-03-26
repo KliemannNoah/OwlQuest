@@ -48,15 +48,18 @@ public class Turn : MonoBehaviour
             {
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.THREE;
-				b.completedAction = false;
-				b.preturnDone = false;
+				resetVariables();
+				b.text5.text = "Post Turn";
+				//reset all occupied values to 0
+				for(int j = 0; j < 6; j++){
+					b.occupied[j] = 0;
+				}
             }
             else
             {
                 currentPlayer = TurnDefs.Player.TWO;
                 completedRound++;
-				b.completedAction = false;
-				b.preturnDone = false;
+				resetVariables();
             }
         }
 
@@ -67,11 +70,18 @@ public class Turn : MonoBehaviour
             {
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.FOUR;
+				resetVariables();
+				b.text5.text = "Post Turn";
+				//reset all occupied values to 0
+				for(int j = 0; j < 6; j++){
+					b.occupied[j] = 0;
+				}
             }
             else
             {
                 currentPlayer = TurnDefs.Player.THREE;
                 completedRound++;
+				resetVariables();
             }
         }
 
@@ -82,11 +92,18 @@ public class Turn : MonoBehaviour
             {
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.ONE;
+				resetVariables();
+				b.text5.text = "Post Turn";
+				//reset all occupied values to 0
+				for(int j = 0; j < 6; j++){
+					b.occupied[j] = 0;
+				}
             }
             else
             {
                 currentPlayer = TurnDefs.Player.FOUR;
                 completedRound++;
+				resetVariables();
             }
         }
 
@@ -97,16 +114,34 @@ public class Turn : MonoBehaviour
             {
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.TWO;
+				resetVariables();
+				b.text5.text = "Post Turn";
+				//reset all occupied values to 0
+				for(int j = 0; j < 6; j++){
+					b.occupied[j] = 0;
+				}
             }
             else
             {
                 currentPlayer = TurnDefs.Player.ONE;
                 completedRound++;
+				resetVariables();
             }
         }
 
     }
 
-
+    public TurnDefs.Player GetCurrentTurn() {
+        return currentPlayer;
+    }
+	
+	public void resetVariables(){
+		b.completedAction = false;
+		b.preturnDone = false;
+		b.questLocation = false;
+		b.selectingCard = false;
+		b.canPurchase = false;
+		
+	}
 
 }
