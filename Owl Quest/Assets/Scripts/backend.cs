@@ -39,13 +39,13 @@ public class backend : MonoBehaviour {
 	public int questsComplete = 0;
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
-	int tradingResource = 0; //tradingPost
+	public int tradingResource = 0; //tradingPost
 
 
 	// Use this for initialization
 	void Start () {
 		turn = GetComponent<Turn>();
-
+		tradingResource = Random.Range(0,4);
 		//												Wa  Fo  Sh  Tr Points
 
 		//Easy Quests

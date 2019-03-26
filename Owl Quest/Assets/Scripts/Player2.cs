@@ -53,7 +53,7 @@ public class Player2 : MonoBehaviour
 	public void PreTurn () {
 		//Each round, randomize 1-4 for the bonus space
 		b.text5.text = "Pre Turn";
-		b.bonusSpace = Random.Range(0,4);
+		b.tradingResource = Random.Range(0,4);
 		b.preturnDone = true;
 		b.text5.text = "Current Turn";
 	}
@@ -88,7 +88,7 @@ public class Player2 : MonoBehaviour
 				//TODO: Handle Trading Post
 				//Rework
 				if(location == 4){
-					location = b.bonusSpace;
+					location = b.tradingResource;
 				}
 					
 				//TODO: Handle Quests
@@ -96,8 +96,11 @@ public class Player2 : MonoBehaviour
 					//Let players pick the quest they want
 					//questNumber -1 = input;
 					b.questLocation = true;
+				}else if(location == 4) {
+					TradingPost(b.tradingResource);
+					b.completedAction = true;
 				}else{
-					locationHandler(location, b.bonusSpace);
+					locationHandler(location);
 					b.completedAction = true;
 				}
 		
@@ -115,32 +118,42 @@ public class Player2 : MonoBehaviour
 		This function takes the player, their location, and the trading post number
 		It then rolls and computes wether or not the player got the resources
 	*/
-	public void locationHandler( int location, int bonusNumber){
+	public void locationHandler(int location){
 		
 		int randomNumber = Random.Range(1,7);
 		b.text1.text = "Roll of " + randomNumber.ToString() + "\n";
-		if(location !=4){
-			if (randomNumber >= b.probability[location]){
-						if(location == 0) this.water++;
-						if(location == 1) this.food++;
-						if(location == 2) this.shelter++;
-						if(location == 3) this.treasure++;
+		if (randomNumber >= b.probability[location]){
+					if(location == 0) this.water++;
+					if(location == 1) this.food++;
+					if(location == 2) this.shelter++;
+					if(location == 3) this.treasure++;
 
-						b.text1.text += b.locationsText[location].ToString() + " Gained.";
-						b.text4.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-						
-			}
-		}else{
-			if(randomNumber >= b.probability[bonusNumber]){
-						if(bonusNumber == 0) this.water++;
-						if(bonusNumber == 1) this.food++;
-						if(bonusNumber == 2) this.shelter++;
-						if(bonusNumber == 3) this.treasure++;
-						b.text1.text += b.locationsText[location].ToString() + " Gained.";	
-						b.text4.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-			}
-		}	
+					b.text1.text += b.locationsText[location].ToString() + " Gained.";
+					b.text4.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+					
+		}
+
 	}
+
+	public void TradingPost(int resource) {
+        int randomNumber = Random.Range(1, 7);
+        b.text1.text = "Roll of " + randomNumber.ToString() + "\n";
+        if (randomNumber >= 4) {
+            if (resource == 0) this.water++;
+            if (resource == 1) this.food++;
+            if (resource == 2) this.shelter++;
+            if (resource == 3) this.treasure++;
+            b.text1.text += b.locationsText[resource].ToString() + " Gained.";
+            b.text4.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+        }
+        else if (randomNumber == 3 && resource < 2) {
+            if (resource == 0) this.water++;
+            if (resource == 1) this.food++;
+            b.text1.text += b.locationsText[resource].ToString() + " Gained.";
+            b.text4.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+        }
+
+    }
 
 	/**
 		This Function is used when players attempt to turn in a quest

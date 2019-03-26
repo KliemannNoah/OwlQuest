@@ -54,6 +54,7 @@ public class Turn : MonoBehaviour
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
+				b.tradingResource = Random.Range(0,4);
             }
             else
             {
@@ -76,6 +77,7 @@ public class Turn : MonoBehaviour
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
+				b.tradingResource = Random.Range(0,4);
             }
             else
             {
@@ -98,6 +100,7 @@ public class Turn : MonoBehaviour
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
+				b.tradingResource = Random.Range(0,4);
             }
             else
             {
@@ -120,6 +123,7 @@ public class Turn : MonoBehaviour
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
+				b.tradingResource = Random.Range(0,4);
             }
             else
             {
