@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quests : MonoBehaviour
+public class Quests
 {
 	public string title = "";
 	public int food = 0;
@@ -30,4 +30,6 @@ public class Quests : MonoBehaviour
     {
 		
     }
+	
+
 }
