@@ -25,7 +25,10 @@ public class Player2 : MonoBehaviour
 	bool reroll = false;
 	bool tempSheriff = false;
 	bool tempRewards = false;
+	bool tempRewards2 = false;
 	bool tempReroll = false;
+	bool undoReroll = false;
+	bool undoSheriff = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +52,25 @@ public class Player2 : MonoBehaviour
 		if(currentTurn == TurnDefs.Player.TWO){
 			if(trailMix){
 				selectSpot();
-			}else if(rewards && tempRewards){
-				
-				//if succesfull
-				tempRewards = false;
-				
+			}else if(rewards && tempRewards){ //Want to use another quests ability?
+				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
+					if(Input.GetKeyDown("y")){
+						tempRewards2 = true;
+					}else if(Input.GetKeyDown("n")){
+						tempRewards = false;
+					}
+				}
+			}else if(rewards && tempRewards2){
+				if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
+					if(Input.GetKeyDown("0")){
+						temporaryRewards(b.jobBoard[0].effect);
+					}else if(Input.GetKeyDown("1")){
+						temporaryRewards(b.jobBoard[1].effect);
+					}else if(Input.GetKeyDown("2")){
+						temporaryRewards(b.jobBoard[2].effect);
+					}
+					tempRewards2 = false;
+				}				
 			}else if(sheriff && tempSheriff){
 				if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
 					b.questsComplete++;
@@ -132,9 +149,27 @@ public class Player2 : MonoBehaviour
 				}else if(location == 4) {
 					TradingPost(b.tradingResource);
 					b.completedAction = true;
+					if(undoSheriff){
+						sheriff = false;
+						tempSheriff = false;
+						undoSheriff = false;
+					}else if(undoReroll){
+						reroll = false;
+						tempReroll = false;
+						undoReroll = false;
+					}
 				}else{
 					locationHandler(location);
 					b.completedAction = true;
+					if(undoSheriff){
+						sheriff = false;
+						tempSheriff = false;
+						undoSheriff = false;
+					}else if(undoReroll){
+						reroll = false;
+						tempReroll = false;
+						undoReroll = false;
+					}
 				}
 		
 		
@@ -256,6 +291,16 @@ public class Player2 : MonoBehaviour
 			
 			b.questPrinter();
 			this.completed();
+			b.completedAction = true;
+			if(undoSheriff){
+				sheriff = false;
+				tempSheriff = false;
+				undoSheriff = false;
+			}else if(undoReroll){
+				reroll = false;
+				tempReroll = false;
+				undoReroll = false;
+			}
 			return 2; //true
 		}
 		return 0;
@@ -327,6 +372,18 @@ public class Player2 : MonoBehaviour
 				tradingPostModifier++;
 				trailMix = false;
 			}
+		}
+	}
+	
+	public void temporaryRewards(int effectNumber){
+		if(effectNumber == 8){ //Active Ability: Reroll trading post
+			reroll = true;
+			tempReroll = true;
+			undoReroll = true;
+		}else if(effectNumber == 10){ // Active Ability: Place any quest from the quest board on the bottom of the deck
+			sheriff = true;
+			tempSheriff = true;
+			undoSheriff = true;
 		}
 	}
 }
