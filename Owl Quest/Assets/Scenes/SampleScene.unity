@@ -745,6 +745,7 @@ GameObject:
   - component: {fileID: 519420037}
   - component: {fileID: 519420036}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420038}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -801,6 +802,7 @@ MonoBehaviour:
   questNumber: 0
   questsComplete: 0
   tradingResource: 0
+  replacedTracker: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -827,7 +829,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 173.14868
+  orthographic size: 182.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -851,7 +853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -948,6 +950,20 @@ MonoBehaviour:
   treasure: 0
   points: 0
   PlayerQuests: {fileID: 62139896}
+--- !u!114 &519420038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff14f490b4bdc45478c70e2359be4d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWidth: 650
+  pixelsToUnits: 1
 --- !u!1 &814827143
 GameObject:
   m_ObjectHideFlags: 0
