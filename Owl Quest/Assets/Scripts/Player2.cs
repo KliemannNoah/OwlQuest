@@ -40,7 +40,7 @@ public class Player2 : MonoBehaviour
 		PlayerQuests2.text ="";
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
-			PlayerQuests2.text += completedQuests[i].title + "\t" + completedQuests[i].water.ToString() + " Water \t"+ completedQuests[i].food.ToString() + " Food \t"+ completedQuests[i].shelter.ToString() + " Shelter \t" + completedQuests[i].treasure.ToString() + " Treasure \t" + completedQuests[i].points.ToString() + " points \n";
+			PlayerQuests2.text += completedQuests[i].title + ":\t" + completedQuests[i].points.ToString() + " points\t" + completedQuests[i].effectText + "\n";
 			}
 		}
 	}
