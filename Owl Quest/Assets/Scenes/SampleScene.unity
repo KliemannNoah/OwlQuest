@@ -1015,6 +1015,7 @@ MonoBehaviour:
   QuestText1: {fileID: 1554736988}
   QuestText2: {fileID: 2079310825}
   QuestText3: {fileID: 1434318494}
+  TradingPostResource: {fileID: 1415993760}
   completedAction: 0
   questLocation: 0
   selectingCard: 0
@@ -1025,6 +1026,7 @@ MonoBehaviour:
   player3: {fileID: 519420036}
   player4: {fileID: 519420034}
   probability: 0200000003000000040000000500000000000000
+  tradingRolls: 03000000030000000400000004000000
   occupied: 000000000000000000000000000000000000000000000000
   locationsText:
   - Water
@@ -1063,7 +1065,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 182.5
+  orthographic size: 203
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
