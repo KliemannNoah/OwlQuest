@@ -52,6 +52,8 @@ public class Turn : MonoBehaviour
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+              //  Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -75,6 +77,8 @@ public class Turn : MonoBehaviour
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+               // Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -98,6 +102,8 @@ public class Turn : MonoBehaviour
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+               // Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -121,6 +127,8 @@ public class Turn : MonoBehaviour
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+               // Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {

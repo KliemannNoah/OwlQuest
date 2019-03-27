@@ -91,7 +91,9 @@ public class Player4 : MonoBehaviour
 				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
 					if(Input.GetKeyDown("y")){
 						b.tradingResource = Random.Range(0,4);
-						tempReroll = false;
+                       // Debug.Log(b.tradingResource);
+                        b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
+                        tempReroll = false;
 					}else if(Input.GetKeyDown("n")){
 						tempReroll = false;
 					}

@@ -14,6 +14,7 @@ public class backend : MonoBehaviour {
 	public Text QuestText1;
 	public Text QuestText2;
 	public Text QuestText3;
+    public Text TradingPostResource;
 
 	public bool completedAction = false;
     public bool questLocation = false;
@@ -28,6 +29,7 @@ public class backend : MonoBehaviour {
 	//probability for all of the locations.
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
 	public int[] probability = new int[5] {2,3,4,5,0};
+    public int[] tradingRolls = new int[4] { 3, 3, 4, 4 };
 
 	public int[] occupied = new int[6]; //Who is at what location
 
@@ -47,6 +49,7 @@ public class backend : MonoBehaviour {
 	void Start () {
 		turn = GetComponent<Turn>();
 		tradingResource = Random.Range(0,4);
+        TradingPostResource.text = locationsText[tradingResource] + "\nRoll " + tradingRolls[tradingResource] + "+";
 		//												Wa  Fo  Sh  Tr Pnt eff
 
 		//Easy Quests
