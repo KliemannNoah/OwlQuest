@@ -9,7 +9,6 @@ public class Turn : MonoBehaviour
 	public backend b;
 	public Player1 p1;
 	
-	
     public TurnDefs player;
     public TurnDefs.Player currentPlayer = TurnDefs.Player.ONE;
     private float completedRound = 0;
@@ -32,12 +31,10 @@ public class Turn : MonoBehaviour
             display = "Player Four";
         }
 
-
-
-        if (GUILayout.Button(display + ": Click to change Player"))
-        {
-            NextPlayer();
-        }
+		if (GUILayout.Button(display + ": Click to change Player"))
+		{
+				NextPlayer();
+		}
     }
 
     void NextPlayer()
@@ -132,7 +129,6 @@ public class Turn : MonoBehaviour
 				resetVariables();
             }
         }
-
     }
 
     public TurnDefs.Player GetCurrentTurn() {

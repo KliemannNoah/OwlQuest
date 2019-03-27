@@ -97,8 +97,7 @@ public class Player1 : MonoBehaviour
 					}
 				}
 			}else if(!b.completedAction && !b.questLocation){
-				Round();
-				
+				Round();	
 			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
