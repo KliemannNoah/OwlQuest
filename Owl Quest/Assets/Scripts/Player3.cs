@@ -13,7 +13,7 @@ public class Player3 : MonoBehaviour
 	public int shelter = 0;
 	public int treasure = 0;
 	public int points = 0;
-	public Text PlayerQuests;
+	public Text PlayerQuests3;
 	public Quests[] completedQuests = new Quests[10];
 	int[] rollProbability = new int[5] {2,3,4,5,0};
 	int tradingPostModifier = 0;
@@ -32,15 +32,15 @@ public class Player3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerQuests.text  = "";
+        PlayerQuests3.text  = "";
     }
 
 	
 	public void completed(){
-		PlayerQuests.text ="";
+		PlayerQuests3.text ="";
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
-			PlayerQuests.text += completedQuests[i].title + "\t" + completedQuests[i].water.ToString() + " Water \t"+ completedQuests[i].food.ToString() + " Food \t"+ completedQuests[i].shelter.ToString() + " Shelter \t" + completedQuests[i].treasure.ToString() + " Treasure \t" + completedQuests[i].points.ToString() + " points \n";
+			PlayerQuests3.text += completedQuests[i].title + "\t" + completedQuests[i].water.ToString() + " Water \t"+ completedQuests[i].food.ToString() + " Food \t"+ completedQuests[i].shelter.ToString() + " Shelter \t" + completedQuests[i].treasure.ToString() + " Treasure \t" + completedQuests[i].points.ToString() + " points \n";
 			}
 		}
 	}
@@ -130,10 +130,7 @@ public class Player3 : MonoBehaviour
 			}
 
 			if(b.occupied[location] == 0){
-				b.text2.text = "Location " + location;	
 				b.occupied[location] = 3;
-				b.text3.text = b.occupied[0] + "\t" + b.occupied[1] + "\t" + b.occupied[2] + "\t" + b.occupied[3] + "\t" + b.occupied[4]+ "\t" + b.occupied[5];
-				
 				
 				//TODO: Handle Trading Post
 				//Rework
@@ -189,15 +186,15 @@ public class Player3 : MonoBehaviour
 	public void locationHandler(int location){
 		
 		int randomNumber = Random.Range(1,7);
-		b.text1.text = "Roll of " + randomNumber.ToString() + "\n";
+		b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
 		if (randomNumber >= b.probability[location]){
 					if(location == 0) this.water++;
 					if(location == 1) this.food++;
 					if(location == 2) this.shelter++;
 					if(location == 3) this.treasure++;
 
-					b.text1.text += b.locationsText[location].ToString() + " Gained.";
-					b.text4.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+				b.RollText.text += b.locationsText[location].ToString() + " Gained.";
+					b.Player3Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 					
 		}
 
@@ -209,20 +206,20 @@ public class Player3 : MonoBehaviour
 		if(randomNumber2 > randomNumber && advantage == 2){
 			randomNumber = randomNumber2;
 		}
-        b.text1.text = "Roll of " + randomNumber.ToString() + "\n";
+		b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
         if (randomNumber >= (4-tradingPostModifier)) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
             if (resource == 2) this.shelter++;
             if (resource == 3) this.treasure++;
-            b.text1.text += b.locationsText[resource].ToString() + " Gained.";
-            b.text4.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
+            b.Player3Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
-            b.text1.text += b.locationsText[resource].ToString() + " Gained.";
-            b.text4.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
+            b.Player3Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
 
     }
@@ -276,6 +273,7 @@ public class Player3 : MonoBehaviour
 			this.food -= b.jobBoard[b.questNumber].food; 
 			this.shelter -= b.jobBoard[b.questNumber].shelter;
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
+			b.Player3Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 			
 			//Award player the points
 			this.points += b.jobBoard[b.questNumber].points;

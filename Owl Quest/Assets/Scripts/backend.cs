@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class backend : MonoBehaviour {
 
-	public Text text1;
-	public Text text2;
-	public Text text3;
-	public Text text4;
-	public Text text5;
+	public Text RollText;
+	public Text Player1Resources;
+	public Text Player2Resources;
+	public Text Player3Resources;
+	public Text Player4Resources;
+	public Text GeneralOutput;
 	public Text QuestText1;
 	public Text QuestText2;
 	public Text QuestText3;

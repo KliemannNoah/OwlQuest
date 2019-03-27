@@ -46,7 +46,7 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.THREE;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
@@ -69,7 +69,7 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.FOUR;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
@@ -92,7 +92,7 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.ONE;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
@@ -115,7 +115,7 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.TWO;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
