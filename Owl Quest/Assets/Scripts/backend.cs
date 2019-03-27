@@ -87,8 +87,8 @@ public class backend : MonoBehaviour {
 	}
 
 	public void questPrinter(){
-		QuestText1.text = jobBoard[0].title + "\n" + jobBoard[0].water.ToString() + " Water \n"+ jobBoard[0].food.ToString() + " Food \n"+ jobBoard[0].shelter.ToString() + " Shelter \n" + jobBoard[0].treasure.ToString() + " Treasure \n";
-		QuestText2.text = jobBoard[1].title + "\n" + jobBoard[1].water.ToString() + " Water \n"+ jobBoard[1].food.ToString() + " Food \n"+ jobBoard[1].shelter.ToString() + " Shelter \n" + jobBoard[1].treasure.ToString() + " Treasure \n";
-		QuestText3.text = jobBoard[2].title + "\n" + jobBoard[2].water.ToString() + " Water \n"+ jobBoard[2].food.ToString() + " Food \n"+ jobBoard[2].shelter.ToString() + " Shelter \n" + jobBoard[2].treasure.ToString() + " Treasure \n";
+		QuestText1.text = jobBoard[0].title + "\n" + jobBoard[0].water.ToString() + " Water \n"+ jobBoard[0].food.ToString() + " Food \n"+ jobBoard[0].shelter.ToString() + " Shelter \n" + jobBoard[0].treasure.ToString() + " Treasure \n\n"+ jobBoard[0].effectText + "\n";
+		QuestText2.text = jobBoard[1].title + "\n" + jobBoard[1].water.ToString() + " Water \n"+ jobBoard[1].food.ToString() + " Food \n"+ jobBoard[1].shelter.ToString() + " Shelter \n" + jobBoard[1].treasure.ToString() + " Treasure \n\n"+ jobBoard[1].effectText + "\n";
+		QuestText3.text = jobBoard[2].title + "\n" + jobBoard[2].water.ToString() + " Water \n"+ jobBoard[2].food.ToString() + " Food \n"+ jobBoard[2].shelter.ToString() + " Shelter \n" + jobBoard[2].treasure.ToString() + " Treasure \n\n"+ jobBoard[2].effectText + "\n";
 	}
 }

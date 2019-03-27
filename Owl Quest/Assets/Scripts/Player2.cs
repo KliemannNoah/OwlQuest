@@ -40,7 +40,11 @@ public class Player2 : MonoBehaviour
 		PlayerQuests2.text ="";
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
-			PlayerQuests2.text += completedQuests[i].title + ":\t" + completedQuests[i].points.ToString() + " points\t" + completedQuests[i].effectText + "\n";
+			//PlayerQuests2.text += completedQuests[i].title + ":\n" + completedQuests[i].points.ToString() + " points\n" + completedQuests[i].effectText + "\n";
+				if(completedQuests[i].effect != 0){
+					PlayerQuests2.text += "Effect: " + completedQuests[i].effectText + "\n";
+				}
+
 			}
 		}
 	}
