@@ -9,7 +9,6 @@ public class Turn : MonoBehaviour
 	public backend b;
 	public Player1 p1;
 	
-	
     public TurnDefs player;
     public TurnDefs.Player currentPlayer = TurnDefs.Player.ONE;
     private float completedRound = 0;
@@ -32,12 +31,10 @@ public class Turn : MonoBehaviour
             display = "Player Four";
         }
 
-
-
-        if (GUILayout.Button(display + ": Click to change Player"))
-        {
-            NextPlayer();
-        }
+		if (GUILayout.Button(display + ": Click to change Player"))
+		{
+				NextPlayer();
+		}
     }
 
     void NextPlayer()
@@ -49,12 +46,14 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.THREE;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+              //  Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -72,12 +71,14 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.FOUR;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+               // Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -95,12 +96,14 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.ONE;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+               // Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -118,12 +121,14 @@ public class Turn : MonoBehaviour
                 completedRound = 0;
                 currentPlayer = TurnDefs.Player.TWO;
 				resetVariables();
-				b.text5.text = "Post Turn";
+				b.GeneralOutput.text = "Post Turn";
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
+               // Debug.Log(b.tradingResource);
+                b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
             }
             else
             {
@@ -132,7 +137,6 @@ public class Turn : MonoBehaviour
 				resetVariables();
             }
         }
-
     }
 
     public TurnDefs.Player GetCurrentTurn() {
@@ -141,7 +145,6 @@ public class Turn : MonoBehaviour
 	
 	public void resetVariables(){
 		b.completedAction = false;
-		b.preturnDone = false;
 		b.questLocation = false;
 		b.selectingCard = false;
 		b.canPurchase = false;
