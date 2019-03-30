@@ -278,6 +278,7 @@ public class Player1 : MonoBehaviour
 			this.food -= b.jobBoard[b.questNumber].food; 
 			this.shelter -= b.jobBoard[b.questNumber].shelter;
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
+			this.points += b.jobBoard[b.questNumber].points;
 			b.Player1Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 			
 			//Award player the points

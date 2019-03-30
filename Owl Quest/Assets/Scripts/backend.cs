@@ -10,7 +10,6 @@ public class backend : MonoBehaviour {
 	public Text Player2Resources;
 	public Text Player3Resources;
 	public Text Player4Resources;
-	public Text GeneralOutput;
 	public Text QuestText1;
 	public Text QuestText2;
 	public Text QuestText3;
