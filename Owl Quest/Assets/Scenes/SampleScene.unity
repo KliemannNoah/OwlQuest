@@ -973,11 +973,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420035}
-  - component: {fileID: 519420037}
-  - component: {fileID: 519420036}
-  - component: {fileID: 519420034}
   - component: {fileID: 519420038}
   m_Layer: 0
   m_Name: Main Camera
@@ -1011,6 +1007,10 @@ MonoBehaviour:
   Player2Resources: {fileID: 1724946943}
   Player3Resources: {fileID: 1171900459}
   Player4Resources: {fileID: 271127177}
+  Player1Quests: {fileID: 62139896}
+  Player2Quests: {fileID: 1569544454}
+  Player3Quests: {fileID: 465954436}
+  Player4Quests: {fileID: 736361778}
   QuestText1: {fileID: 1554736988}
   QuestText2: {fileID: 2079310825}
   QuestText3: {fileID: 1434318494}
@@ -1020,10 +1020,6 @@ MonoBehaviour:
   selectingCard: 0
   canPurchase: 0
   turn: {fileID: 519420035}
-  player1: {fileID: 519420033}
-  player2: {fileID: 519420037}
-  player3: {fileID: 519420036}
-  player4: {fileID: 519420034}
   probability: 0200000003000000040000000500000000000000
   tradingRolls: 03000000030000000400000004000000
   occupied: 000000000000000000000000000000000000000000000000
@@ -1094,44 +1090,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b18b1c4c1202da242a3da846694d94a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  b: {fileID: 519420030}
-  food: 0
-  water: 0
-  shelter: 0
-  treasure: 0
-  points: 0
-  PlayerQuests1: {fileID: 62139896}
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38bdefaf00d7908458ed99678148e2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  b: {fileID: 519420030}
-  food: 0
-  water: 0
-  shelter: 0
-  treasure: 0
-  points: 0
-  PlayerQuests4: {fileID: 736361778}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,46 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   b: {fileID: 519420030}
-  p1: {fileID: 519420033}
   currentPlayer: 0
---- !u!114 &519420036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142dab96be2ca0449af56d19beecd7f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  b: {fileID: 519420030}
-  food: 0
-  water: 0
-  shelter: 0
-  treasure: 0
-  points: 0
-  PlayerQuests3: {fileID: 465954436}
---- !u!114 &519420037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47c95837b2dbeb4ca511d27311d41bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  b: {fileID: 519420030}
-  food: 0
-  water: 0
-  shelter: 0
-  treasure: 0
-  points: 0
-  PlayerQuests2: {fileID: 1569544454}
 --- !u!114 &519420038
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,27 +64,27 @@ public class Player1 : MonoBehaviour
 					}
 				}
 			}else if(rewards && tempRewards2){
-				if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
-					if(Input.GetKeyDown("0")){
+				if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
+					if(Input.GetKeyDown("1")){
 						temporaryRewards(b.jobBoard[0].effect);
-					}else if(Input.GetKeyDown("1")){
-						temporaryRewards(b.jobBoard[1].effect);
 					}else if(Input.GetKeyDown("2")){
+						temporaryRewards(b.jobBoard[1].effect);
+					}else if(Input.GetKeyDown("3")){
 						temporaryRewards(b.jobBoard[2].effect);
 					}
 					tempRewards2 = false;
 				}				
 			}else if(sheriff && tempSheriff){
-				if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
+				if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
 					b.questsComplete++;
 
-					if(Input.GetKeyDown("0")){
+					if(Input.GetKeyDown("1")){
 						b.replaced[System.Array.FindIndex(b.replaced, i => i == null)] = b.jobBoard[0];
 						newQuest(0);
-					}else if(Input.GetKeyDown("1")){
+					}else if(Input.GetKeyDown("2")){
 						b.replaced[System.Array.FindIndex(b.replaced, i => i == null)] = b.jobBoard[1];
 						newQuest(1);
-					}else if(Input.GetKeyDown("2")){
+					}else if(Input.GetKeyDown("3")){
 						b.replaced[System.Array.FindIndex(b.replaced, i => i == null)] = b.jobBoard[2];
 						newQuest(2);
 					}
@@ -94,7 +94,7 @@ public class Player1 : MonoBehaviour
 				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
 					if(Input.GetKeyDown("y")){
 						b.tradingResource = Random.Range(0,4);
-                        //Debug.Log(b.tradingResource);
+                        //  Debug.Log(b.tradingResource);
                         b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
                         tempReroll = false;
 					}else if(Input.GetKeyDown("n")){
@@ -102,7 +102,7 @@ public class Player1 : MonoBehaviour
 					}
 				}
 			}else if(!b.completedAction && !b.questLocation){
-				Round();	
+				Round();
 			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
@@ -117,7 +117,7 @@ public class Player1 : MonoBehaviour
 		int location = -1;
 		//have them pick their location to travel
 		//Get their input 0-5
-		if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5")))
+		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5") || Input.GetKeyDown("6")))
 		{
 			if(Input.GetKeyDown("0")){
 				location = 0;
@@ -134,7 +134,7 @@ public class Player1 : MonoBehaviour
 			}
 
 			if(b.occupied[location] == 0){
-				b.occupied[location] = 1;				
+				b.occupied[location] = 1;
 				
 				//TODO: Handle Trading Post
 				//Rework
@@ -179,7 +179,6 @@ public class Player1 : MonoBehaviour
 						Debug.Log("GAME OVER, YOU WIN!");					
 				}
 			}
-			
 		}
 	
 	}
@@ -211,19 +210,19 @@ public class Player1 : MonoBehaviour
 		if(randomNumber2 > randomNumber && advantage == 2){
 			randomNumber = randomNumber2;
 		}
-        b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
+		b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
         if (randomNumber >= (4-tradingPostModifier)) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
             if (resource == 2) this.shelter++;
             if (resource == 3) this.treasure++;
-            b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
+			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             b.Player1Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
-            b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
+			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             b.Player1Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
 
@@ -242,13 +241,13 @@ public class Player1 : MonoBehaviour
 	public int handleQuests(){	
 		//quest = jobBoard[questNumber];
 		//For each Resources
-		if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2"))){
+		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
 			b.questLocation = false;
-			if(Input.GetKeyDown("0")){
+			if(Input.GetKeyDown("1")){
 				b.questNumber = 0;
-			}else if(Input.GetKeyDown("1")){
-				b.questNumber = 1;
 			}else if(Input.GetKeyDown("2")){
+				b.questNumber = 1;
+			}else if(Input.GetKeyDown("3")){
 				b.questNumber = 2;
 			}
 
@@ -358,21 +357,21 @@ public class Player1 : MonoBehaviour
 	}
 	
 	public void selectSpot(){
-		if((Input.GetKeyDown("0")|| Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4")))
+		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5")))
 		{
-			if(Input.GetKeyDown("0")){
+			if(Input.GetKeyDown("1")){
 				rollProbability[0]--;
 				trailMix = false;
-			}else if(Input.GetKeyDown("1")){
+			}else if(Input.GetKeyDown("2")){
 				rollProbability[1]--;
 				trailMix = false;
-			}else if(Input.GetKeyDown("2")){
+			}else if(Input.GetKeyDown("3")){
 				rollProbability[2]--;
 				trailMix = false;
-			}else if(Input.GetKeyDown("3")){
+			}else if(Input.GetKeyDown("4")){
 				rollProbability[3]--;
 				trailMix = false;
-			}else if(Input.GetKeyDown("4")){
+			}else if(Input.GetKeyDown("5")){
 				tradingPostModifier++;
 				trailMix = false;
 			}

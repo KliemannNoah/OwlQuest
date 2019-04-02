@@ -10,6 +10,10 @@ public class backend : MonoBehaviour {
 	public Text Player2Resources;
 	public Text Player3Resources;
 	public Text Player4Resources;
+	public Text Player1Quests;
+	public Text Player2Quests;
+	public Text Player3Quests;
+	public Text Player4Quests;
 	public Text QuestText1;
 	public Text QuestText2;
 	public Text QuestText3;
@@ -20,10 +24,14 @@ public class backend : MonoBehaviour {
 	public bool selectingCard = false;
     public bool canPurchase = false;
     public Turn turn;
-	public Player1 player1;
-	public Player2 player2;
-	public Player3 player3;
-	public Player4 player4;
+	//public Player1 player1;
+	//public Player2 player2;
+	//public Player3 player3;
+	//public Player4 player4;
+	public Player player1;
+	public Player player2;
+	public Player player3;
+	public Player player4;
 
 	//probability for all of the locations.
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
@@ -47,6 +55,8 @@ public class backend : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		turn = GetComponent<Turn>();
+
+		
 		tradingResource = Random.Range(0,4);
         TradingPostResource.text = locationsText[tradingResource] + "\nRoll " + tradingRolls[tradingResource] + "+";
 		//												Wa  Fo  Sh  Tr Pnt eff
@@ -83,11 +93,26 @@ public class backend : MonoBehaviour {
 
 		questPrinter();
 
+		player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE);
+		player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO);
+		player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE);
+		player4 = new Player(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR);
+		player1.Start();
+		player2.Start();
+		player3.Start();
+		player4.Start();
 	}
 
 	public void questPrinter(){
 		QuestText1.text = jobBoard[0].title + "\n" + jobBoard[0].water.ToString() + " Water \n"+ jobBoard[0].food.ToString() + " Food \n"+ jobBoard[0].shelter.ToString() + " Shelter \n" + jobBoard[0].treasure.ToString() + " Treasure \n\n"+ jobBoard[0].effectText + "\n";
 		QuestText2.text = jobBoard[1].title + "\n" + jobBoard[1].water.ToString() + " Water \n"+ jobBoard[1].food.ToString() + " Food \n"+ jobBoard[1].shelter.ToString() + " Shelter \n" + jobBoard[1].treasure.ToString() + " Treasure \n\n"+ jobBoard[1].effectText + "\n";
 		QuestText3.text = jobBoard[2].title + "\n" + jobBoard[2].water.ToString() + " Water \n"+ jobBoard[2].food.ToString() + " Food \n"+ jobBoard[2].shelter.ToString() + " Shelter \n" + jobBoard[2].treasure.ToString() + " Treasure \n\n"+ jobBoard[2].effectText + "\n";
+	}
+	
+	void Update(){
+			player1.Update();
+			player2.Update();
+			player3.Update();
+			player4.Update();
 	}
 }

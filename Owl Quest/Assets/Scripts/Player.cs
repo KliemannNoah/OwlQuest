@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static backend;
 
-public class Player2 : MonoBehaviour
+public class Player
 {
 	public backend b;
 	
@@ -13,7 +13,8 @@ public class Player2 : MonoBehaviour
 	public int shelter = 0;
 	public int treasure = 0;
 	public int points = 0;
-	public Text PlayerQuests2;
+	public Text PlayerQuests;
+	public Text Resources;
 	public Quests[] completedQuests = new Quests[10];
 	int[] rollProbability = new int[5] {2,3,4,5,0};
 	int tradingPostModifier = 0;
@@ -29,20 +30,42 @@ public class Player2 : MonoBehaviour
 	bool tempReroll = false;
 	bool undoReroll = false;
 	bool undoSheriff = false;
+	
+	TurnDefs.Player playerTurnNumber; //= TurnDefs.Player.ONE;
+	int playerNumber;
+	string playerQuestsText;
+	string playerResources;
+	string playerTurn;
+	GameObject camera;
+	
+	public Player(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur){
+		this.playerNumber = playerNumb;
+		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
+		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
+		this.playerTurn = "TurnDefs.Player." + playerTex;
+		this.PlayerQuests = PlayerQ;
+		this.Resources = Resour;
+		this.playerTurnNumber = tur;
+
+		//Debug.Log(playerTurnNumber);
+		//this.Start();
+	}
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        PlayerQuests2.text  = "";
+		this.camera = GameObject.Find("Main Camera");
+		this.b = camera.GetComponent<backend>();
+        PlayerQuests.text  = "Yellow";
     }
 
 	
 	public void completed(){
-		PlayerQuests2.text ="";
+		PlayerQuests.text ="";
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
-			//PlayerQuests2.text += completedQuests[i].title + ":\n" + completedQuests[i].points.ToString() + " points\n" + completedQuests[i].effectText + "\n";
+			//PlayerQuests1.text += completedQuests[i].title + ":\n" + completedQuests[i].points.ToString() + " points\n" + completedQuests[i].effectText + "\n";
 				if(completedQuests[i].effect != 0){
-					PlayerQuests2.text += "Effect: " + completedQuests[i].effectText + "\n";
+					PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
 				}
 			}
 		}
@@ -50,9 +73,10 @@ public class Player2 : MonoBehaviour
 	
 	
     // Update is called once per frame
-	void Update() {
+	public void Update() {
 		TurnDefs.Player currentTurn = b.turn.GetCurrentTurn();
-		if(currentTurn == TurnDefs.Player.TWO){
+		//Debug.Log(playerTurnNumber +" : " + currentTurn);
+		if(currentTurn == playerTurnNumber){
 			if(trailMix){
 				selectSpot();
 			}else if(rewards && tempRewards){ //Want to use another quests ability?
@@ -119,22 +143,22 @@ public class Player2 : MonoBehaviour
 		//Get their input 0-5
 		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5") || Input.GetKeyDown("6")))
 		{
-			if(Input.GetKeyDown("0")){
+			if(Input.GetKeyDown("1")){
 				location = 0;
-			}else if(Input.GetKeyDown("1")){
-				location = 1;
 			}else if(Input.GetKeyDown("2")){
-				location = 2;
+				location = 1;
 			}else if(Input.GetKeyDown("3")){
-				location = 3;
+				location = 2;
 			}else if(Input.GetKeyDown("4")){
-				location = 4;
+				location = 3;
 			}else if(Input.GetKeyDown("5")){
+				location = 4;
+			}else if(Input.GetKeyDown("6")){
 				location = 5;
 			}
 
 			if(b.occupied[location] == 0){
-				b.occupied[location] = 2;
+				b.occupied[location] = playerNumber;
 				
 				//TODO: Handle Trading Post
 				//Rework
@@ -198,7 +222,7 @@ public class Player2 : MonoBehaviour
 					if(location == 3) this.treasure++;
 
 					b.RollText.text += b.locationsText[location].ToString() + " Gained.";
-					b.Player2Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+					Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 					
 		}
 
@@ -217,13 +241,13 @@ public class Player2 : MonoBehaviour
             if (resource == 2) this.shelter++;
             if (resource == 3) this.treasure++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
-            b.Player2Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+            Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
-            b.Player2Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+            Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
         }
 
     }
@@ -278,7 +302,7 @@ public class Player2 : MonoBehaviour
 			this.shelter -= b.jobBoard[b.questNumber].shelter;
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
-			b.Player2Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+			Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 			
 			//Award player the points
 			this.points += b.jobBoard[b.questNumber].points;
