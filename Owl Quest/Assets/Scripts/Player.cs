@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static backend;
+using UnityEngine.EventSystems;
 
 public class Player
 {
@@ -55,7 +56,7 @@ public class Player
     {
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
-        PlayerQuests.text  = "Yellow";
+        PlayerQuests.text  = "";
     }
 
 	
@@ -127,6 +128,7 @@ public class Player
 				}
 			}else if(!b.completedAction && !b.questLocation){
 				Round();
+				//ClickRound();
 			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
@@ -412,5 +414,131 @@ public class Player
 			tempSheriff = true;
 			undoSheriff = true;
 		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// Update is called once per frame
+	public void ClickRound (int location) {
+		//have them pick their location to travel
+		//Get their input 0-5
+		if(b.occupied[location] == 0){
+			b.occupied[location] = playerNumber;
+			
+			//TODO: Handle Trading Post
+			//Rework
+			if(location == 4){
+				location = b.tradingResource;
+			}
+				
+			//TODO: Handle Quests
+			if(location == 5){
+				//Let players pick the quest they want
+				//questNumber -1 = input;
+				b.questLocation = true;
+			}else if(location == 4) {
+				TradingPost(b.tradingResource);
+				b.completedAction = true;
+				if(undoSheriff){
+					sheriff = false;
+					tempSheriff = false;
+					undoSheriff = false;
+				}else if(undoReroll){
+					reroll = false;
+					tempReroll = false;
+					undoReroll = false;
+				}
+			}else{
+				locationHandler(location);
+				b.completedAction = true;
+				if(undoSheriff){
+					sheriff = false;
+					tempSheriff = false;
+					undoSheriff = false;
+				}else if(undoReroll){
+					reroll = false;
+					tempReroll = false;
+					undoReroll = false;
+				}
+			}
+	
+	
+			//Check if they have won
+			if(this.points >= 9){
+					Debug.Log("GAME OVER, YOU WIN!");					
+			}
+		}
+	}
+	
+	
+	/**
+		This Function is used when players attempt to turn in a quest
+		It first checks to see if the player has all of the nessecary resources
+		If it does it subtracts them from the players inventory, and gives the player the points
+		It also replaces that quest with a new one from the list
+	*/
+	//public bool handleQuests(int questNumber, int player, int quest){	
+	public int ClickHandleQuests(int questNumber){	
+		b.questNumber = questNumber;
+		if(this.water < b.jobBoard[b.questNumber].water){
+			Debug.Log("Don't have the water.");
+			return 1; //false
+		}
+		if(this.food < b.jobBoard[b.questNumber].food){
+			Debug.Log("Don't have the food.");
+			return 1; //false
+		}
+		if(this.shelter < b.jobBoard[b.questNumber].shelter){
+			Debug.Log("Don't have the shelter.");
+			return 1; //false
+		}
+		if(this.treasure < b.jobBoard[b.questNumber].treasure){
+			Debug.Log("Don't have the treasure.");
+			return 1; //false
+		}
+		
+		//If at this point, player has resources
+		Debug.Log("Quest Complete.");
+		b.questsComplete++;
+		
+		//Remove resources from player
+		this.water -= b.jobBoard[b.questNumber].water;
+		this.food -= b.jobBoard[b.questNumber].food; 
+		this.shelter -= b.jobBoard[b.questNumber].shelter;
+		this.treasure -= b.jobBoard[b.questNumber].treasure;
+		this.points += b.jobBoard[b.questNumber].points;
+		Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+		
+		//Award player the points
+		this.points += b.jobBoard[b.questNumber].points;
+		
+		//Add card to personal quest list
+		this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
+		
+		//Apply Effects
+		questEffects(b.jobBoard[b.questNumber].effect);
+
+		newQuest(b.questNumber);
+		//Replenish Job Board
+		
+		b.questPrinter();
+		this.completed();
+		b.completedAction = true;
+		if(undoSheriff){
+			sheriff = false;
+			tempSheriff = false;
+			undoSheriff = false;
+		}else if(undoReroll){
+			reroll = false;
+			tempReroll = false;
+			undoReroll = false;
+		}
+		return 2; //true
 	}
 }
