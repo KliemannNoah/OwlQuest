@@ -70,15 +70,15 @@ public class backend : MonoBehaviour {
 		questList[2] = new Quests("Refreshing Snack",	1,	1,	0,	0,	1, 0, "");
 		questList[3] = new Quests("Riverside Home",		1,	0,	1,	0,	1, 3, "Immediate Ability: Gain 1 Shelter Token");
 		questList[4] = new Quests("Baby Hero",			0,	0,	0,	1,	1, 0, "");
-		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2, 0, "");
+		questList[5] = new Quests("Lake Hideaway",		1,	0,	0,	1,	2, 0, "");//
 		questList[6] = new Quests("Winter Stockpile",	0,	3,	0,	0,	2, 4, "Passive Ability:  Add +1 to all Orchard rolls");
 		//Medium Quests
 		questList[7] = new Quests("Soup",				3,	1,	0,	0,	2, 0, "");
 		questList[8] = new Quests("Dinner for 1",		1,	1,	1,	0,	2, 8, "Active Ability: If you wish, you may flip the trading post card again.");
 		questList[9] = new Quests("The Vault",			0,	0,	1,	1,	2, 5, "Passive Ability: Add +1 to all Trading Post rolls");
-		questList[10] = new Quests("Town Mayor",		2,	1,	1,	0,	2, 0, "");
+		questList[10] = new Quests("Village Mayor",		2,	1,	1,	0,	2, 0, "");
 		questList[11] = new Quests("Quartermaster",		1,	2,	1,	0,	2, 6, "Passive Ability: Roll 2 dice at the Trading Post and take the higher value");
-		questList[12] = new Quests("Ocean Dungeon",		3,	0,	0,	1,	3, 0, "");
+		questList[12] = new Quests("Battle at the Dam",	3,	0,	0,	1,	3, 0, "");
 		questList[13] = new Quests("Deputy Sheriff",	0,	0,	0,	2,	3, 7, "Passive Ability: Add +1 to all Foxes rolls");
 		//Hard Quests
 		questList[14] = new Quests("Flood Shelter",		2,	0,	2,	0,	3, 0, "");
