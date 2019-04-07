@@ -18,23 +18,22 @@ public class backend : MonoBehaviour {
 	public Text QuestText2;
 	public Text QuestText3;
     public Text TradingPostResource;
-
 	public bool completedAction = false;
     public bool questLocation = false;
 	public bool selectingCard = false;
     public bool canPurchase = false;
     public Turn turn;
-	/*
+	
 	public AI player1;
 	public AI player2;
 	public AI player3;
 	public AI player4;
-	*/
+	/*
 	public Player player1;
 	public Player player2;
 	public Player player3;
 	public Player player4;
-	
+	*/
 
 	//probability for all of the locations.
 	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
@@ -96,17 +95,17 @@ public class backend : MonoBehaviour {
 
 		questPrinter();
 
-		
+		/*
 		player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE);
 		player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO);
 		player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE);
 		player4 = new Player(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR);
-		/*
+		*/
 		player1 = new AI(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE);
 		player2 = new AI(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO);
 		player3 = new AI(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE);
 		player4 = new AI(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR);
-		*/
+		
 		player1.Start();
 		player2.Start();
 		player3.Start();

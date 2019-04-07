@@ -307,9 +307,6 @@ public class Player
 			this.points += b.jobBoard[b.questNumber].points;
 			Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 			
-			//Award player the points
-			this.points += b.jobBoard[b.questNumber].points;
-			
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
 			
