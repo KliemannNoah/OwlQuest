@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using static backend;
 using UnityEngine.EventSystems;
 
-public class Player
+public class AI
 {
 	public backend b;
 	
@@ -39,7 +39,7 @@ public class Player
 	string playerTurn;
 	GameObject camera;
 	
-	public Player(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur){
+	public AI(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
 		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
@@ -81,6 +81,9 @@ public class Player
 			if(trailMix){
 				selectSpot();
 			}else if(rewards && tempRewards){ //Want to use another quests ability?
+				//Ignore Quest for simplicity
+				tempRewards = false;
+				/*
 				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
 					if(Input.GetKeyDown("y")){
 						tempRewards2 = true;
@@ -88,7 +91,10 @@ public class Player
 						tempRewards = false;
 					}
 				}
+				*/
 			}else if(rewards && tempRewards2){
+				//Ignore Quest for simplicity
+				/*
 				if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
 					if(Input.GetKeyDown("1")){
 						temporaryRewards(b.jobBoard[0].effect);
@@ -98,8 +104,12 @@ public class Player
 						temporaryRewards(b.jobBoard[2].effect);
 					}
 					tempRewards2 = false;
-				}				
+				}		
+				*/
+				tempRewards2 = false;
 			}else if(sheriff && tempSheriff){
+				//Ignore Quest for simplicity
+				/*
 				if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
 					b.questsComplete++;
 
@@ -115,7 +125,12 @@ public class Player
 					}
 					tempSheriff = false;
 				}
+				*/
+				tempSheriff = false;
 			}else if(reroll && tempReroll){
+				//Ignore Quest for simplicity
+				tempReroll = false;
+				/*
 				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
 					if(Input.GetKeyDown("y")){
 						b.tradingResource = Random.Range(0,4);
@@ -126,6 +141,7 @@ public class Player
 						tempReroll = false;
 					}
 				}
+				*/
 			}else if(!b.completedAction && !b.questLocation){
 				Round();
 				//ClickRound();
@@ -140,73 +156,51 @@ public class Player
 	
 	// Update is called once per frame
 	public void Round () {
-		int location = -1;
+		//int location = -1;
 		//have them pick their location to travel
 		//Get their input 0-5
-		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5") || Input.GetKeyDown("6")))
-		{
-			if(Input.GetKeyDown("1")){
-				location = 0;
-			}else if(Input.GetKeyDown("2")){
-				location = 1;
-			}else if(Input.GetKeyDown("3")){
-				location = 2;
-			}else if(Input.GetKeyDown("4")){
-				location = 3;
-			}else if(Input.GetKeyDown("5")){
-				location = 4;
-			}else if(Input.GetKeyDown("6")){
-				location = 5;
+		
+		int location = Random.Range(0,6);
+		if(b.occupied[location] == 0){
+			b.occupied[location] = playerNumber;
+			Debug.Log("Player Number "+playerNumber+" - "+ b.locationsText[location]);	
+			//TODO: Handle Quests
+			if(location == 5){
+				//Let players pick the quest they want
+				//questNumber -1 = input;
+				b.questLocation = true;
+			}else if(location == 4) {
+				TradingPost(b.tradingResource);
+				b.completedAction = true;
+				if(undoSheriff){
+					sheriff = false;
+					tempSheriff = false;
+					undoSheriff = false;
+				}else if(undoReroll){
+					reroll = false;
+					tempReroll = false;
+					undoReroll = false;
+				}
+			}else{
+				locationHandler(location);
+				b.completedAction = true;
+				if(undoSheriff){
+					sheriff = false;
+					tempSheriff = false;
+					undoSheriff = false;
+				}else if(undoReroll){
+					reroll = false;
+					tempReroll = false;
+					undoReroll = false;
+				}
 			}
-
-			if(b.occupied[location] == 0){
-				b.occupied[location] = playerNumber;
-				
-				//TODO: Handle Trading Post
-				//Rework
-				if(location == 4){
-					location = b.tradingResource;
-				}
-					
-				//TODO: Handle Quests
-				if(location == 5){
-					//Let players pick the quest they want
-					//questNumber -1 = input;
-					b.questLocation = true;
-				}else if(location == 4) {
-					TradingPost(b.tradingResource);
-					b.completedAction = true;
-					if(undoSheriff){
-						sheriff = false;
-						tempSheriff = false;
-						undoSheriff = false;
-					}else if(undoReroll){
-						reroll = false;
-						tempReroll = false;
-						undoReroll = false;
-					}
-				}else{
-					locationHandler(location);
-					b.completedAction = true;
-					if(undoSheriff){
-						sheriff = false;
-						tempSheriff = false;
-						undoSheriff = false;
-					}else if(undoReroll){
-						reroll = false;
-						tempReroll = false;
-						undoReroll = false;
-					}
-				}
-		
-		
-				//Check if they have won
-				if(this.points >= 9){
-					Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");						
-				}
+	
+	
+			//Check if they have won
+			if(this.points >= 9){
+				Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");					
 			}
 		}
-	
 	}
 	
 	/**
@@ -231,6 +225,7 @@ public class Player
 	}
 
 	public void TradingPost(int resource) {
+		Debug.Log("Trading Post - " + playerNumber);
         int randomNumber = Random.Range(1, 7);
 		int randomNumber2 = Random.Range(1,7);
 		if(randomNumber2 > randomNumber && advantage == 2){
@@ -268,16 +263,14 @@ public class Player
 	public int handleQuests(){	
 		//quest = jobBoard[questNumber];
 		//For each Resources
-		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
-			b.questLocation = false;
-			if(Input.GetKeyDown("1")){
-				b.questNumber = 0;
-			}else if(Input.GetKeyDown("2")){
-				b.questNumber = 1;
-			}else if(Input.GetKeyDown("3")){
-				b.questNumber = 2;
-			}
-
+		
+		//if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
+			
+			//temporarily Random
+			int randomNumber = Random.Range(0,3);
+			b.questNumber = randomNumber;
+			Debug.Log("Entered");
+			b.completedAction = true;
 			if(this.water < b.jobBoard[b.questNumber].water){
 				Debug.Log("Don't have the water.");
 				return 1; //false
@@ -294,7 +287,7 @@ public class Player
 				Debug.Log("Don't have the treasure.");
 				return 1; //false
 			}
-			
+
 			//If at this point, player has resources
 			Debug.Log("Quest Complete - "+ b.jobBoard[b.questNumber].title);
 			b.questsComplete++;
@@ -332,8 +325,6 @@ public class Player
 				undoReroll = false;
 			}
 			return 2; //true
-		}
-		return 0;
 	}
 	
 	
@@ -386,22 +377,10 @@ public class Player
 	public void selectSpot(){
 		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5")))
 		{
-			if(Input.GetKeyDown("1")){
-				rollProbability[0]--;
-				trailMix = false;
-			}else if(Input.GetKeyDown("2")){
-				rollProbability[1]--;
-				trailMix = false;
-			}else if(Input.GetKeyDown("3")){
-				rollProbability[2]--;
-				trailMix = false;
-			}else if(Input.GetKeyDown("4")){
-				rollProbability[3]--;
-				trailMix = false;
-			}else if(Input.GetKeyDown("5")){
-				tradingPostModifier++;
-				trailMix = false;
-			}
+			int randomNumber = Random.Range(0,4);
+			rollProbability[randomNumber]--;
+			trailMix = false;
+
 		}
 	}
 	

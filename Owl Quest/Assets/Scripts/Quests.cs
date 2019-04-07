@@ -18,10 +18,10 @@ public class Quests
 		
     }
 
-	public Quests(string titl, int foo, int wat, int shel, int trea, int poi, int eff, string efte){
+	public Quests(string titl, int wat, int foo, int shel, int trea, int poi, int eff, string efte){
 		this.title = titl;
-		this.food = foo;
 		this.water = wat;
+		this.food = foo;
 		this.shelter = shel;
 		this.treasure = trea;
 		this.points = poi;
