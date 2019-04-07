@@ -23,7 +23,7 @@ public class Clicking : MonoBehaviour
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit2D hit = Physics2D.GetRayIntersection (ray, Mathf.Infinity);
 			if (hit.collider != null && hit.collider.name == name) {
-				if(hit.collider.gameObject.tag != "Finish"){
+				if(hit.collider.gameObject.tag == "Location"){
 					if(!b.completedAction && !b.questLocation){
 						TurnDefs.Player currentTurn = b.turn.GetCurrentTurn();
 						if(currentTurn == TurnDefs.Player.ONE){
@@ -36,7 +36,7 @@ public class Clicking : MonoBehaviour
 							b.player4.ClickRound(spot);					
 						}
 					}
-				}else{
+				}else if(hit.collider.gameObject.tag == "Finish"){
 					if(!b.completedAction && b.questLocation){
 						TurnDefs.Player currentTurn = b.turn.GetCurrentTurn();
 						if(currentTurn == TurnDefs.Player.ONE){
@@ -50,6 +50,10 @@ public class Clicking : MonoBehaviour
 						}
 					}
 				}
+                else
+                {
+                    //this.gameObject.SetActive = true;
+                }
 			}
 		}
     }

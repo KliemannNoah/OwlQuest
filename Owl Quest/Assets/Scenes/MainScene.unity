@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 131358832}
   m_Layer: 0
   m_Name: Quest Board Landing
-  m_TagString: Untagged
+  m_TagString: Location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1104,7 +1104,7 @@ GameObject:
   - component: {fileID: 368078581}
   m_Layer: 0
   m_Name: Tokens - Water
-  m_TagString: Untagged
+  m_TagString: Location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1520,7 +1520,7 @@ GameObject:
   - component: {fileID: 449673980}
   m_Layer: 0
   m_Name: Tokens - Food
-  m_TagString: Untagged
+  m_TagString: Location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3108,7 +3108,7 @@ GameObject:
   - component: {fileID: 1046526667}
   m_Layer: 0
   m_Name: Trading Post Landing (Doorway)
-  m_TagString: Untagged
+  m_TagString: Location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3729,7 +3729,7 @@ GameObject:
   - component: {fileID: 1260316544}
   m_Layer: 0
   m_Name: Tokens - Shelter
-  m_TagString: Untagged
+  m_TagString: Location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4688,7 +4688,7 @@ GameObject:
   - component: {fileID: 1431202298}
   m_Layer: 0
   m_Name: Tokens - Treasure
-  m_TagString: Untagged
+  m_TagString: Location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
