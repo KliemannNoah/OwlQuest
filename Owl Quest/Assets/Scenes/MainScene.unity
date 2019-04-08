@@ -335,12 +335,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 74754175}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &128902538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2298943928522231887, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1483681815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &128902539 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
@@ -680,13 +674,6 @@ MonoBehaviour:
   spot: 5
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
---- !u!1 &132582090 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2298943928522231887, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1271194814}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &132582091 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
@@ -1492,7 +1479,6 @@ MonoBehaviour:
   spot: 0
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!1 &441759603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1654,6 @@ MonoBehaviour:
   spot: 1
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!60 &449673980
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2475,7 +2460,6 @@ MonoBehaviour:
   spot: 2
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!61 &519645219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2727,7 +2711,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 176727665}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &569641110
+--- !u!114 &569641107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2736,13 +2720,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 569641106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db524ec773edb6408821df93c27c84b, type: 3}
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: 0
-  b: {fileID: 519420030}
-  turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
+  player: 1
+  Panel: {fileID: 28248239}
 --- !u!60 &569641111
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4023,7 +4005,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 509376197}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1043802058
+--- !u!114 &1043802055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4032,13 +4014,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043802054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db524ec773edb6408821df93c27c84b, type: 3}
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: 0
-  b: {fileID: 519420030}
-  turns: {fileID: 519420035}
-  Panel: {fileID: 128902538}
+  player: 3
+  Panel: {fileID: 28248239}
 --- !u!60 &1043802059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5036,7 +5016,6 @@ MonoBehaviour:
   spot: 4
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!1 &1129004350
 GameObject:
   m_ObjectHideFlags: 0
@@ -5155,7 +5134,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2846822319624150721}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1217473062
+--- !u!114 &1217473059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5164,13 +5143,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1217473058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db524ec773edb6408821df93c27c84b, type: 3}
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: 0
-  b: {fileID: 519420030}
-  turns: {fileID: 519420035}
-  Panel: {fileID: 1456861721}
+  player: 4
+  Panel: {fileID: 28248239}
 --- !u!60 &1217473063
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5969,7 +5946,6 @@ MonoBehaviour:
   spot: 1
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!61 &1241143193
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6664,7 +6640,6 @@ MonoBehaviour:
   spot: 2
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!1001 &1271194814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7644,7 +7619,6 @@ MonoBehaviour:
   spot: 3
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!1 &1434318492
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,12 +7698,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434318492}
   m_CullTransparentMesh: 0
---- !u!1 &1456861721 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2298943928522231887, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 535155333}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1456861722 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
@@ -7832,7 +7800,6 @@ MonoBehaviour:
   spot: 0
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
-  Panel: {fileID: 1538977701}
 --- !u!61 &1458691121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8094,12 +8061,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6639087230309809953, guid: 17cdd076a16c39a44bf2051b9f9cbcff,
     type: 3}
   m_PrefabInstance: {fileID: 1510966200}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1538977701 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2298943928522231887, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2298943929185288170}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1538977702 stripped
 RectTransform:
@@ -9215,7 +9176,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1629498666}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2126379034
+--- !u!114 &2126379031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9224,13 +9185,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2126379030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db524ec773edb6408821df93c27c84b, type: 3}
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: 0
-  b: {fileID: 519420030}
-  turns: {fileID: 519420035}
-  Panel: {fileID: 132582090}
+  player: 2
+  Panel: {fileID: 28248239}
 --- !u!60 &2126379035
 PolygonCollider2D:
   m_ObjectHideFlags: 0

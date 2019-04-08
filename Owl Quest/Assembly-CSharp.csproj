@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\backend.cs" />
     <Compile Include="Assets\Scripts\Clicking.cs" />
     <Compile Include="Assets\Scripts\IdleOwl.cs" />
+    <Compile Include="Assets\Scripts\Inventories.cs" />
     <Compile Include="Assets\Scripts\OwlPosition.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Player1.cs" />

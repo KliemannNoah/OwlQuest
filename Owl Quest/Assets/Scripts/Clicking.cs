@@ -11,12 +11,10 @@ public class Clicking : MonoBehaviour
 	//Animator animator;
 	public backend b;
     public Turn turns;
-    public GameObject Panel;
     // Start is called before the first frame update
     void Start()
     {
         // animator = GetComponent<Animator>();
-        Panel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,16 +45,6 @@ public class Clicking : MonoBehaviour
                         {
                             b.player4.ClickRound(spot);
                         }
-                    }
-                }
-                else if (hit.collider.gameObject.tag == "Owl") {
-                    if (Panel.activeSelf)
-                    {
-                        Panel.gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        Panel.gameObject.SetActive(true);
                     }
                 }
 
