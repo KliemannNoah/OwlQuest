@@ -2266,6 +2266,7 @@ MonoBehaviour:
   selectingCard: 0
   canPurchase: 0
   turn: {fileID: 519420035}
+  Panel: {fileID: 28248239}
   probability: 0200000003000000040000000500000000000000
   tradingRolls: 03000000030000000400000004000000
   occupied: 000000000000000000000000000000000000000000000000
@@ -2725,6 +2726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   Panel: {fileID: 28248239}
+  b: {fileID: 0}
 --- !u!60 &569641111
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4019,6 +4021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 3
   Panel: {fileID: 28248239}
+  b: {fileID: 0}
 --- !u!60 &1043802059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5148,6 +5151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 4
   Panel: {fileID: 28248239}
+  b: {fileID: 0}
 --- !u!60 &1217473063
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9190,6 +9194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 2
   Panel: {fileID: 28248239}
+  b: {fileID: 0}
 --- !u!60 &2126379035
 PolygonCollider2D:
   m_ObjectHideFlags: 0

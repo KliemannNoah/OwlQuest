@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static backend;
+using UnityEngine.EventSystems;
 
 public class Inventories : MonoBehaviour
 {
@@ -8,6 +11,8 @@ public class Inventories : MonoBehaviour
     public GameObject Panel;
     private GameObject inventory;
     private bool makeActive;
+	public backend b;
+	 Text [] newText ;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,13 @@ public class Inventories : MonoBehaviour
                     if (makeActive)
                     {
                         inventory = Panel.transform.GetChild(player - 1).gameObject;
+						/*
+						newText = inventory.GetComponentsInChildren<Text> ();
+						newText [0].text = "name";
+						newText [1].text = "health";
+						newText [2].text = "attack";
+						newText [3].text = "description";
+						*/
                         inventory.gameObject.SetActive(true);
                         makeActive = false;
                     }

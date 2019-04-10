@@ -32,6 +32,11 @@ public class Player
 	bool undoReroll = false;
 	bool undoSheriff = false;
 	
+	public GameObject Panel;
+	private GameObject Inventory;
+	Text [] newText ;
+	
+	
 	TurnDefs.Player playerTurnNumber; //= TurnDefs.Player.ONE;
 	int playerNumber;
 	string playerQuestsText;
@@ -39,7 +44,7 @@ public class Player
 	string playerTurn;
 	GameObject camera;
 	
-	public Player(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur){
+	public Player(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur, GameObject pan){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
 		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
@@ -47,6 +52,7 @@ public class Player
 		this.PlayerQuests = PlayerQ;
 		this.Resources = Resour;
 		this.playerTurnNumber = tur;
+		this.Panel = pan;
 
 		//Debug.Log(playerTurnNumber);
 		//this.Start();
@@ -57,6 +63,8 @@ public class Player
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
         PlayerQuests.text  = "";
+		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
+		newText = Inventory.GetComponentsInChildren<Text> ();
     }
 
 	
@@ -64,7 +72,6 @@ public class Player
 		PlayerQuests.text ="";
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
-			//PlayerQuests1.text += completedQuests[i].title + ":\n" + completedQuests[i].points.ToString() + " points\n" + completedQuests[i].effectText + "\n";
 				if(completedQuests[i].effect != 0){
 					PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
 				}
@@ -76,7 +83,6 @@ public class Player
     // Update is called once per frame
 	public void Update() {
 		TurnDefs.Player currentTurn = b.turn.GetCurrentTurn();
-		//Debug.Log(playerTurnNumber +" : " + currentTurn);
 		if(currentTurn == playerTurnNumber){
 			if(trailMix){
 				selectSpot();
@@ -119,7 +125,6 @@ public class Player
 				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
 					if(Input.GetKeyDown("y")){
 						b.tradingResource = Random.Range(0,4);
-                        //  Debug.Log(b.tradingResource);
                         b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
                         tempReroll = false;
 					}else if(Input.GetKeyDown("n")){
@@ -128,7 +133,6 @@ public class Player
 				}
 			}else if(!b.completedAction && !b.questLocation){
 				Round();
-				//ClickRound();
 			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
@@ -225,6 +229,10 @@ public class Player
 
 					b.RollText.text += b.locationsText[location].ToString() + " Gained.";
 					Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+					newText[1].text = this.water.ToString();
+					newText[2].text = this.food.ToString();
+					newText[3].text = this.shelter.ToString();
+					newText[4].text = this.treasure.ToString();
 					
 		}
 

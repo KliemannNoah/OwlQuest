@@ -23,6 +23,9 @@ public class backend : MonoBehaviour {
 	public bool selectingCard = false;
     public bool canPurchase = false;
     public Turn turn;
+	
+	public GameObject Panel;
+	
 	/*
 	public AI player1;
 	public AI player2;
@@ -96,10 +99,10 @@ public class backend : MonoBehaviour {
 		questPrinter();
 
 		
-		player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE);
-		player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO);
-		player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE);
-		player4 = new Player(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR);
+		player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
+		player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
+		player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
+		player4 = new Player(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
 		/*
 		player1 = new AI(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE);
 		player2 = new AI(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO);
