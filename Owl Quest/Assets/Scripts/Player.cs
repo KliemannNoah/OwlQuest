@@ -65,6 +65,11 @@ public class Player
         PlayerQuests.text  = "";
 		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
 		newText = Inventory.GetComponentsInChildren<Text> ();
+		newText[1].text = this.water.ToString();
+		newText[2].text = this.food.ToString();
+		newText[3].text = this.shelter.ToString();
+		newText[4].text = this.treasure.ToString();
+		newText[5].text = this.points.ToString();
     }
 
 	
@@ -73,7 +78,8 @@ public class Player
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
 				if(completedQuests[i].effect != 0){
-					PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
+					//PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
+					newText[6].text += "Effect: " + completedQuests[i].effectText + "\n";
 				}
 			}
 		}
@@ -233,6 +239,7 @@ public class Player
 					newText[2].text = this.food.ToString();
 					newText[3].text = this.shelter.ToString();
 					newText[4].text = this.treasure.ToString();
+					newText[5].text = this.points.ToString();
 					
 		}
 
@@ -252,6 +259,11 @@ public class Player
             if (resource == 3) this.treasure++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+			newText[1].text = this.water.ToString();
+			newText[2].text = this.food.ToString();
+			newText[3].text = this.shelter.ToString();
+			newText[4].text = this.treasure.ToString();
+			newText[5].text = this.points.ToString();
 			return;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
@@ -259,6 +271,11 @@ public class Player
             if (resource == 1) this.food++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+			newText[1].text = this.water.ToString();
+			newText[2].text = this.food.ToString();
+			newText[3].text = this.shelter.ToString();
+			newText[4].text = this.treasure.ToString();
+			newText[5].text = this.points.ToString();
         }
 
     }
@@ -314,7 +331,11 @@ public class Player
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
 			Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-			
+			newText[1].text = this.water.ToString();
+			newText[2].text = this.food.ToString();
+			newText[3].text = this.shelter.ToString();
+			newText[4].text = this.treasure.ToString();
+			newText[5].text = this.points.ToString();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
 			
@@ -386,6 +407,12 @@ public class Player
 			rewards = true;
 			tempRewards = true;
 		}
+		
+		newText[1].text = this.water.ToString();
+		newText[2].text = this.food.ToString();
+		newText[3].text = this.shelter.ToString();
+		newText[4].text = this.treasure.ToString();
+		newText[5].text = this.points.ToString();
 	}
 	
 	public void selectSpot(){
@@ -520,6 +547,11 @@ public class Player
 		this.treasure -= b.jobBoard[b.questNumber].treasure;
 		this.points += b.jobBoard[b.questNumber].points;
 		Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+		newText[1].text = this.water.ToString();
+		newText[2].text = this.food.ToString();
+		newText[3].text = this.shelter.ToString();
+		newText[4].text = this.treasure.ToString();
+		newText[5].text = this.points.ToString();
 		
 		//Award player the points
 		this.points += b.jobBoard[b.questNumber].points;
