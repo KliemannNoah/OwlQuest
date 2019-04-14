@@ -17,7 +17,6 @@ public class backend : MonoBehaviour {
 	public Text QuestText1;
 	public Text QuestText2;
 	public Text QuestText3;
-    public Text TradingPostResource;
 	public bool completedAction = false;
     public bool questLocation = false;
 	public bool selectingCard = false;
@@ -61,7 +60,6 @@ public class backend : MonoBehaviour {
 		turn = GetComponent<Turn>();
 
 		tradingResource = Random.Range(0,4);
-        TradingPostResource.text = locationsText[tradingResource] + "\nRoll " + tradingRolls[tradingResource] + "+";
 		//												Wa  Fo  Sh  Tr Pnt eff
 		//Easy Quests
 		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1, 1, "Passive Ability: Add +1 to all Water Hole rolls");
@@ -92,8 +90,6 @@ public class backend : MonoBehaviour {
 		jobBoard[0] = questList[Random.Range(0,7)];
 		jobBoard[1] = questList[Random.Range(0,7)];
 		jobBoard[2] = questList[Random.Range(0,7)];
-
-		questPrinter();
 
 		//Fill in missing player spots with AI
 		numPlayers = StaticStart.numberOfPlayers;
@@ -157,12 +153,7 @@ public class backend : MonoBehaviour {
 		}
 	}
 
-	public void questPrinter(){
-		QuestText1.text = jobBoard[0].title + "\n" + jobBoard[0].water.ToString() + " Water \n"+ jobBoard[0].food.ToString() + " Food \n"+ jobBoard[0].shelter.ToString() + " Shelter \n" + jobBoard[0].treasure.ToString() + " Treasure \n\n"+ jobBoard[0].effectText + "\n";
-		QuestText2.text = jobBoard[1].title + "\n" + jobBoard[1].water.ToString() + " Water \n"+ jobBoard[1].food.ToString() + " Food \n"+ jobBoard[1].shelter.ToString() + " Shelter \n" + jobBoard[1].treasure.ToString() + " Treasure \n\n"+ jobBoard[1].effectText + "\n";
-		QuestText3.text = jobBoard[2].title + "\n" + jobBoard[2].water.ToString() + " Water \n"+ jobBoard[2].food.ToString() + " Food \n"+ jobBoard[2].shelter.ToString() + " Shelter \n" + jobBoard[2].treasure.ToString() + " Treasure \n\n"+ jobBoard[2].effectText + "\n";
-	}
-	
+
 	void Update(){
 		if(numPlayers == 0){ //Zero Players: 4 AI
 			AI1.Update();

@@ -131,7 +131,6 @@ public class Player
 				if((Input.GetKeyDown("y")|| Input.GetKeyDown("n"))){
 					if(Input.GetKeyDown("y")){
 						b.tradingResource = Random.Range(0,4);
-                        b.TradingPostResource.text = b.locationsText[b.tradingResource] + "\nRoll " + b.tradingRolls[b.tradingResource] + "+";
                         tempReroll = false;
 					}else if(Input.GetKeyDown("n")){
 						tempReroll = false;
@@ -345,7 +344,6 @@ public class Player
 			newQuest(b.questNumber);
 			//Replenish Job Board
 			
-			b.questPrinter();
 			this.completed();
 			b.completedAction = true;
 			if(undoSheriff){
@@ -565,7 +563,6 @@ public class Player
 		newQuest(b.questNumber);
 		//Replenish Job Board
 		
-		b.questPrinter();
 		this.completed();
 		b.completedAction = true;
 		if(undoSheriff){

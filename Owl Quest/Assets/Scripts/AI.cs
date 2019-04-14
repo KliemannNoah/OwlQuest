@@ -341,7 +341,6 @@ public class AI
 			newQuest(b.questNumber);
 			//Replenish Job Board
 			
-			b.questPrinter();
 			this.completed();
 			b.completedAction = true;
 			if(undoSheriff){

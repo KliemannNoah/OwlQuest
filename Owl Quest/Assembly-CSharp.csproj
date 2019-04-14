@@ -60,10 +60,6 @@
      <Compile Include="Assets\Scripts\Inventories.cs" />
      <Compile Include="Assets\Scripts\OwlPosition.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\Player1.cs" />
-     <Compile Include="Assets\Scripts\Player2.cs" />
-     <Compile Include="Assets\Scripts\Player3.cs" />
-     <Compile Include="Assets\Scripts\Player4.cs" />
      <Compile Include="Assets\Scripts\QuestPictures.cs" />
      <Compile Include="Assets\Scripts\Quests.cs" />
      <Compile Include="Assets\Scripts\ScaleCamera.cs" />
