@@ -382,6 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 1
   isQuit: 0
+  playerNumber: 3
 --- !u!114 &141079226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 1
   isQuit: 0
+  playerNumber: 0
 --- !u!114 &234949729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,6 +1754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 1
   isQuit: 0
+  playerNumber: 4
 --- !u!114 &948819603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,6 +1970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 1
   isQuit: 0
+  playerNumber: 2
 --- !u!114 &1055963550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,6 +2739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 1
   isQuit: 0
+  playerNumber: 1
 --- !u!114 &1535138834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3070,6 +3075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStart: 0
   isQuit: 1
+  playerNumber: 0
 --- !u!114 &1865251057
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,6 +32,10 @@ public class AI
 	bool undoReroll = false;
 	bool undoSheriff = false;
 	
+	public GameObject Panel;
+	private GameObject Inventory;
+	Text [] newText ;
+	
 	TurnDefs.Player playerTurnNumber; //= TurnDefs.Player.ONE;
 	int playerNumber;
 	string playerQuestsText;
@@ -39,7 +43,7 @@ public class AI
 	string playerTurn;
 	GameObject camera;
 	
-	public AI(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur){
+	public AI(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur, GameObject pan){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
 		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
@@ -47,7 +51,7 @@ public class AI
 		this.PlayerQuests = PlayerQ;
 		this.Resources = Resour;
 		this.playerTurnNumber = tur;
-
+		this.Panel = pan;
 		//Debug.Log(playerTurnNumber);
 		//this.Start();
 	}
@@ -57,6 +61,13 @@ public class AI
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
         PlayerQuests.text  = "";
+		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
+		newText = Inventory.GetComponentsInChildren<Text> ();
+		newText[1].text = this.water.ToString();
+		newText[2].text = this.food.ToString();
+		newText[3].text = this.shelter.ToString();
+		newText[4].text = this.treasure.ToString();
+		newText[5].text = this.points.ToString();
     }
 
 	
@@ -66,7 +77,8 @@ public class AI
 			if(completedQuests[i] != null){
 			//PlayerQuests1.text += completedQuests[i].title + ":\n" + completedQuests[i].points.ToString() + " points\n" + completedQuests[i].effectText + "\n";
 				if(completedQuests[i].effect != 0){
-					PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
+					//PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
+					newText[6].text += "Effect: " + completedQuests[i].effectText + "\n";
 				}
 			}
 		}
@@ -219,7 +231,11 @@ public class AI
 
 					b.RollText.text += b.locationsText[location].ToString() + " Gained.";
 					Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-					
+					newText[1].text = this.water.ToString();
+					newText[2].text = this.food.ToString();
+					newText[3].text = this.shelter.ToString();
+					newText[4].text = this.treasure.ToString();
+					newText[5].text = this.points.ToString();
 		}
 
 	}
@@ -239,6 +255,11 @@ public class AI
             if (resource == 3) this.treasure++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+			newText[1].text = this.water.ToString();
+			newText[2].text = this.food.ToString();
+			newText[3].text = this.shelter.ToString();
+			newText[4].text = this.treasure.ToString();
+			newText[5].text = this.points.ToString();
 			return;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
@@ -246,6 +267,11 @@ public class AI
             if (resource == 1) this.food++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
+			newText[1].text = this.water.ToString();
+			newText[2].text = this.food.ToString();
+			newText[3].text = this.shelter.ToString();
+			newText[4].text = this.treasure.ToString();
+			newText[5].text = this.points.ToString();
         }
 
     }
@@ -301,7 +327,11 @@ public class AI
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
 			Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-			
+			newText[1].text = this.water.ToString();
+			newText[2].text = this.food.ToString();
+			newText[3].text = this.shelter.ToString();
+			newText[4].text = this.treasure.ToString();
+			newText[5].text = this.points.ToString();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
 			
@@ -372,6 +402,11 @@ public class AI
 			rewards = true;
 			tempRewards = true;
 		}
+		newText[1].text = this.water.ToString();
+		newText[2].text = this.food.ToString();
+		newText[3].text = this.shelter.ToString();
+		newText[4].text = this.treasure.ToString();
+		newText[5].text = this.points.ToString();
 	}
 	
 	public void selectSpot(){

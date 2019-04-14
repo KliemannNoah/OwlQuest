@@ -9,6 +9,8 @@ public class StartMenu : MonoBehaviour
 	
 	public bool isStart;
 	public bool isQuit;
+	public int playerNumber = 0;
+	//public GameObject gameObject;
 	
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,8 @@ public class StartMenu : MonoBehaviour
 		if (isQuit) {
 			Application.Quit();
 		} if(isStart) {
-			SceneManager.LoadScene("MainScene");			
+			StaticStart.numberOfPlayers = playerNumber;
+			SceneManager.LoadScene("MainScene");		
 			GetComponent<Renderer>().material.color=Color.cyan;
 		}
 	}

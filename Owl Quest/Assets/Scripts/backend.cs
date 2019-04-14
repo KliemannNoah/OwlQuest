@@ -23,15 +23,15 @@ public class backend : MonoBehaviour {
 	public bool selectingCard = false;
     public bool canPurchase = false;
     public Turn turn;
+	public int numPlayers;
 	
 	public GameObject Panel;
 	
-	/*
-	public AI player1;
-	public AI player2;
-	public AI player3;
-	public AI player4;
-	*/
+	
+	public AI AI1;
+	public AI AI2;
+	public AI AI3;
+	public AI AI4;
 	public Player player1;
 	public Player player2;
 	public Player player3;
@@ -49,7 +49,6 @@ public class backend : MonoBehaviour {
 	public string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"};
 
 	public int questNumber = 0;
-	//int quest = 0;
 	public int questsComplete = 0;
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
@@ -61,11 +60,9 @@ public class backend : MonoBehaviour {
 	void Start () {
 		turn = GetComponent<Turn>();
 
-		
 		tradingResource = Random.Range(0,4);
         TradingPostResource.text = locationsText[tradingResource] + "\nRoll " + tradingRolls[tradingResource] + "+";
 		//												Wa  Fo  Sh  Tr Pnt eff
-
 		//Easy Quests
 		questList[0] = new Quests("A Day at the Pond",	3,	0,	0,	0,	1, 1, "Passive Ability: Add +1 to all Water Hole rolls");
 		questList[1] = new Quests("Travel Rations",		2,	1,	0,	0,	1, 2, "Immediate Ability: Gain 1 Food Token");
@@ -98,21 +95,66 @@ public class backend : MonoBehaviour {
 
 		questPrinter();
 
+		//Fill in missing player spots with AI
+		numPlayers = StaticStart.numberOfPlayers;
 		
-		player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
-		player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
-		player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
-		player4 = new Player(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
-		/*
-		player1 = new AI(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE);
-		player2 = new AI(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO);
-		player3 = new AI(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE);
-		player4 = new AI(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR);
-		*/
-		player1.Start();
-		player2.Start();
-		player3.Start();
-		player4.Start();
+		if(numPlayers == 0){ //Zero Players: 4 AI
+		
+			AI1 = new AI(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
+			AI2 = new AI(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
+			AI3 = new AI(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
+			AI4 = new AI(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
+		
+			AI1.Update();
+			AI2.Update();
+			AI3.Update();
+			AI4.Update();
+			
+			
+		}else if(numPlayers == 1){ //One Player: 3 AI
+			player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
+			AI2 = new AI(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
+			AI3 = new AI(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
+			AI4 = new AI(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
+			
+			player1.Start();
+			AI2.Start();
+			AI3.Start();
+			AI4.Start();
+			
+		}else if(numPlayers == 2){ //Two Players: 2 AI
+			player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
+			player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
+			AI3 = new AI(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
+			AI4 = new AI(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
+			
+			player1.Start();
+			player2.Start();
+			AI3.Start();
+			AI4.Start();
+			
+		}else if(numPlayers == 3){ //Three Players: 1 AI
+			player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
+			player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
+			player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
+			AI4 = new AI(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
+			
+			player1.Start();
+			player2.Start();
+			player3.Start();
+			AI4.Start();
+			
+		}else if(numPlayers == 4){ //Four Players: 0 AI
+			player1 = new Player(1, "ONE", Player1Quests, Player1Resources, TurnDefs.Player.ONE, Panel);
+			player2 = new Player(2, "TWO", Player2Quests, Player2Resources, TurnDefs.Player.TWO, Panel);
+			player3 = new Player(3, "THREE", Player3Quests, Player3Resources, TurnDefs.Player.THREE, Panel);
+			player4 = new Player(4, "FOUR", Player4Quests, Player4Resources, TurnDefs.Player.FOUR, Panel);
+			
+			player1.Start();
+			player2.Start();
+			player3.Start();
+			player4.Start();
+		}
 	}
 
 	public void questPrinter(){
@@ -122,9 +164,31 @@ public class backend : MonoBehaviour {
 	}
 	
 	void Update(){
+		if(numPlayers == 0){ //Zero Players: 4 AI
+			AI1.Update();
+			AI2.Update();
+			AI3.Update();
+			AI4.Update();
+		}else if(numPlayers == 1){ //One Player: 3 AI
+			player1.Update();
+			AI2.Update();
+			AI3.Update();
+			AI4.Update();
+		}else if(numPlayers == 2){ //Two Players: 2 AI
+			player1.Update();
+			player2.Update();
+			AI3.Update();
+			AI4.Update();
+		}else if(numPlayers == 3){ //Three Players: 1 AI
+			player1.Update();
+			player2.Update();
+			player3.Update();
+			AI4.Update();
+		}else if(numPlayers == 4){ //Four Players: 0 AI
 			player1.Update();
 			player2.Update();
 			player3.Update();
 			player4.Update();
+		}
 	}
 }
