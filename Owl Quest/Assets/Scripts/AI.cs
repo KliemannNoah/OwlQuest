@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static backend;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class AI
 {
@@ -210,7 +211,9 @@ public class AI
 	
 			//Check if they have won
 			if(this.points >= 9){
-				Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");					
+				Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");	
+				StaticStart.winningPlayer = playerNumber;		
+				SceneManager.LoadScene("VictoryScreen");				
 			}
 		}
 	}
@@ -352,6 +355,14 @@ public class AI
 				tempReroll = false;
 				undoReroll = false;
 			}
+			
+			//Check if they have won
+			if(this.points >= 9){
+				Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");	
+				StaticStart.winningPlayer = playerNumber;		
+				SceneManager.LoadScene("VictoryScreen");				
+			}
+			
 		}
 		return 2; //true
 	}

@@ -14,9 +14,6 @@ public class backend : MonoBehaviour {
 	public Text Player2Quests;
 	public Text Player3Quests;
 	public Text Player4Quests;
-	public Text QuestText1;
-	public Text QuestText2;
-	public Text QuestText3;
 	public bool completedAction = false;
     public bool questLocation = false;
 	public bool selectingCard = false;
