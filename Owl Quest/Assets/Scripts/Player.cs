@@ -372,14 +372,7 @@ public class Player
 	
 	
 	public void newQuest(int questNumber){
-		if(b.questsComplete < 4){
-			b.jobBoard[questNumber] = b.questList[Random.Range(0,7)];
-		}else if(b.questsComplete >= 4 && b.questsComplete < 10){
-			b.jobBoard[questNumber] = b.questList[Random.Range(7,14)];
-		}else{
-			b.jobBoard[questNumber] = b.questList[Random.Range(14,21)];
-		}
-		
+			b.jobBoard[questNumber] = b.combinedQuestList[b.questsComplete];		
 	}
 	
 	

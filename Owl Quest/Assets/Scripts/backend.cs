@@ -45,9 +45,13 @@ public class backend : MonoBehaviour {
 	public string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"};
 
 	public int questNumber = 0;
-	public int questsComplete = 0;
+	public int questsComplete = 3;
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
+	public Quests[] easyQuestList = new Quests[7];
+	public Quests[] mediumQuestList = new Quests[7];
+	public Quests[] hardQuestList = new Quests[7];
+	public Quests[] combinedQuestList = new Quests[19];
 	public int tradingResource = 0; //tradingPost
 	public Quests[] replaced = new Quests[21]; //for sheriiff
 	public int replacedTracker = 0;
@@ -83,10 +87,35 @@ public class backend : MonoBehaviour {
 		questList[19] = new Quests("Trail Mix",			1,	1,	1,	1,	4, 11, "Passive Effect: Gain +1 to rolls at a location of your choice. You must choose that location when the card is picked up and lasts the rest of the game.");
 		questList[20] = new Quests("Sheriff",			0,	0,	0,	3,	4, 10, "Active Ability: Place any quest from the quest board on the bottom of the deck");
 
-
-		jobBoard[0] = questList[Random.Range(0,7)];
-		jobBoard[1] = questList[Random.Range(0,7)];
-		jobBoard[2] = questList[Random.Range(0,7)];
+		for(int i = 0; i < 7; i++){
+			easyQuestList[i] = questList[i];
+		}		
+		for(int i = 0; i < 7; i++){
+			mediumQuestList[i] = questList[i+7];
+		}		
+		for(int i = 0; i < 7; i++){
+			hardQuestList[i] = questList[i+14];
+		}
+		
+		
+		Shuffle(easyQuestList);
+		Shuffle(mediumQuestList);
+		Shuffle(hardQuestList);
+		
+		
+		for(int i = 0; i < 6; i++){
+			combinedQuestList[i] = easyQuestList[i];
+		}		
+		for(int i = 0; i < 6; i++){
+			combinedQuestList[i+6] = mediumQuestList[i];
+		}		
+		for(int i = 0; i < 7; i++){
+			combinedQuestList[i+12] = hardQuestList[i];
+		}
+		
+		jobBoard[0] = combinedQuestList[0];
+		jobBoard[1] = combinedQuestList[1];
+		jobBoard[2] = combinedQuestList[2];
 
 		//Fill in missing player spots with AI
 		numPlayers = StaticStart.numberOfPlayers;
@@ -177,6 +206,16 @@ public class backend : MonoBehaviour {
 			player2.Update();
 			player3.Update();
 			player4.Update();
+		}
+	}
+	
+	static void Shuffle(Quests[] arr)
+	{
+		for (int i = 6; i > 0; i--) {
+			int r = Random.Range(0,i);
+			Quests tmp = arr[i];
+			arr[i] = arr[r];
+			arr[r] = tmp;
 		}
 	}
 }
