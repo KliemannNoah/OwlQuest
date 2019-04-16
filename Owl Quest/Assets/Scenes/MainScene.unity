@@ -1361,6 +1361,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1618664965985463007, guid: b46960c4440bb374c802917a7baf3c33,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 15f818a8518ba0b4984bf492e93c5532, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b46960c4440bb374c802917a7baf3c33, type: 3}
 --- !u!4 &204161991 stripped
@@ -5871,7 +5876,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 218.5
+  orthographic size: 229
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5895,7 +5900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: -10}
+  m_LocalPosition: {x: 1, y: -6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5936,7 +5941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff14f490b4bdc45478c70e2359be4d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetWidth: 700
+  targetWidth: 610
   pixelsToUnits: 1
 --- !u!1 &519645215
 GameObject:
@@ -8136,6 +8141,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1618664965985463007, guid: b46960c4440bb374c802917a7baf3c33,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 15f818a8518ba0b4984bf492e93c5532, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b46960c4440bb374c802917a7baf3c33, type: 3}
 --- !u!4 &912264874 stripped
@@ -16277,6 +16287,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1618664965985463007, guid: b46960c4440bb374c802917a7baf3c33,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 15f818a8518ba0b4984bf492e93c5532, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b46960c4440bb374c802917a7baf3c33, type: 3}
 --- !u!4 &1617296407 stripped
