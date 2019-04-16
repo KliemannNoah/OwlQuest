@@ -236,7 +236,7 @@ public class AI
 	}
 
 	public void TradingPost(int resource) {
-		Debug.Log("Trading Post - " + playerNumber);
+		//Debug.Log("Trading Post - " + playerNumber);
         int randomNumber = Random.Range(1, 7);
 		int randomNumber2 = Random.Range(1,7);
 		if(randomNumber2 > randomNumber && advantage == 2){
@@ -283,7 +283,7 @@ public class AI
 			b.questNumber = 2;
 		}
 		if(b.questNumber != -1){
-			Debug.Log("Entered");
+			//Debug.Log("Entered");
 			b.completedAction = true;
 			if(this.water < b.jobBoard[b.questNumber].water){
 				Debug.Log("Don't have the water.");

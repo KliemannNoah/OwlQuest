@@ -63,6 +63,6 @@ public class Dice : MonoBehaviour {
         finalSide = val;
 
         // Show final dice value in Console
-        Debug.Log(finalSide);
+        //Debug.Log(finalSide);
     }
 }

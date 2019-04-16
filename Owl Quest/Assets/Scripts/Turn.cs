@@ -61,15 +61,14 @@ public class Turn : MonoBehaviour
 				printText();
 				rollDice();
                 completedRound = 0;
-                currentPlayer = TurnDefs.Player.THREE;
-				resetVariables();
 				displayUpdate();
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
-				StartCoroutine(Example());
+				currentPlayer = TurnDefs.Player.THREE;
+				resetVariables();
             }
             else
             {
@@ -84,17 +83,17 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
+				printText();
 				rollDice();
                 completedRound = 0;
-                currentPlayer = TurnDefs.Player.FOUR;
-				resetVariables();
 				displayUpdate();
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
-				StartCoroutine(Example());
+				currentPlayer = TurnDefs.Player.FOUR;
+				resetVariables();
             }
             else
             {
@@ -109,17 +108,17 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
+				printText();
 				rollDice();
                 completedRound = 0;
-                currentPlayer = TurnDefs.Player.ONE;
-				resetVariables();
 				displayUpdate();
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
-				StartCoroutine(Example());
+				currentPlayer = TurnDefs.Player.ONE;
+				resetVariables();
             }
             else
             {
@@ -134,17 +133,18 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
+				printText();
 				rollDice();
                 completedRound = 0;
-                currentPlayer = TurnDefs.Player.TWO;
-				resetVariables();
+                
 				displayUpdate();
 				//reset all occupied values to 0
 				for(int j = 0; j < 6; j++){
 					b.occupied[j] = 0;
 				}
 				b.tradingResource = Random.Range(0,4);
-				StartCoroutine(Example());
+				currentPlayer = TurnDefs.Player.TWO;
+				resetVariables();
             }
             else
             {
@@ -167,45 +167,61 @@ public class Turn : MonoBehaviour
 	}
 	
 	public void printText(){
-		t1.text = b.locationsText[System.Array.IndexOf(b.occupied, 1)];
-		t2.text = b.locationsText[System.Array.IndexOf(b.occupied, 2)];
-		t3.text = b.locationsText[System.Array.IndexOf(b.occupied, 3)];
-		t4.text = b.locationsText[System.Array.IndexOf(b.occupied, 4)];
+		if(System.Array.IndexOf(b.occupied, 1) != -1){
+			t1.text = b.locationsText[System.Array.IndexOf(b.occupied, 1)];
+		}else{
+			t1.text = "No Location";
+		}
+		if(System.Array.IndexOf(b.occupied, 2) != -1){
+			t2.text = b.locationsText[System.Array.IndexOf(b.occupied, 2)];
+		}else{
+			t2.text = "No Location";
+		}
+		if(System.Array.IndexOf(b.occupied, 3) != -1){
+			t3.text = b.locationsText[System.Array.IndexOf(b.occupied, 3)];
+		}else{
+			t3.text = "No Location";
+		}
+		if(System.Array.IndexOf(b.occupied, 4) != -1){
+			t4.text = b.locationsText[System.Array.IndexOf(b.occupied, 4)];
+		}else{
+			t4.text = "No Location";
+		}
 	}
 	
 	public void rollDice(){
 		roundScreen.SetActive(true);
-		if(b.rolls[0] != 0){
+		if(b.rolls[0] != 0 && System.Array.IndexOf(b.occupied, 1) != 5){
 			d1.gameObject.SetActive(true);
 			d1.roll(b.rolls[0]);
 		}else{
 			d1.gameObject.SetActive(false);
 		}
 		
-		if(b.rolls[1] != 0){
+		if(b.rolls[1] != 0 && System.Array.IndexOf(b.occupied, 2) != 5){
 			d2.gameObject.SetActive(true);
 			d2.roll(b.rolls[1]);
 		}else{
 			d2.gameObject.SetActive(false);
 		}
-		if(b.rolls[2] != 0){
+		if(b.rolls[2] != 0 && System.Array.IndexOf(b.occupied, 3) != 5){
 			d3.gameObject.SetActive(true);
 			d3.roll(b.rolls[2]);
 		}else{
 			d3.gameObject.SetActive(false);
 		}
 		
-		if(b.rolls[3] != 0){
+		if(b.rolls[3] != 0 && System.Array.IndexOf(b.occupied, 4) != 5){
 			d4.gameObject.SetActive(true);
 			d4.roll(b.rolls[3]);
 		}else{
 			d4.gameObject.SetActive(false);
 		}		
 		
-		b.rolls[0] = -1;
-		b.rolls[1] = -1;
-		b.rolls[2] = -1;
-		b.rolls[3] = -1;
+		b.rolls[0] = 0;
+		b.rolls[1] = 0;
+		b.rolls[2] = 0;
+		b.rolls[3] = 0;
 	}
 	
 	public void displayUpdate(){
@@ -243,11 +259,5 @@ public class Turn : MonoBehaviour
 
 	}
 	
-	private IEnumerator Example()
-    {
-        print(Time.time);
-        yield return new WaitForSeconds(3);
-        print(Time.time);
-    }
 
 }
