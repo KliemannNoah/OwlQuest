@@ -55,6 +55,8 @@ public class backend : MonoBehaviour {
 	public int tradingResource = 0; //tradingPost
 	public Quests[] replaced = new Quests[21]; //for sheriiff
 	public int replacedTracker = 0;
+	
+	public int[] rolls = new int[4];
 
 	// Use this for initialization
 	void Start () {

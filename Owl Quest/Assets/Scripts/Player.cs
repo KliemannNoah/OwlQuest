@@ -66,11 +66,7 @@ public class Player
         PlayerQuests.text  = "";
 		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
 		newText = Inventory.GetComponentsInChildren<Text> ();
-		newText[1].text = this.water.ToString();
-		newText[2].text = this.food.ToString();
-		newText[3].text = this.shelter.ToString();
-		newText[4].text = this.treasure.ToString();
-		newText[5].text = this.points.ToString();
+		updateValues();
     }
 
 	
@@ -228,6 +224,7 @@ public class Player
 	public void locationHandler(int location){
 		
 		int randomNumber = Random.Range(1,7);
+		b.rolls[playerNumber-1] = randomNumber;
 		b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
 		if (randomNumber >= b.probability[location]){
 					if(location == 0) this.water++;
@@ -236,12 +233,7 @@ public class Player
 					if(location == 3) this.treasure++;
 
 					b.RollText.text += b.locationsText[location].ToString() + " Gained.";
-					Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-					newText[1].text = this.water.ToString();
-					newText[2].text = this.food.ToString();
-					newText[3].text = this.shelter.ToString();
-					newText[4].text = this.treasure.ToString();
-					newText[5].text = this.points.ToString();
+					//updateValues();
 					
 		}
 
@@ -253,6 +245,7 @@ public class Player
 		if(randomNumber2 > randomNumber && advantage == 2){
 			randomNumber = randomNumber2;
 		}
+		b.rolls[playerNumber-1] = randomNumber;
 		b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
         if (randomNumber >= (4-tradingPostModifier)) {
             if (resource == 0) this.water++;
@@ -260,24 +253,14 @@ public class Player
             if (resource == 2) this.shelter++;
             if (resource == 3) this.treasure++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
-            Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
-			newText[1].text = this.water.ToString();
-			newText[2].text = this.food.ToString();
-			newText[3].text = this.shelter.ToString();
-			newText[4].text = this.treasure.ToString();
-			newText[5].text = this.points.ToString();
+            //updateValues();
 			return;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
             if (resource == 0) this.water++;
             if (resource == 1) this.food++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
-            Resources.text = this.water + "\t" + this.food + "\t" + this.shelter + "\t" + this.treasure + "\t" + this.points;
-			newText[1].text = this.water.ToString();
-			newText[2].text = this.food.ToString();
-			newText[3].text = this.shelter.ToString();
-			newText[4].text = this.treasure.ToString();
-			newText[5].text = this.points.ToString();
+            //updateValues();
         }
 
     }
@@ -332,12 +315,7 @@ public class Player
 			this.shelter -= b.jobBoard[b.questNumber].shelter;
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
-			Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-			newText[1].text = this.water.ToString();
-			newText[2].text = this.food.ToString();
-			newText[3].text = this.shelter.ToString();
-			newText[4].text = this.treasure.ToString();
-			newText[5].text = this.points.ToString();
+			updateValues();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
 			
@@ -408,12 +386,7 @@ public class Player
 			rewards = true;
 			tempRewards = true;
 		}
-		
-		newText[1].text = this.water.ToString();
-		newText[2].text = this.food.ToString();
-		newText[3].text = this.shelter.ToString();
-		newText[4].text = this.treasure.ToString();
-		newText[5].text = this.points.ToString();
+		updateValues();
 	}
 	
 	public void selectSpot(){
@@ -453,7 +426,14 @@ public class Player
 	
 	
 	
-	
+	public void updateValues(){
+		Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+		newText[1].text = this.water.ToString();
+		newText[2].text = this.food.ToString();
+		newText[3].text = this.shelter.ToString();
+		newText[4].text = this.treasure.ToString();
+		newText[5].text = this.points.ToString();
+	}
 	
 	
 	
@@ -549,12 +529,8 @@ public class Player
 		this.shelter -= b.jobBoard[b.questNumber].shelter;
 		this.treasure -= b.jobBoard[b.questNumber].treasure;
 		this.points += b.jobBoard[b.questNumber].points;
-		Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
-		newText[1].text = this.water.ToString();
-		newText[2].text = this.food.ToString();
-		newText[3].text = this.shelter.ToString();
-		newText[4].text = this.treasure.ToString();
-		newText[5].text = this.points.ToString();
+
+		updateValues();
 		
 		//Award player the points
 		this.points += b.jobBoard[b.questNumber].points;
