@@ -45,7 +45,7 @@ public class backend : MonoBehaviour {
 	public string[] locationsText = new string[6] { "Water", "Food", "Shelter", "Treasure", "Trading Post", "Job Board"};
 
 	public int questNumber = 0;
-	public int questsComplete = 3;
+	public int questsComplete;
 	public Quests[] jobBoard = new Quests[3];
 	public Quests[] questList = new Quests[21];
 	public Quests[] easyQuestList = new Quests[7];
@@ -115,10 +115,13 @@ public class backend : MonoBehaviour {
 			combinedQuestList[i+12] = hardQuestList[i];
 		}
 		
+		//for(int i = 0; i < 19; i++){
+		//	Debug.Log(combinedQuestList[i].title);
+		//}
 		jobBoard[0] = combinedQuestList[0];
 		jobBoard[1] = combinedQuestList[1];
 		jobBoard[2] = combinedQuestList[2];
-
+		questsComplete = 3;
 		//Fill in missing player spots with AI
 		numPlayers = StaticStart.numberOfPlayers;
 		
