@@ -18,6 +18,7 @@ public class Player
 	public Text PlayerQuests;
 	public Text Resources;
 	public Quests[] completedQuests = new Quests[10];
+    int[] questCardAnimation = new int[10];
 	int[] rollProbability = new int[5] {2,3,4,5,0};
 	int tradingPostModifier = 0;
 	int advantage = 1;
@@ -35,6 +36,7 @@ public class Player
 	
 	public GameObject Panel;
 	private GameObject Inventory;
+    Animator animator;
 	Text [] newText ;
 	
 	
@@ -61,6 +63,7 @@ public class Player
     // Start is called before the first frame update
     public void Start()
     {
+        animator = camera.GetComponent<Animator>();
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
         PlayerQuests.text  = "";
@@ -318,9 +321,10 @@ public class Player
 			updateValues();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
-			
-			//Apply Effects
-			questEffects(b.jobBoard[b.questNumber].effect);
+            questCardAnimation[System.Array.FindIndex(questCardAnimation, i => i == null)] = b.questNumber;
+
+            //Apply Effects
+            questEffects(b.jobBoard[b.questNumber].effect);
 
 			newQuest(b.questNumber);
 			//Replenish Job Board
@@ -537,7 +541,7 @@ public class Player
 		
 		//Add card to personal quest list
 		this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
-		
+        questCardAnimation[System.Array.FindIndex(questCardAnimation, i => i == null)] = b.questNumber;
 		//Apply Effects
 		questEffects(b.jobBoard[b.questNumber].effect);
 
