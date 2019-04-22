@@ -10,6 +10,7 @@ public class Restart : MonoBehaviour
 	
 	public bool isRestart;
 	public bool isQuit;
+	public bool isMenu;
 	public Text Winner;
 	
     // Start is called before the first frame update
@@ -28,11 +29,16 @@ public class Restart : MonoBehaviour
 	
 	
 	public void PlayGame() {
-		if (isQuit) {
+		if(isQuit) {
 			Application.Quit();
-		} if(isRestart) {
-			SceneManager.LoadScene("StartScreen");			
-			GetComponent<Renderer>().material.color=Color.cyan;
 		}
+		if(isRestart) {
+			SceneManager.LoadScene("MainScene");		
+		}		
+		if(isMenu) {
+			SceneManager.LoadScene("StartScreen");			
+		}
+		
+		
 	}
 }

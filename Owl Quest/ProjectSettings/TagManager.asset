@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Location
   - Owl
+  - Owl1
+  - Owl2
+  - Owl3
+  - Owl4
   layers:
   - Default
   - TransparentFX
