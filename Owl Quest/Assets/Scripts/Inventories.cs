@@ -12,8 +12,10 @@ public class Inventories : MonoBehaviour
     private GameObject inventory;
     private bool makeActive;
 	public backend b;
+    public Turn t;
 	public GameObject Button1;
 	public GameObject Button2;
+    public GameObject inventoryCards;
 	 Text [] newText ;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class Inventories : MonoBehaviour
         {
             inventory = Panel.transform.GetChild(i).gameObject;
             inventory.gameObject.SetActive(false);
+            inventoryCards.gameObject.SetActive(false);
             makeActive = false;
         }
     }
@@ -57,6 +60,7 @@ public class Inventories : MonoBehaviour
 						Button2.SetActive(false);
                         inventory = Panel.transform.GetChild(player - 1).gameObject;
                         inventory.gameObject.SetActive(true);
+                        inventoryCards.gameObject.SetActive(true);
                         makeActive = false;
                     }
                 }
