@@ -578,7 +578,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 760e3d6f953f4974eb053db9257f065e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59bbf6e17c0808b4597f1aa31a76499a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 131358833}
   - component: {fileID: 131358835}
   - component: {fileID: 131358832}
+  - component: {fileID: 131358836}
   m_Layer: 0
   m_Name: Quest Board Landing
   m_TagString: Location
@@ -770,7 +771,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131358831}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1079,6 +1080,32 @@ MonoBehaviour:
   spot: 5
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
+--- !u!61 &131358836
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131358831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.5, y: 6.7233334}
+    newSize: {x: 6.68, y: 6.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.5, y: 6.7233334}
+  m_EdgeRadius: 0
 --- !u!224 &132582091 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
@@ -2499,6 +2526,7 @@ GameObject:
   - component: {fileID: 368078579}
   - component: {fileID: 368078582}
   - component: {fileID: 368078581}
+  - component: {fileID: 368078583}
   m_Layer: 0
   m_Name: WateringHole
   m_TagString: Location
@@ -2577,7 +2605,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368078578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -4017,6 +4045,32 @@ MonoBehaviour:
   spot: 0
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
+--- !u!61 &368078583
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368078578}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 38.577065, y: 20.814285}
+    newSize: {x: 18, y: 18}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 38.577065, y: 20.814285}
+  m_EdgeRadius: 0
 --- !u!1 &441759603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4108,6 +4162,7 @@ GameObject:
   - component: {fileID: 449673977}
   - component: {fileID: 449673979}
   - component: {fileID: 449673980}
+  - component: {fileID: 449673981}
   m_Layer: 0
   m_Name: Orchard
   m_TagString: Location
@@ -4201,7 +4256,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449673976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6081,6 +6136,32 @@ PolygonCollider2D:
       - {x: -15.23877, y: 14.375732}
       - {x: -15.214111, y: 14.252441}
       - {x: -15.189453, y: 14.2771}
+--- !u!61 &449673981
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449673976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 36.07143, y: 33.605606}
+    newSize: {x: 18, y: 18}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 36.07143, y: 33.605606}
+  m_EdgeRadius: 0
 --- !u!1 &465954434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6398,7 +6479,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 228.5
+  orthographic size: 229
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11005,6 +11086,7 @@ GameObject:
   - component: {fileID: 1046526665}
   - component: {fileID: 1046526668}
   - component: {fileID: 1046526667}
+  - component: {fileID: 1046526669}
   m_Layer: 0
   m_Name: TradingPost
   m_TagString: Location
@@ -11082,7 +11164,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046526664}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -12322,6 +12404,32 @@ MonoBehaviour:
   spot: 4
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
+--- !u!61 &1046526669
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046526664}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 186.20341, y: 104.46667}
+    newSize: {x: 186.13333, y: 104.46667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 186.20341, y: 104.46667}
+  m_EdgeRadius: 0
 --- !u!1 &1059823299
 GameObject:
   m_ObjectHideFlags: 0
@@ -14165,7 +14273,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 760e3d6f953f4974eb053db9257f065e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59bbf6e17c0808b4597f1aa31a76499a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14395,6 +14503,7 @@ GameObject:
   - component: {fileID: 1260316542}
   - component: {fileID: 1260316545}
   - component: {fileID: 1260316544}
+  - component: {fileID: 1260316546}
   m_Layer: 0
   m_Name: NeighborHoot
   m_TagString: Location
@@ -14473,7 +14582,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260316541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -15716,6 +15825,32 @@ MonoBehaviour:
   spot: 2
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
+--- !u!61 &1260316546
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260316541}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 33.67143, y: 38.50312}
+    newSize: {x: 18, y: 18}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 33.67143, y: 38.50312}
+  m_EdgeRadius: 0
 --- !u!1 &1261134588
 GameObject:
   m_ObjectHideFlags: 0
@@ -16615,6 +16750,7 @@ GameObject:
   - component: {fileID: 1431202296}
   - component: {fileID: 1431202299}
   - component: {fileID: 1431202298}
+  - component: {fileID: 1431202300}
   m_Layer: 0
   m_Name: FoxHole
   m_TagString: Location
@@ -16693,7 +16829,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431202295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -17693,6 +17829,32 @@ MonoBehaviour:
   spot: 3
   b: {fileID: 519420030}
   turns: {fileID: 519420035}
+--- !u!61 &1431202300
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431202295}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 41.861504, y: 28.657143}
+    newSize: {x: 18, y: 18}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 41.861504, y: 28.657143}
+  m_EdgeRadius: 0
 --- !u!224 &1456861722 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
@@ -20126,7 +20288,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 760e3d6f953f4974eb053db9257f065e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59bbf6e17c0808b4597f1aa31a76499a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
