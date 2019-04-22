@@ -18,7 +18,6 @@ public class Player
 	public Text PlayerQuests;
 	public Text Resources;
 	public Quests[] completedQuests = new Quests[10];
-    int[] questCardAnimation = new int[10];
 	int[] rollProbability = new int[5] {2,3,4,5,0};
 	int tradingPostModifier = 0;
 	int advantage = 1;
@@ -321,7 +320,6 @@ public class Player
 			updateValues();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
-            questCardAnimation[System.Array.FindIndex(questCardAnimation, i => i == null)] = b.questNumber;
 
             //Apply Effects
             questEffects(b.jobBoard[b.questNumber].effect);
@@ -541,7 +539,6 @@ public class Player
 		
 		//Add card to personal quest list
 		this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
-        questCardAnimation[System.Array.FindIndex(questCardAnimation, i => i == null)] = b.questNumber;
 		//Apply Effects
 		questEffects(b.jobBoard[b.questNumber].effect);
 
