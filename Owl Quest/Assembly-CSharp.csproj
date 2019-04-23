@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\IdleOwl.cs" />
     <Compile Include="Assets\Scripts\Inventories.cs" />
     <Compile Include="Assets\Scripts\InventoryQuestCard.cs" />
+    <Compile Include="Assets\Scripts\LocationAnimations.cs" />
     <Compile Include="Assets\Scripts\MainMusic.cs" />
     <Compile Include="Assets\Scripts\OwlPosition.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />

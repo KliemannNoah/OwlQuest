@@ -2629,6 +2629,7 @@ GameObject:
   - component: {fileID: 368078581}
   - component: {fileID: 368078583}
   - component: {fileID: 368078584}
+  - component: {fileID: 368078585}
   m_Layer: 0
   m_Name: WateringHole
   m_TagString: Location
@@ -4194,6 +4195,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &368078585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368078578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953be007ddba6d43b4d052b25ae8add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: 0
+  b: {fileID: 519420030}
 --- !u!1 &441759603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,6 +4302,7 @@ GameObject:
   - component: {fileID: 449673980}
   - component: {fileID: 449673981}
   - component: {fileID: 449673982}
+  - component: {fileID: 449673983}
   m_Layer: 0
   m_Name: Orchard
   m_TagString: Location
@@ -6307,6 +6323,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &449673983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449673976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953be007ddba6d43b4d052b25ae8add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: 1
+  b: {fileID: 519420030}
 --- !u!1 &465954434
 GameObject:
   m_ObjectHideFlags: 0
@@ -11735,6 +11765,7 @@ GameObject:
   - component: {fileID: 1046526667}
   - component: {fileID: 1046526669}
   - component: {fileID: 1046526670}
+  - component: {fileID: 1046526671}
   m_Layer: 0
   m_Name: TradingPost
   m_TagString: Location
@@ -13099,6 +13130,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1046526671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046526664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953be007ddba6d43b4d052b25ae8add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: 4
+  b: {fileID: 519420030}
 --- !u!1 &1059823299
 GameObject:
   m_ObjectHideFlags: 0
@@ -15577,6 +15622,7 @@ GameObject:
   - component: {fileID: 1260316544}
   - component: {fileID: 1260316546}
   - component: {fileID: 1260316547}
+  - component: {fileID: 1260316548}
   m_Layer: 0
   m_Name: NeighborHoot
   m_TagString: Location
@@ -16945,6 +16991,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1260316548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260316541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953be007ddba6d43b4d052b25ae8add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: 2
+  b: {fileID: 519420030}
 --- !u!1 &1261134588
 GameObject:
   m_ObjectHideFlags: 0
@@ -18399,6 +18459,7 @@ GameObject:
   - component: {fileID: 1431202298}
   - component: {fileID: 1431202300}
   - component: {fileID: 1431202301}
+  - component: {fileID: 1431202302}
   m_Layer: 0
   m_Name: FoxHole
   m_TagString: Location
@@ -19524,6 +19585,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1431202302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431202295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7953be007ddba6d43b4d052b25ae8add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: 3
+  b: {fileID: 519420030}
 --- !u!224 &1456861722 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
