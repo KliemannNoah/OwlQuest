@@ -122,7 +122,7 @@ public class backend : MonoBehaviour {
 		jobBoard[0] = combinedQuestList[0];
 		jobBoard[1] = combinedQuestList[1];
 		jobBoard[2] = combinedQuestList[2];
-		questsComplete = 3;
+		questsComplete = 2;
 		//Fill in missing player spots with AI
 		numPlayers = StaticStart.numberOfPlayers;
 		
