@@ -33,6 +33,8 @@ public class Player
 	bool undoSheriff = false;
 
 	public GameObject Panel;
+	public GameObject TokenInventory;
+	Text [] token;
 	private GameObject Inventory;
 	Text [] newText ;
 
@@ -44,7 +46,7 @@ public class Player
 	string playerTurn;
 	GameObject camera;
 
-	public Player(int playerNumb, string playerTex, Text Resour, TurnDefs.Player tur, GameObject pan){
+	public Player(int playerNumb, string playerTex, Text Resour, TurnDefs.Player tur, GameObject pan, GameObject tok){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
 		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
@@ -52,6 +54,7 @@ public class Player
 		this.Resources = Resour;
 		this.playerTurnNumber = tur;
 		this.Panel = pan;
+		this.TokenInventory = tok;
 
 		//Debug.Log(playerTurnNumber);
 		//this.Start();
@@ -63,6 +66,7 @@ public class Player
 		this.b = camera.GetComponent<backend>();
 		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
 		newText = Inventory.GetComponentsInChildren<Text> ();
+		token = TokenInventory.GetComponentsInChildren<Text> ();
 		updateValues();
     }
 
@@ -422,12 +426,20 @@ public class Player
 
 
 	public void updateValues(){
+		//Screen Array
 		Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
+		//Inventory
 		newText[1].text = this.water.ToString();
 		newText[2].text = this.food.ToString();
 		newText[3].text = this.shelter.ToString();
 		newText[4].text = this.treasure.ToString();
 		newText[5].text = this.points.ToString();
+		//Quick Display
+		token[0].text = this.water.ToString();
+		token[1].text = this.food.ToString();
+		token[2].text = this.shelter.ToString();
+		token[3].text = this.treasure.ToString();
+		token[4].text = this.points.ToString();
 	}
 
 

@@ -35,6 +35,8 @@ public class AI
 	bool undoSheriff = false;
 	
 	public GameObject Panel;
+	public GameObject TokenInventory;
+	Text [] token;
 	private GameObject Inventory;
 	Text [] newText ;
 	
@@ -45,7 +47,7 @@ public class AI
 	string playerTurn;
 	GameObject camera;
 	
-	public AI(int playerNumb, string playerTex, Text Resour, TurnDefs.Player tur, GameObject pan){
+	public AI(int playerNumb, string playerTex, Text Resour, TurnDefs.Player tur, GameObject pan, GameObject tok){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
 		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
@@ -53,6 +55,7 @@ public class AI
 		this.Resources = Resour;
 		this.playerTurnNumber = tur;
 		this.Panel = pan;
+		this.TokenInventory = tok;
 		//Debug.Log(playerTurnNumber);
 		//this.Start();
 	}
@@ -64,6 +67,7 @@ public class AI
 		this.t = camera.GetComponent<Turn>();
 		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
 		newText = Inventory.GetComponentsInChildren<Text> ();
+		token = TokenInventory.GetComponentsInChildren<Text> ();
 		updateValues();
     }
 
@@ -418,6 +422,12 @@ public class AI
 		newText[3].text = this.shelter.ToString();
 		newText[4].text = this.treasure.ToString();
 		newText[5].text = this.points.ToString();
+		
+		token[0].text = this.water.ToString();
+		token[1].text = this.food.ToString();
+		token[2].text = this.shelter.ToString();
+		token[3].text = this.treasure.ToString();
+		token[4].text = this.points.ToString();
 	}
 	
 	

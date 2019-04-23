@@ -54,6 +54,11 @@ public class backend : MonoBehaviour {
 	
 	public int[] rolls = new int[4];
 
+	public GameObject tokenText1;
+	public GameObject tokenText2;
+	public GameObject tokenText3;
+	public GameObject tokenText4;
+	
 	// Use this for initialization
 	void Start () {
 		turn = GetComponent<Turn>();
@@ -123,10 +128,10 @@ public class backend : MonoBehaviour {
 		
 		if(numPlayers == 0){ //Zero Players: 4 AI
 		
-			AI1 = new AI(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel);
-			AI2 = new AI(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel);
-			AI3 = new AI(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel);
-			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel);
+			AI1 = new AI(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel, tokenText1);
+			AI2 = new AI(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel, tokenText2);
+			AI3 = new AI(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel, tokenText3);
+			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel, tokenText4);
 		
 			AI1.Update();
 			AI2.Update();
@@ -135,10 +140,10 @@ public class backend : MonoBehaviour {
 			
 			
 		}else if(numPlayers == 1){ //One Player: 3 AI
-			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel);
-			AI2 = new AI(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel);
-			AI3 = new AI(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel);
-			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel);
+			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel, tokenText1);
+			AI2 = new AI(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel, tokenText2);
+			AI3 = new AI(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel, tokenText3);
+			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel, tokenText4);
 			
 			player1.Start();
 			AI2.Start();
@@ -146,10 +151,10 @@ public class backend : MonoBehaviour {
 			AI4.Start();
 			
 		}else if(numPlayers == 2){ //Two Players: 2 AI
-			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel);
-			player2 = new Player(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel);
-			AI3 = new AI(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel);
-			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel);
+			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel, tokenText1);
+			player2 = new Player(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel, tokenText2);
+			AI3 = new AI(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel, tokenText3);
+			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel, tokenText4);
 			
 			player1.Start();
 			player2.Start();
@@ -157,10 +162,10 @@ public class backend : MonoBehaviour {
 			AI4.Start();
 			
 		}else if(numPlayers == 3){ //Three Players: 1 AI
-			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel);
-			player2 = new Player(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel);
-			player3 = new Player(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel);
-			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel);
+			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel, tokenText1);
+			player2 = new Player(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel, tokenText2);
+			player3 = new Player(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel, tokenText3);
+			AI4 = new AI(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel, tokenText4);
 			
 			player1.Start();
 			player2.Start();
@@ -168,10 +173,10 @@ public class backend : MonoBehaviour {
 			AI4.Start();
 			
 		}else if(numPlayers == 4){ //Four Players: 0 AI
-			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel);
-			player2 = new Player(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel);
-			player3 = new Player(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel);
-			player4 = new Player(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel);
+			player1 = new Player(1, "ONE", Player1Resources, TurnDefs.Player.ONE, Panel, tokenText1);
+			player2 = new Player(2, "TWO", Player2Resources, TurnDefs.Player.TWO, Panel, tokenText2);
+			player3 = new Player(3, "THREE", Player3Resources, TurnDefs.Player.THREE, Panel, tokenText3);
+			player4 = new Player(4, "FOUR", Player4Resources, TurnDefs.Player.FOUR, Panel, tokenText4);
 			
 			player1.Start();
 			player2.Start();
