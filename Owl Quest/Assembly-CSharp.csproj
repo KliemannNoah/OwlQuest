@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\TradingPost.cs" />
     <Compile Include="Assets\Scripts\Turn.cs" />
     <Compile Include="Assets\Scripts\TurnDefs.cs" />
+    <Compile Include="Assets\Scripts\VictoryOwl.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/cindy/Documents/GitHub/OwlQuest/Owl Quest/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
