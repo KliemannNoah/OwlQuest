@@ -11,7 +11,7 @@ public class InventoryQuestCard : MonoBehaviour
     {
         Quests[] cardArray;
         Player playerValue;
-
+		AI aiValue;
         inventoryCard.gameObject.SetActive(true);
 
         if (player == 1)
@@ -21,18 +21,33 @@ public class InventoryQuestCard : MonoBehaviour
         }
         else if (player == 2)
         {
-            cardArray = b.player2.completedQuests;
-            playerValue = b.player2;
+			if(StaticStart.numberOfPlayers > 1){
+				cardArray = b.player2.completedQuests;
+				playerValue = b.player2;
+			}else{
+				cardArray = b.AI2.completedQuests;
+				aiValue = b.AI2;
+			}
         }
         else if (player == 3)
         {
-            cardArray = b.player3.completedQuests;
-            playerValue = b.player3;
+			if(StaticStart.numberOfPlayers > 2){
+				cardArray = b.AI3.completedQuests;
+				aiValue = b.AI3;
+			}else{
+				cardArray = b.AI3.completedQuests;
+				aiValue = b.AI3;
+			}
         }
         else
         {
-            cardArray = b.player4.completedQuests;
-            playerValue = b.player4;
+			if(StaticStart.numberOfPlayers > 3){
+				cardArray = b.AI4.completedQuests;
+				aiValue = b.AI4;
+			}else{
+				cardArray = b.AI4.completedQuests;
+				aiValue = b.AI4;
+			}
         }
 
         Updatethecards(animator, cardArray[spot], spot);
