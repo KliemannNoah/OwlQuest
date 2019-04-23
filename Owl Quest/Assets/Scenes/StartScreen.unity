@@ -1490,8 +1490,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Core Design & Development Team\nCindy Prentice- Scripting, UI, Animation\nJuliana
-    Gessner- Art, UI\nNoah Kliemann- Scripting\nSam Carpenter- Art\n\nMusic\nMain
-    Theme: \"Unused Adventure-y Game Loop #1\" \n- Steven O'Brien"
+    Gessner- Art, UI\nNoah Kliemann- Scripting\nSam Carpenter- Art\n\nMusic\n\"Unused
+    Adventure-y Game Loop #1\" \n- Steven O'Brien, steven-obrien.net\n\"Ta-Da\" \n-
+    Mike Koenig, soundbible.com"
 --- !u!222 &354810967
 CanvasRenderer:
   m_ObjectHideFlags: 0
