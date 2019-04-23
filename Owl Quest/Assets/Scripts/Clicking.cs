@@ -11,6 +11,8 @@ public class Clicking : MonoBehaviour
 	//Animator animator;
 	public backend b;
     public Turn turns;
+    public GameObject c;
+    public GameObject button;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +70,20 @@ public class Clicking : MonoBehaviour
                         else if (currentTurn == TurnDefs.Player.FOUR)
                         {
                             b.player4.ClickHandleQuests(spot);
+                        }
+                    }
+
+                    else
+                    {
+                        if (c.activeSelf)
+                        {
+                            c.gameObject.SetActive(false);
+                            button.gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            c.gameObject.SetActive(true);
+                            button.gameObject.SetActive(true);
                         }
                     }
                 }
