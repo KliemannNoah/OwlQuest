@@ -16,6 +16,7 @@ public class Inventories : MonoBehaviour
     public Turn t;
 	public GameObject Button1;
 	public GameObject Button2;
+	public GameObject Button3;
 
     public GameObject allPlayerCards;
     public GameObject playerCards;
@@ -57,7 +58,8 @@ public class Inventories : MonoBehaviour
                     for (int i = 0; i < 4; i++)
                     {
 						Button1.SetActive(true);
-						Button2.SetActive(true);
+						//Button2.SetActive(true);
+						Button3.SetActive(true);
                         inventory = Panel.transform.GetChild(i).gameObject;
                         inventory.gameObject.SetActive(false);
                         GameObject othercards = allPlayerCards.transform.GetChild(i).gameObject;
@@ -69,7 +71,8 @@ public class Inventories : MonoBehaviour
                     if (makeActive)
                     {
 						Button1.SetActive(false);
-						Button2.SetActive(false);
+						//Button2.SetActive(false);
+						Button3.SetActive(false);
                         inventory = Panel.transform.GetChild(player - 1).gameObject;
                         inventory.gameObject.SetActive(true);
                         playerCards.SetActive(true);

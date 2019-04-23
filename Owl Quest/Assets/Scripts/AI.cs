@@ -16,7 +16,6 @@ public class AI
 	public int shelter = 0;
 	public int treasure = 0;
 	public int points = 0;
-	public Text PlayerQuests;
 	public Text Resources;
 	public Quests[] completedQuests = new Quests[10];
 	int[] rollProbability = new int[5] {2,3,4,5,0};
@@ -46,12 +45,11 @@ public class AI
 	string playerTurn;
 	GameObject camera;
 	
-	public AI(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur, GameObject pan){
+	public AI(int playerNumb, string playerTex, Text Resour, TurnDefs.Player tur, GameObject pan){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
 		this.playerResources = "Player" + playerNumb.ToString() + "Resources";
 		this.playerTurn = "TurnDefs.Player." + playerTex;
-		this.PlayerQuests = PlayerQ;
 		this.Resources = Resour;
 		this.playerTurnNumber = tur;
 		this.Panel = pan;
@@ -64,7 +62,6 @@ public class AI
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
 		this.t = camera.GetComponent<Turn>();
-        PlayerQuests.text  = "";
 		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
 		newText = Inventory.GetComponentsInChildren<Text> ();
 		updateValues();
@@ -72,12 +69,9 @@ public class AI
 
 	
 	public void completed(){
-		PlayerQuests.text ="";
 		for(int i = 0; i < 10; i++){
 			if(completedQuests[i] != null){
-			//PlayerQuests1.text += completedQuests[i].title + ":\n" + completedQuests[i].points.ToString() + " points\n" + completedQuests[i].effectText + "\n";
 				if(completedQuests[i].effect != 0){
-					//PlayerQuests.text += "Effect: " + completedQuests[i].effectText + "\n";
 					newText[6].text += "Effect: " + completedQuests[i].effectText + "\n";
 				}
 			}
