@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Player
 {
 	public backend b;
-
+	
 	public int food = 0;
 	public int water = 0;
 	public int shelter = 0;
@@ -18,11 +18,12 @@ public class Player
 	public Text PlayerQuests;
 	public Text Resources;
 	public Quests[] completedQuests = new Quests[10];
+    int[] questCardAnimation = new int[10];
 	int[] rollProbability = new int[5] {2,3,4,5,0};
 	int tradingPostModifier = 0;
 	int advantage = 1;
 	bool trailMix = false;
-
+	
 	bool sheriff = false;
 	bool rewards = false;
 	bool reroll = false;
@@ -32,19 +33,20 @@ public class Player
 	bool tempReroll = false;
 	bool undoReroll = false;
 	bool undoSheriff = false;
-
+	
 	public GameObject Panel;
 	private GameObject Inventory;
+    Animator animator;
 	Text [] newText ;
-
-
+	
+	
 	TurnDefs.Player playerTurnNumber; //= TurnDefs.Player.ONE;
 	int playerNumber;
 	string playerQuestsText;
 	string playerResources;
 	string playerTurn;
 	GameObject camera;
-
+	
 	public Player(int playerNumb, string playerTex, Text PlayerQ, Text Resour, TurnDefs.Player tur, GameObject pan){
 		this.playerNumber = playerNumb;
 		this.playerQuestsText = "PlayerQuests" + playerNumb.ToString();
@@ -61,6 +63,7 @@ public class Player
     // Start is called before the first frame update
     public void Start()
     {
+        //animator = camera.GetComponent<Animator>();
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
         PlayerQuests.text  = "";
@@ -69,7 +72,7 @@ public class Player
 		updateValues();
     }
 
-
+	
 	public void completed(){
 		PlayerQuests.text ="";
 		for(int i = 0; i < 10; i++){
@@ -81,8 +84,8 @@ public class Player
 			}
 		}
 	}
-
-
+	
+	
     // Update is called once per frame
 	public void Update() {
 		TurnDefs.Player currentTurn = b.turn.GetCurrentTurn();
@@ -107,7 +110,7 @@ public class Player
 						temporaryRewards(b.jobBoard[2].effect);
 					}
 					tempRewards2 = false;
-				}
+				}				
 			}else if(sheriff && tempSheriff){
 				if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
 					b.questsComplete++;
@@ -138,12 +141,12 @@ public class Player
 			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
 			}
-
+			
 		}
 	}
-
-
-
+	
+	
+	
 	// Update is called once per frame
 	public void Round () {
 		int location = -1;
@@ -167,13 +170,13 @@ public class Player
 
 			if(b.occupied[location] == 0){
 				b.occupied[location] = playerNumber;
-
+				
 				//TODO: Handle Trading Post
 				//Rework
 				if(location == 4){
 					location = b.tradingResource;
 				}
-
+					
 				//TODO: Handle Quests
 				if(location == 5){
 					//Let players pick the quest they want
@@ -204,8 +207,8 @@ public class Player
 						undoReroll = false;
 					}
 				}
-
-
+		
+		
 				//Check if they have won
 				if(this.points >= 9){
 					Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");
@@ -214,15 +217,15 @@ public class Player
 				}
 			}
 		}
-
+	
 	}
-
+	
 	/**
 		This function takes the player, their location, and the trading post number
 		It then rolls and computes wether or not the player got the resources
 	*/
 	public void locationHandler(int location){
-
+		
 		int randomNumber = Random.Range(1,7);
 		b.rolls[playerNumber-1] = randomNumber;
 		b.RollText.text = "Roll of " + randomNumber.ToString() + "\n";
@@ -234,7 +237,7 @@ public class Player
 
 					b.RollText.text += b.locationsText[location].ToString() + " Gained.";
 					//updateValues();
-
+					
 		}
 
 	}
@@ -264,18 +267,18 @@ public class Player
         }
 
     }
-
-
-
-
+	
+	
+	
+	
 	/**
 		This Function is used when players attempt to turn in a quest
 		It first checks to see if the player has all of the nessecary resources
 		If it does it subtracts them from the players inventory, and gives the player the points
 		It also replaces that quest with a new one from the list
 	*/
-	//public bool handleQuests(int questNumber, int player, int quest){
-	public int handleQuests(){
+	//public bool handleQuests(int questNumber, int player, int quest){	
+	public int handleQuests(){	
 		//quest = jobBoard[questNumber];
 		//For each Resources
 		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3"))){
@@ -304,27 +307,28 @@ public class Player
 				Debug.Log("Don't have the treasure.");
 				return 1; //false
 			}
-
+			
 			//If at this point, player has resources
 			Debug.Log("Quest Complete - "+ b.jobBoard[b.questNumber].title);
 			b.questsComplete++;
-
+			
 			//Remove resources from player
 			this.water -= b.jobBoard[b.questNumber].water;
-			this.food -= b.jobBoard[b.questNumber].food;
+			this.food -= b.jobBoard[b.questNumber].food; 
 			this.shelter -= b.jobBoard[b.questNumber].shelter;
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
 			updateValues();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
+            questCardAnimation[System.Array.FindIndex(questCardAnimation, i => i == null)] = b.questNumber;
 
             //Apply Effects
             questEffects(b.jobBoard[b.questNumber].effect);
 
 			newQuest(b.questNumber);
 			//Replenish Job Board
-
+			
 			this.completed();
 			b.completedAction = true;
 			if(undoSheriff){
@@ -336,24 +340,24 @@ public class Player
 				tempReroll = false;
 				undoReroll = false;
 			}
-
+			
 			if(this.points >= 9){
 				Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");
 				StaticStart.winningPlayer = playerNumber;
 				SceneManager.LoadScene("VictoryScreen");
 			}
-
+				
 			return 2; //true
 		}
 		return 0;
 	}
-
-
+	
+	
 	public void newQuest(int questNumber){
-			b.jobBoard[questNumber] = b.combinedQuestList[b.questsComplete];
+			b.jobBoard[questNumber] = b.combinedQuestList[b.questsComplete];		
 	}
-
-
+	
+	
 	public void questEffects(int effectNumber){
 		//8, 10, and 12 are active
 		if(effectNumber == 0){
@@ -376,7 +380,7 @@ public class Player
 			reroll = true;
 			tempReroll = true;
 		}else if(effectNumber == 9){ //
-
+		
 		}else if(effectNumber == 10){ // Active Ability: Place any quest from the quest board on the bottom of the deck
 			sheriff = true;
 			tempSheriff = true;
@@ -388,7 +392,7 @@ public class Player
 		}
 		updateValues();
 	}
-
+	
 	public void selectSpot(){
 		if((Input.GetKeyDown("1")|| Input.GetKeyDown("2") || Input.GetKeyDown("3") || Input.GetKeyDown("4") || Input.GetKeyDown("5")))
 		{
@@ -410,7 +414,7 @@ public class Player
 			}
 		}
 	}
-
+	
 	public void temporaryRewards(int effectNumber){
 		if(effectNumber == 8){ //Active Ability: Reroll trading post
 			reroll = true;
@@ -422,10 +426,10 @@ public class Player
 			undoSheriff = true;
 		}
 	}
-
-
-
-
+	
+	
+	
+	
 	public void updateValues(){
 		Resources.text = this.water + "\t" + this.food + "\t" +this.shelter + "\t" + this.treasure + "\t" + this.points;
 		newText[1].text = this.water.ToString();
@@ -434,23 +438,23 @@ public class Player
 		newText[4].text = this.treasure.ToString();
 		newText[5].text = this.points.ToString();
 	}
-
-
-
-
+	
+	
+	
+	
 	// Update is called once per frame
 	public void ClickRound (int location) {
 		//have them pick their location to travel
 		//Get their input 0-5
 		if(b.occupied[location] == 0){
 			b.occupied[location] = playerNumber;
-
+			
 			//TODO: Handle Trading Post
 			//Rework
 			if(location == 4){
 				location = b.tradingResource;
 			}
-
+				
 			//TODO: Handle Quests
 			if(location == 5){
 				//Let players pick the quest they want
@@ -481,26 +485,26 @@ public class Player
 					undoReroll = false;
 				}
 			}
-
-
+	
+	
 			//Check if they have won
 			if(this.points >= 9){
 					StaticStart.winningPlayer = playerNumber;
-					Debug.Log("GAME OVER, YOU WIN!");
+					Debug.Log("GAME OVER, YOU WIN!");					
 					SceneManager.LoadScene("VictoryScreen");
 			}
 		}
 	}
-
-
+	
+	
 	/**
 		This Function is used when players attempt to turn in a quest
 		It first checks to see if the player has all of the nessecary resources
 		If it does it subtracts them from the players inventory, and gives the player the points
 		It also replaces that quest with a new one from the list
 	*/
-	//public bool handleQuests(int questNumber, int player, int quest){
-	public int ClickHandleQuests(int questNumber){
+	//public bool handleQuests(int questNumber, int player, int quest){	
+	public int ClickHandleQuests(int questNumber){	
 		b.questNumber = questNumber;
 		if(this.water < b.jobBoard[b.questNumber].water){
 			Debug.Log("Don't have the water.");
@@ -518,31 +522,32 @@ public class Player
 			Debug.Log("Don't have the treasure.");
 			return 1; //false
 		}
-
+		
 		//If at this point, player has resources
 		Debug.Log("Quest Complete.");
 		b.questsComplete++;
-
+		
 		//Remove resources from player
 		this.water -= b.jobBoard[b.questNumber].water;
-		this.food -= b.jobBoard[b.questNumber].food;
+		this.food -= b.jobBoard[b.questNumber].food; 
 		this.shelter -= b.jobBoard[b.questNumber].shelter;
 		this.treasure -= b.jobBoard[b.questNumber].treasure;
 		this.points += b.jobBoard[b.questNumber].points;
 
 		updateValues();
-
+		
 		//Award player the points
 		this.points += b.jobBoard[b.questNumber].points;
-
+		
 		//Add card to personal quest list
 		this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
+        questCardAnimation[System.Array.FindIndex(questCardAnimation, i => i == null)] = b.questNumber;
 		//Apply Effects
 		questEffects(b.jobBoard[b.questNumber].effect);
 
 		newQuest(b.questNumber);
 		//Replenish Job Board
-
+		
 		this.completed();
 		b.completedAction = true;
 		if(undoSheriff){
@@ -554,7 +559,7 @@ public class Player
 			tempReroll = false;
 			undoReroll = false;
 		}
-
+		
 		if(this.points >= 9){
 			Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");
 			StaticStart.winningPlayer = playerNumber;

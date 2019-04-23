@@ -18,11 +18,11 @@ public class QuestPictures : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < 20; i++)
+        for(int i = 0; i < 20; i++)
         {
-            if (b.questList[i] == b.jobBoard[questSpot])
+            if(b.questList[i] == b.jobBoard[questSpot])
             {
-                if (i < 7)
+                if(i < 7)
                 {
                     difficulty = 0;
                 }
@@ -36,12 +36,11 @@ public class QuestPictures : MonoBehaviour
                     difficulty = 2;
                     i = i - 14;
                 }
-                animator.SetInteger("AnimState", i);
-                animator.SetInteger("Difficulty", difficulty);
+                animator.SetInteger("AnimState",i);
+                animator.SetInteger("Difficulty",difficulty);
                 break;
             }
         }
-    }
 
     }
-
+}
