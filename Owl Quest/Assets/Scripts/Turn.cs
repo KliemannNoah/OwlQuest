@@ -27,29 +27,27 @@ public class Turn : MonoBehaviour
 	public Text t3;
 	public Text t4;
 	
-    void OnGUI()
+	public Text button;
+	public Text warning;
+	
+	public bool waited = false;
+	
+    public void AdvanceTurn()
     {
-        string display;
-        if (currentPlayer == TurnDefs.Player.ONE){
-            display = "Player One";
-        }
-        else if (currentPlayer == TurnDefs.Player.TWO)
-        {
-            display = "Player Two";
-        }
-        else if(currentPlayer == TurnDefs.Player.THREE)
-        {
-            display = "Player Three";
-        }
-        else
-        {
-            display = "Player Four";
-        }
-
-		if (GUILayout.Button(display + ": Click to change Player"))
-		{
-				NextPlayer();
+		
+		if (currentPlayer == TurnDefs.Player.ONE && System.Array.IndexOf(b.occupied, 1) == -1){
+            warning.text = "Please Select A Location";
+        }else if (currentPlayer == TurnDefs.Player.TWO && System.Array.IndexOf(b.occupied, 2) == -1){
+            warning.text = "Please Select A Location";
+        }else if(currentPlayer == TurnDefs.Player.THREE && System.Array.IndexOf(b.occupied, 3) == -1){
+            warning.text = "Please Select A Location";
+        }else if(currentPlayer == TurnDefs.Player.FOUR && System.Array.IndexOf(b.occupied, 4) == -1){
+            warning.text = "Please Select A Location";
+        }else{
+			warning.text ="";
+			NextPlayer();
 		}
+		
     }
 
     void NextPlayer()
@@ -58,23 +56,17 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				printText();
-				rollDice();
-                completedRound = 0;
-				displayUpdate();
-				//reset all occupied values to 0
-				for(int j = 0; j < 6; j++){
-					b.occupied[j] = 0;
-				}
-				b.tradingResource = Random.Range(0,4);
+				Invoke("printText", .3f);
+				//printText();
+				Invoke("rollDice", .3f);
+				//rollDice();
 				currentPlayer = TurnDefs.Player.THREE;
-				resetVariables();
+				//roundSign();
             }
             else
             {
-                currentPlayer = TurnDefs.Player.TWO;
-                completedRound++;
-				resetVariables();
+				turnSign();
+				currentPlayer = TurnDefs.Player.TWO;
             }
         }
 
@@ -83,23 +75,17 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				printText();
-				rollDice();
-                completedRound = 0;
-				displayUpdate();
-				//reset all occupied values to 0
-				for(int j = 0; j < 6; j++){
-					b.occupied[j] = 0;
-				}
-				b.tradingResource = Random.Range(0,4);
+				Invoke("printText", .3f);
+				//printText();
+				Invoke("rollDice", .3f);
+				//rollDice();
 				currentPlayer = TurnDefs.Player.FOUR;
-				resetVariables();
+				//roundSign();
             }
             else
             {
-                currentPlayer = TurnDefs.Player.THREE;
-                completedRound++;
-				resetVariables();
+				turnSign();
+				currentPlayer = TurnDefs.Player.THREE;
             }
         }
 
@@ -108,23 +94,17 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				printText();
-				rollDice();
-                completedRound = 0;
-				displayUpdate();
-				//reset all occupied values to 0
-				for(int j = 0; j < 6; j++){
-					b.occupied[j] = 0;
-				}
-				b.tradingResource = Random.Range(0,4);
+				Invoke("printText", .3f);
+				//printText();
+				Invoke("rollDice", .3f);
+				//rollDice();
 				currentPlayer = TurnDefs.Player.ONE;
-				resetVariables();
+				//roundSign();
             }
             else
             {
-                currentPlayer = TurnDefs.Player.FOUR;
-                completedRound++;
-				resetVariables();
+				turnSign();
+				currentPlayer = TurnDefs.Player.FOUR;
             }
         }
 
@@ -133,24 +113,17 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				printText();
-				rollDice();
-                completedRound = 0;
-                
-				displayUpdate();
-				//reset all occupied values to 0
-				for(int j = 0; j < 6; j++){
-					b.occupied[j] = 0;
-				}
-				b.tradingResource = Random.Range(0,4);
-				currentPlayer = TurnDefs.Player.TWO;
-				resetVariables();
+				Invoke("printText", .3f);
+				//printText();
+				Invoke("rollDice", .3f);
+				//rollDice();
+                currentPlayer = TurnDefs.Player.TWO;
+				//roundSign();
             }
             else
             {
-                currentPlayer = TurnDefs.Player.ONE;
-                completedRound++;
-				resetVariables();
+				turnSign();
+				currentPlayer = TurnDefs.Player.ONE;
             }
         }
     }
@@ -168,22 +141,38 @@ public class Turn : MonoBehaviour
 	
 	public void printText(){
 		if(System.Array.IndexOf(b.occupied, 1) != -1){
-			t1.text = b.locationsText[System.Array.IndexOf(b.occupied, 1)];
+			if(System.Array.IndexOf(b.occupied, 1) == 4){
+				t1.text = b.locationsText[System.Array.IndexOf(b.occupied, 1)] + "\n" + b.locationsText[b.tradingResource];
+			}else{
+				t1.text = b.locationsText[System.Array.IndexOf(b.occupied, 1)];
+			}
 		}else{
 			t1.text = "No Location";
 		}
 		if(System.Array.IndexOf(b.occupied, 2) != -1){
-			t2.text = b.locationsText[System.Array.IndexOf(b.occupied, 2)];
+			if(System.Array.IndexOf(b.occupied, 2) == 4){
+				t2.text = b.locationsText[System.Array.IndexOf(b.occupied, 2)] + "\n" + b.locationsText[b.tradingResource];
+			}else{
+				t2.text = b.locationsText[System.Array.IndexOf(b.occupied, 2)];
+			}
 		}else{
 			t2.text = "No Location";
 		}
 		if(System.Array.IndexOf(b.occupied, 3) != -1){
-			t3.text = b.locationsText[System.Array.IndexOf(b.occupied, 3)];
+			if(System.Array.IndexOf(b.occupied, 3) == 4){
+				t3.text = b.locationsText[System.Array.IndexOf(b.occupied, 3)] + "\n" + b.locationsText[b.tradingResource];
+			}else{
+				t3.text = b.locationsText[System.Array.IndexOf(b.occupied, 3)];
+			}
 		}else{
 			t3.text = "No Location";
 		}
 		if(System.Array.IndexOf(b.occupied, 4) != -1){
-			t4.text = b.locationsText[System.Array.IndexOf(b.occupied, 4)];
+			if(System.Array.IndexOf(b.occupied, 4) == 4){
+				t4.text = b.locationsText[System.Array.IndexOf(b.occupied, 4)] + "\n" + b.locationsText[b.tradingResource];
+			}else{
+				t4.text = b.locationsText[System.Array.IndexOf(b.occupied, 4)];
+			}
 		}else{
 			t4.text = "No Location";
 		}
@@ -259,5 +248,70 @@ public class Turn : MonoBehaviour
 
 	}
 	
+	void Update(){
+		if (currentPlayer == TurnDefs.Player.ONE){
+            button.text = "Player One's Turn";
+        }
+        else if (currentPlayer == TurnDefs.Player.TWO)
+        {
+            button.text = "Player Two's Turn";
+        }
+        else if(currentPlayer == TurnDefs.Player.THREE)
+        {
+            button.text = "Player Three's Turn";
+        }
+        else
+        {
+            button.text = "Player Four's Turn";
+        }
+		
+		if(waited){
+			waited = false;
+			StartCoroutine("SwapRound");
 
+		}
+	}
+	
+	public void flip(){
+		waited = true;
+		
+	}
+	
+	private void turnSign()
+    {
+        StartCoroutine("SwapTurn");
+    }
+	
+	// Coroutine that rolls the dice
+    private IEnumerator SwapTurn()
+    {
+		yield return new WaitForSeconds(.5f);
+		//Do animation
+		completedRound++;
+		resetVariables();
+    }
+	
+	private void roundSign()
+    {
+        StartCoroutine("SwapRound");
+    }
+	
+	// Coroutine that rolls the dice
+    private IEnumerator SwapRound()
+    {
+		yield return new WaitForSeconds(.2f);
+		completedRound = 0;
+		displayUpdate();
+		//reset all occupied values to 0
+		for(int j = 0; j < 6; j++){
+			b.occupied[j] = 0;
+		}
+		b.tradingResource = Random.Range(0,4);
+		yield return new WaitForSeconds(2f);
+		d1.Outcome.text = "";
+		d2.Outcome.text = "";
+		d3.Outcome.text = "";
+		d4.Outcome.text = "";
+		resetVariables();
+    }
 }

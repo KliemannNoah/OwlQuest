@@ -10,6 +10,7 @@ public class AI
 {
 	public backend b;
 	
+	public Turn t;
 	public int food = 0;
 	public int water = 0;
 	public int shelter = 0;
@@ -22,6 +23,7 @@ public class AI
 	int tradingPostModifier = 0;
 	int advantage = 1;
 	bool trailMix = false;
+	bool finished = false;
 	
 	bool sheriff = false;
 	bool rewards = false;
@@ -61,6 +63,7 @@ public class AI
     {
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
+		this.t = camera.GetComponent<Turn>();
         PlayerQuests.text  = "";
 		Inventory = Panel.transform.GetChild(playerNumber - 1).gameObject;
 		newText = Inventory.GetComponentsInChildren<Text> ();
@@ -156,8 +159,9 @@ public class AI
 				//ClickRound();
 			}else if(!b.completedAction && b.questLocation){
 				handleQuests();
+			}else if(finished){
+				roundSign();	
 			}
-			
 		}
 	}
 	
@@ -232,6 +236,7 @@ public class AI
 					b.RollText.text += b.locationsText[location].ToString() + " Gained.";
 					//updateValues();
 		}
+		finished = true;
 
 	}
 
@@ -251,6 +256,7 @@ public class AI
             if (resource == 3) this.treasure++;
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             //updateValues();
+			finished = true;
 			return;
         }
         else if (randomNumber >= (3-tradingPostModifier) && resource < 2) {
@@ -259,7 +265,7 @@ public class AI
 			b.RollText.text += b.locationsText[resource].ToString() + " Gained.";
             //updateValues();
         }
-
+		finished = true;
     }
 	
 	
@@ -273,7 +279,6 @@ public class AI
 	*/
 	//public bool handleQuests(int questNumber, int player, int quest){	
 	public int handleQuests(){	
-		
 		b.questNumber = -1;
 		if(this.water >= b.jobBoard[0].water && this.food >= b.jobBoard[0].food && this.shelter >= b.jobBoard[0].shelter && this.treasure >= b.jobBoard[0].treasure){
 			b.questNumber = 0;				
@@ -284,7 +289,7 @@ public class AI
 		}
 		if(b.questNumber != -1){
 			//Debug.Log("Entered");
-			b.completedAction = true;
+			
 			if(this.water < b.jobBoard[b.questNumber].water){
 				Debug.Log("Don't have the water.");
 				return 1; //false
@@ -342,6 +347,8 @@ public class AI
 			}
 			
 		}
+		b.completedAction = true;
+		finished = true;
 		return 2; //true
 	}
 	
@@ -430,4 +437,12 @@ public class AI
 	public int ClickHandleQuests(int questNumber){	
 		return 2; //true
 	}
+	
+	private void roundSign()
+    {
+        b.StartCoroutine("SwapRound2");
+		finished = false;
+    }
+	
+
 }

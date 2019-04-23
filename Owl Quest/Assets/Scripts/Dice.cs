@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using static backend;
 
 public class Dice : MonoBehaviour {
 
 	private int val;
 	public int playerNumber;
+	private int location;
     // Array of dice sides sprites to load from Resources folder
     private Sprite[] diceSides;
+	public backend b;
+	public Text Outcome;
 
     // Reference to sprite renderer to change sprites
     private SpriteRenderer rend;
@@ -56,12 +62,26 @@ public class Dice : MonoBehaviour {
             // Pause before next itteration
             yield return new WaitForSeconds(0.05f);
         }
-
+		location = System.Array.IndexOf(b.occupied, playerNumber);
         // Assigning final side so you can use this value later in your game
         // for player movement for example
 		rend.sprite = diceSides[val-1];
         finalSide = val;
-
+		if (finalSide >= b.probability[location] && location != 4){
+			Outcome.text = "Success +1 " + b.locationsText[System.Array.IndexOf(b.occupied, playerNumber)];
+		}else if(location == 4){
+			if (finalSide >= (4)) {
+				Outcome.text = "Success +1 " + b.locationsText[b.tradingResource];
+				yield break;
+			}
+			else if (finalSide >= (3) && b.tradingResource < 2) {
+				Outcome.text = "Success +1 " + b.locationsText[b.tradingResource];
+			}else{
+				Outcome.text = "Failure";
+			}
+		}else{
+			Outcome.text = "Failure";
+		}
         // Show final dice value in Console
         //Debug.Log(finalSide);
     }

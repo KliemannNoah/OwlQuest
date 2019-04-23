@@ -223,4 +223,11 @@ public class backend : MonoBehaviour {
 			arr[r] = tmp;
 		}
 	}
+	
+		// Coroutine that rolls the dice
+    public IEnumerator SwapRound2()
+    {
+		yield return new WaitForSeconds(1f);
+		turn.AdvanceTurn();
+	}
 }

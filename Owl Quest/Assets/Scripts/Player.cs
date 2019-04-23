@@ -63,7 +63,7 @@ public class Player
     // Start is called before the first frame update
     public void Start()
     {
-        animator = camera.GetComponent<Animator>();
+        //animator = camera.GetComponent<Animator>();
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
         PlayerQuests.text  = "";
