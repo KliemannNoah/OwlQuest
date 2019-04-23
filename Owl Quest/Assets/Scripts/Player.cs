@@ -10,11 +10,11 @@ public class Player
 {
 	public backend b;
 
-	public int food = 20;
-	public int water = 20;
-	public int shelter = 20;
-	public int treasure = 20;
-	public int points = 8;
+	public int food = 0;
+	public int water = 0;
+	public int shelter = 0;
+	public int treasure = 0;
+	public int points = 0;
 	public Text PlayerQuests;
 	public Text Resources;
 	public Quests[] completedQuests = new Quests[10];
@@ -528,7 +528,6 @@ public class Player
 		this.food -= b.jobBoard[b.questNumber].food;
 		this.shelter -= b.jobBoard[b.questNumber].shelter;
 		this.treasure -= b.jobBoard[b.questNumber].treasure;
-		this.points += b.jobBoard[b.questNumber].points;
 
 		updateValues();
 
