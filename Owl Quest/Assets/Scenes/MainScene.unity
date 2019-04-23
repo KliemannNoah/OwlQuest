@@ -10624,7 +10624,7 @@ MonoBehaviour:
   Button1: {fileID: 1218796420}
   Button2: {fileID: 2118482336}
   allPlayerCards: {fileID: 1350646137}
-  playerCards: {fileID: 0}
+  playerCards: {fileID: 1360177221}
   currentCard: {fileID: 0}
   c: {fileID: 519420033}
 --- !u!60 &1043802059
@@ -13777,7 +13777,7 @@ MonoBehaviour:
   Button1: {fileID: 1218796420}
   Button2: {fileID: 2118482336}
   allPlayerCards: {fileID: 1350646137}
-  playerCards: {fileID: 0}
+  playerCards: {fileID: 1339544465}
   currentCard: {fileID: 0}
   c: {fileID: 519420033}
 --- !u!60 &1217473063
@@ -16730,6 +16730,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1323429651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1323429653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6135394374790301921, guid: 979484200120a3f4fbb33f0fae700192,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323429651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1339544463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16805,6 +16811,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1339544463}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1339544465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6135394374790301921, guid: 979484200120a3f4fbb33f0fae700192,
+    type: 3}
+  m_PrefabInstance: {fileID: 1339544463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1350646137
 GameObject:
   m_ObjectHideFlags: 0
@@ -16820,7 +16832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1350646138
 Transform:
   m_ObjectHideFlags: 0
@@ -16990,6 +17002,12 @@ PrefabInstance:
 --- !u!4 &1360177220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6135394374790301922, guid: 979484200120a3f4fbb33f0fae700192,
+    type: 3}
+  m_PrefabInstance: {fileID: 1360177219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1360177221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6135394374790301921, guid: 979484200120a3f4fbb33f0fae700192,
     type: 3}
   m_PrefabInstance: {fileID: 1360177219}
   m_PrefabAsset: {fileID: 0}
@@ -21294,7 +21312,7 @@ MonoBehaviour:
   Button1: {fileID: 1218796420}
   Button2: {fileID: 2118482336}
   allPlayerCards: {fileID: 1350646137}
-  playerCards: {fileID: 0}
+  playerCards: {fileID: 1323429653}
   currentCard: {fileID: 0}
   c: {fileID: 519420033}
 --- !u!60 &2126379035
