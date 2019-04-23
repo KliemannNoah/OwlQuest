@@ -73,7 +73,7 @@ public class Inventories : MonoBehaviour
                         inventory = Panel.transform.GetChild(player - 1).gameObject;
                         inventory.gameObject.SetActive(true);
                         playerCards.SetActive(true);
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             currentCard = playerCards.transform.GetChild(i).gameObject;
                             Animator animator = currentCard.GetComponent<Animator>();

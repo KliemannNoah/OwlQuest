@@ -32,7 +32,7 @@ public class InventoryQuestCard : MonoBehaviour
         else if (player == 3)
         {
 			if(StaticStart.numberOfPlayers > 2){
-				cardArray = b.AI3.completedQuests;
+				cardArray = b.player3.completedQuests;
 				playerValue = b.player3;
 			}else{
 				cardArray = b.AI3.completedQuests;
@@ -40,8 +40,8 @@ public class InventoryQuestCard : MonoBehaviour
 			}
         }else{
 			if(StaticStart.numberOfPlayers > 3){
-				cardArray = b.AI4.completedQuests;
-				playerValue = b.player4;
+				cardArray = b.player4.completedQuests;
+                playerValue = b.player4;
 			}else{
 				cardArray = b.AI4.completedQuests;
 				aiValue = b.AI4;
