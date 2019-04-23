@@ -35,7 +35,6 @@ public class Player
 	
 	public GameObject Panel;
 	private GameObject Inventory;
-    Animator animator;
 	Text [] newText ;
 	
 	
@@ -62,7 +61,6 @@ public class Player
     // Start is called before the first frame update
     public void Start()
     {
-        animator = camera.GetComponent<Animator>();
 		this.camera = GameObject.Find("Main Camera");
 		this.b = camera.GetComponent<backend>();
         PlayerQuests.text  = "";
