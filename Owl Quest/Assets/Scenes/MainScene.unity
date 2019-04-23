@@ -2628,6 +2628,7 @@ GameObject:
   - component: {fileID: 368078582}
   - component: {fileID: 368078581}
   - component: {fileID: 368078583}
+  - component: {fileID: 368078584}
   m_Layer: 0
   m_Name: WateringHole
   m_TagString: Location
@@ -4174,6 +4175,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 38.577065, y: 20.814285}
   m_EdgeRadius: 0
+--- !u!95 &368078584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368078578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc15bbb927d72c040ab77cfae30d1008, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &441759603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4266,6 +4286,7 @@ GameObject:
   - component: {fileID: 449673979}
   - component: {fileID: 449673980}
   - component: {fileID: 449673981}
+  - component: {fileID: 449673982}
   m_Layer: 0
   m_Name: Orchard
   m_TagString: Location
@@ -4310,7 +4331,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bd66e60fe71084d43999aeb5aac8058c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96c3c1f8ba1c8b541b9f935c1622eac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4371,7 +4392,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 36.07143, y: 33.605606}
+    oldSize: {x: 38.73044, y: 35.685715}
     newSize: {x: 18, y: 18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6258,7 +6279,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 36.07143, y: 33.605606}
+    oldSize: {x: 38.73044, y: 35.685715}
     newSize: {x: 18, y: 18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6267,6 +6288,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 36.07143, y: 33.605606}
   m_EdgeRadius: 0
+--- !u!95 &449673982
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449673976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41dc0f9134d9ae241a5f218838f6f5e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &465954434
 GameObject:
   m_ObjectHideFlags: 0
@@ -8147,8 +8187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644226297}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.886032, y: 2.022794, z: 0}
-  m_LocalScale: {x: 1.1396011, y: 1.1396011, z: 0.42735043}
+  m_LocalPosition: {x: 20, y: 80, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.42735043}
   m_Children: []
   m_Father: {fileID: 1046526666}
   m_RootOrder: 0
@@ -11694,6 +11734,7 @@ GameObject:
   - component: {fileID: 1046526668}
   - component: {fileID: 1046526667}
   - component: {fileID: 1046526669}
+  - component: {fileID: 1046526670}
   m_Layer: 0
   m_Name: TradingPost
   m_TagString: Location
@@ -11738,7 +11779,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 7fed20e5066daa947bd52d36c15bf61a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67c3e28ce9aae5b4b84f325f1f4d0732, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11781,7 +11822,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 186.20341, y: 104.46667}
+    oldSize: {x: 242.66934, y: 190.53336}
     newSize: {x: 186.13333, y: 104.46667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13030,7 +13071,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 186.20341, y: 104.46667}
+    oldSize: {x: 242.66934, y: 190.53336}
     newSize: {x: 186.13333, y: 104.46667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13039,6 +13080,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 186.20341, y: 104.46667}
   m_EdgeRadius: 0
+--- !u!95 &1046526670
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046526664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7cc394a6d58b6e3409735f29da99e216, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1059823299
 GameObject:
   m_ObjectHideFlags: 0
@@ -15516,6 +15576,7 @@ GameObject:
   - component: {fileID: 1260316545}
   - component: {fileID: 1260316544}
   - component: {fileID: 1260316546}
+  - component: {fileID: 1260316547}
   m_Layer: 0
   m_Name: NeighborHoot
   m_TagString: Location
@@ -16865,6 +16926,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 33.67143, y: 38.50312}
   m_EdgeRadius: 0
+--- !u!95 &1260316547
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260316541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c0285d515c1a8b43af62db050f1fed3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1261134588
 GameObject:
   m_ObjectHideFlags: 0
@@ -17618,7 +17698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1350646138
 Transform:
   m_ObjectHideFlags: 0
@@ -18318,6 +18398,7 @@ GameObject:
   - component: {fileID: 1431202299}
   - component: {fileID: 1431202298}
   - component: {fileID: 1431202300}
+  - component: {fileID: 1431202301}
   m_Layer: 0
   m_Name: FoxHole
   m_TagString: Location
@@ -19424,6 +19505,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 41.861504, y: 28.657143}
   m_EdgeRadius: 0
+--- !u!95 &1431202301
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431202295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8181f7d8869c1da4cbbb633caacde144, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &1456861722 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2298943928522231884, guid: c2d670ff67d2a8548ae9ee0eb203f6a8,
