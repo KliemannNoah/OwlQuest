@@ -15,7 +15,7 @@ public class Inventories : MonoBehaviour
 	public backend b;
     public Turn t;
 	public GameObject Button1;
-	public GameObject Button2;
+	//public GameObject Button2;
 	public GameObject Button3;
 
     public GameObject allPlayerCards;
