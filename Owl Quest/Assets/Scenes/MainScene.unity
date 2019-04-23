@@ -1939,9 +1939,10 @@ GameObject:
   - component: {fileID: 344437053}
   - component: {fileID: 344437054}
   - component: {fileID: 344437055}
+  - component: {fileID: 344437056}
   m_Layer: 0
   m_Name: Landing Spot 3
-  m_TagString: Untagged
+  m_TagString: Owl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2016,7 +2017,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344437052}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2512,6 +2513,28 @@ PolygonCollider2D:
       - {x: 4.8, y: -31.901539}
       - {x: 5.390769, y: -31.753847}
       - {x: 6.5353847, y: -31.569231}
+--- !u!114 &344437056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344437052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 3
+  Panel: {fileID: 28248239}
+  b: {fileID: 519420030}
+  t: {fileID: 519420035}
+  Button1: {fileID: 1218796420}
+  Button2: {fileID: 2118482336}
+  allPlayerCards: {fileID: 1350646137}
+  playerCards: {fileID: 1360177221}
+  currentCard: {fileID: 0}
+  c: {fileID: 519420033}
 --- !u!1 &368078578
 GameObject:
   m_ObjectHideFlags: 0
@@ -7039,7 +7062,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569641106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
@@ -7061,7 +7084,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569641106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -8038,9 +8061,10 @@ GameObject:
   - component: {fileID: 681614624}
   - component: {fileID: 681614625}
   - component: {fileID: 681614626}
+  - component: {fileID: 681614627}
   m_Layer: 0
   m_Name: Landing Spot 1
-  m_TagString: Untagged
+  m_TagString: Owl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8115,7 +8139,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681614623}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -8611,6 +8635,28 @@ PolygonCollider2D:
       - {x: 4.8, y: -31.901539}
       - {x: 5.390769, y: -31.753847}
       - {x: 6.5353847, y: -31.569231}
+--- !u!114 &681614627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681614623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1
+  Panel: {fileID: 28248239}
+  b: {fileID: 519420030}
+  t: {fileID: 519420035}
+  Button1: {fileID: 1218796420}
+  Button2: {fileID: 2118482336}
+  allPlayerCards: {fileID: 1350646137}
+  playerCards: {fileID: 1210687809}
+  currentCard: {fileID: 0}
+  c: {fileID: 519420033}
 --- !u!1 &694800790
 GameObject:
   m_ObjectHideFlags: 0
@@ -8981,9 +9027,10 @@ GameObject:
   - component: {fileID: 762685862}
   - component: {fileID: 762685863}
   - component: {fileID: 762685864}
+  - component: {fileID: 762685865}
   m_Layer: 0
   m_Name: Landing Spot 2
-  m_TagString: Untagged
+  m_TagString: Owl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9058,7 +9105,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762685861}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -9554,6 +9601,28 @@ PolygonCollider2D:
       - {x: 4.8, y: -31.901539}
       - {x: 5.390769, y: -31.753847}
       - {x: 6.5353847, y: -31.569231}
+--- !u!114 &762685865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762685861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 2
+  Panel: {fileID: 28248239}
+  b: {fileID: 519420030}
+  t: {fileID: 519420035}
+  Button1: {fileID: 1218796420}
+  Button2: {fileID: 2118482336}
+  allPlayerCards: {fileID: 1350646137}
+  playerCards: {fileID: 1323429653}
+  currentCard: {fileID: 0}
+  c: {fileID: 519420033}
 --- !u!1 &812081592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1618664965985463006, guid: b46960c4440bb374c802917a7baf3c33,
@@ -10632,7 +10701,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043802054}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
@@ -10654,7 +10723,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043802054}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -13108,9 +13177,10 @@ GameObject:
   - component: {fileID: 1161934737}
   - component: {fileID: 1161934738}
   - component: {fileID: 1161934739}
+  - component: {fileID: 1161934740}
   m_Layer: 0
   m_Name: Landing Spot 4
-  m_TagString: Untagged
+  m_TagString: Owl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13185,7 +13255,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161934736}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -13681,6 +13751,28 @@ PolygonCollider2D:
       - {x: 4.8, y: -31.901539}
       - {x: 5.390769, y: -31.753847}
       - {x: 6.5353847, y: -31.569231}
+--- !u!114 &1161934740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161934736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 4
+  Panel: {fileID: 28248239}
+  b: {fileID: 519420030}
+  t: {fileID: 519420035}
+  Button1: {fileID: 1218796420}
+  Button2: {fileID: 2118482336}
+  allPlayerCards: {fileID: 1350646137}
+  playerCards: {fileID: 1339544465}
+  currentCard: {fileID: 0}
+  c: {fileID: 519420033}
 --- !u!1 &1171900456
 GameObject:
   m_ObjectHideFlags: 0
@@ -13785,7 +13877,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217473058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
@@ -13807,7 +13899,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217473058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -19571,7 +19663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1638627418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21330,7 +21422,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126379030}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d0269b089ef5a47be3e4b641d08a60, type: 3}
   m_Name: 
@@ -21352,7 +21444,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126379030}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
