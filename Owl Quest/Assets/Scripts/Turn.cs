@@ -250,19 +250,19 @@ public class Turn : MonoBehaviour
 	
 	void Update(){
 		if (currentPlayer == TurnDefs.Player.ONE){
-            button.text = "Player One's Turn";
+            button.text = "Player 1 - End Turn";
         }
         else if (currentPlayer == TurnDefs.Player.TWO)
         {
-            button.text = "Player Two's Turn";
+            button.text = "Player 2 - End Turn";
         }
         else if(currentPlayer == TurnDefs.Player.THREE)
         {
-            button.text = "Player Three's Turn";
+            button.text = "Player 3 - End Turn";
         }
         else
         {
-            button.text = "Player Four's Turn";
+            button.text = "Player 4 - End Turn";
         }
 		
 		if(waited){
