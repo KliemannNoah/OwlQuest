@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Text: "Core Design & Development Team\nCindy Prentice- Scripting, UI, Animation\nJuliana
     Gessner- Art, UI\nNoah Kliemann- Scripting\nSam Carpenter- Art\n\nMusic\n\"Unused
     Adventure-y Game Loop #1\" \n- Steven O'Brien, steven-obrien.net\n\"Ta-Da\" \n-
-    Mike Koenig, soundbible.com"
+    Mike Koenig, soundbible.com\nAdditional sound effects from https://www.zapsplat.com"
 --- !u!222 &354810967
 CanvasRenderer:
   m_ObjectHideFlags: 0
