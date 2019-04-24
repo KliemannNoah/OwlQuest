@@ -165,7 +165,23 @@ public class Player
 			}
 
 			if(b.occupied[location] == 0){
-				b.occupied[location] = playerNumber;
+                if (playerNumber == 1)
+                {
+                    b.owl1.Play();
+                }
+                else if (playerNumber == 2)
+                {
+                    b.owl2.Play();
+                }
+                else if (playerNumber == 3)
+                {
+                    b.owl3.Play();
+                }
+                else
+                {
+                    b.owl4.Play();
+                }
+                b.occupied[location] = playerNumber;
 
 				//TODO: Handle Trading Post
 				//Rework
@@ -450,7 +466,24 @@ public class Player
 		//have them pick their location to travel
 		//Get their input 0-5
 		if(b.occupied[location] == 0){
-			b.occupied[location] = playerNumber;
+            if (playerNumber == 1)
+            {
+                b.owl1.Play();
+            }
+            else if(playerNumber == 2)
+            {
+                b.owl2.Play();
+            }
+            else if(playerNumber == 3)
+            {
+                b.owl3.Play();
+            }
+            else
+            {
+                b.owl4.Play();
+            }
+
+            b.occupied[location] = playerNumber;
 
 			//TODO: Handle Trading Post
 			//Rework

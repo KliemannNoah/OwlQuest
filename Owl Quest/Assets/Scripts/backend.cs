@@ -28,11 +28,16 @@ public class backend : MonoBehaviour {
 	public Player player2;
 	public Player player3;
 	public Player player4;
-	
 
-	//probability for all of the locations.
-	// 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
-	public int[] probability = new int[5] {2,3,4,5,0};
+    public AudioSource owl1;
+    public AudioSource owl2;
+    public AudioSource owl3;
+    public AudioSource owl4;
+
+
+    //probability for all of the locations.
+    // 0 = Water, 1 = Food, 2 = Shelter, 3 = Treasure, 4 = Trading Post
+    public int[] probability = new int[5] {2,3,4,5,0};
     public int[] tradingRolls = new int[4] { 3, 3, 4, 4 };
 
 	public int[] occupied = new int[6]; //Who is at what location
