@@ -331,6 +331,8 @@ public class Player
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
 			updateValues();
+
+            b.cardSound.Play();
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
 
@@ -573,6 +575,8 @@ public class Player
 
 		//Award player the points
 		this.points += b.jobBoard[b.questNumber].points;
+
+        b.cardSound.Play();
 
 		//Add card to personal quest list
 		this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
