@@ -170,78 +170,38 @@ public class AI
 		//int location = -1;
 		//have them pick their location to travel
 		//Get their input 0-5
-		int location = Random.Range(0,6);
-		if(location == 5){
-			b.questNumber = -1;
-			if(this.water >= b.jobBoard[0].water && this.food >= b.jobBoard[0].food && this.shelter >= b.jobBoard[0].shelter && this.treasure >= b.jobBoard[0].treasure){
-				b.questNumber = 0;	
-			}else if(this.water >= b.jobBoard[1].water && this.food >= b.jobBoard[1].food && this.shelter >= b.jobBoard[1].shelter && this.treasure >= b.jobBoard[1].treasure){
-				b.questNumber = 1;
-			}else if(this.water >= b.jobBoard[2].water && this.food >= b.jobBoard[2].food && this.shelter >= b.jobBoard[2].shelter && this.treasure >= b.jobBoard[2].treasure){
-				b.questNumber = 2;
-			}
-			if(b.questNumber != -1){
-				if(b.occupied[location] == 0){
-                    if (playerNumber == 1)
-                    {
-                        b.owl1.Play();
-                    }
-                    else if (playerNumber == 2)
-                    {
-                        b.owl2.Play();
-                    }
-                    else if (playerNumber == 3)
-                    {
-                        b.owl3.Play();
-                    }
-                    else
-                    {
-                        b.owl4.Play();
-                    }
-                    b.occupied[location] = playerNumber;
-					//Debug.Log("Player Number "+playerNumber+" - "+ b.locationsText[location]);	
-					//TODO: Handle Quests
-					if(location == 5){
-						//Let players pick the quest they want
-						//questNumber -1 = input;
-						b.questLocation = true;
-					}else if(location == 4) {
-						TradingPost(b.tradingResource);
-						b.completedAction = true;
-						if(undoSheriff){
-							sheriff = false;
-							tempSheriff = false;
-							undoSheriff = false;
-						}else if(undoReroll){
-							reroll = false;
-							tempReroll = false;
-							undoReroll = false;
-						}
-					}else{
-						locationHandler(location);
-						b.completedAction = true;
-						if(undoSheriff){
-							sheriff = false;
-							tempSheriff = false;
-							undoSheriff = false;
-						}else if(undoReroll){
-							reroll = false;
-							tempReroll = false;
-							undoReroll = false;
-						}
-					}
-	
-	
-					//Check if they have won
-					if(this.points >= 9){
-						Debug.Log("GAME OVER, "+ playerNumber + " HAS WON!");	
-						StaticStart.winningPlayer = playerNumber;		
-						SceneManager.LoadScene("VictoryScreen");				
-					}
-				}	
-			}
-			return;
+		b.questNumber = -1;
+		if(this.water >= b.jobBoard[0].water && this.food >= b.jobBoard[0].food && this.shelter >= b.jobBoard[0].shelter && this.treasure >= b.jobBoard[0].treasure){
+			b.questNumber = 0;	
+		}else if(this.water >= b.jobBoard[1].water && this.food >= b.jobBoard[1].food && this.shelter >= b.jobBoard[1].shelter && this.treasure >= b.jobBoard[1].treasure){
+			b.questNumber = 1;
+		}else if(this.water >= b.jobBoard[2].water && this.food >= b.jobBoard[2].food && this.shelter >= b.jobBoard[2].shelter && this.treasure >= b.jobBoard[2].treasure){
+			b.questNumber = 2;
 		}
+		if(b.questNumber != -1){
+			if(b.occupied[5] == 0){
+				if (playerNumber == 1)
+				{
+					b.owl1.Play();
+				}
+				else if (playerNumber == 2)
+				{
+					b.owl2.Play();
+				}
+				else if (playerNumber == 3)
+				{
+					b.owl3.Play();
+				}
+				else
+				{
+					b.owl4.Play();
+				}
+				b.occupied[5] = playerNumber;
+				b.questLocation = true;
+				return;
+			}		
+		}
+		int location = Random.Range(0,5);
 		if(b.occupied[location] == 0){
             if (playerNumber == 1)
             {
