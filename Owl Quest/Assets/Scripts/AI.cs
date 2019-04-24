@@ -182,7 +182,23 @@ public class AI
 			}
 			if(b.questNumber != -1){
 				if(b.occupied[location] == 0){
-					b.occupied[location] = playerNumber;
+                    if (playerNumber == 1)
+                    {
+                        b.owl1.Play();
+                    }
+                    else if (playerNumber == 2)
+                    {
+                        b.owl2.Play();
+                    }
+                    else if (playerNumber == 3)
+                    {
+                        b.owl3.Play();
+                    }
+                    else
+                    {
+                        b.owl4.Play();
+                    }
+                    b.occupied[location] = playerNumber;
 					//Debug.Log("Player Number "+playerNumber+" - "+ b.locationsText[location]);	
 					//TODO: Handle Quests
 					if(location == 5){
@@ -227,7 +243,23 @@ public class AI
 			return;
 		}
 		if(b.occupied[location] == 0){
-			b.occupied[location] = playerNumber;
+            if (playerNumber == 1)
+            {
+                b.owl1.Play();
+            }
+            else if (playerNumber == 2)
+            {
+                b.owl2.Play();
+            }
+            else if (playerNumber == 3)
+            {
+                b.owl3.Play();
+            }
+            else
+            {
+                b.owl4.Play();
+            }
+            b.occupied[location] = playerNumber;
 			//Debug.Log("Player Number "+playerNumber+" - "+ b.locationsText[location]);	
 			//TODO: Handle Quests
 			if(location == 5){
