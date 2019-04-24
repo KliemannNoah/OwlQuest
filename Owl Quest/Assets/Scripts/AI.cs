@@ -402,6 +402,9 @@ public class AI
 			this.treasure -= b.jobBoard[b.questNumber].treasure;
 			this.points += b.jobBoard[b.questNumber].points;
 			updateValues();
+
+            b.cardSound.Play();
+
 			//Add card to personal quest list
 			this.completedQuests[System.Array.FindIndex(this.completedQuests, i => i == null)] = b.jobBoard[b.questNumber];
 			

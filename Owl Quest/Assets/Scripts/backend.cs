@@ -33,6 +33,8 @@ public class backend : MonoBehaviour {
     public AudioSource owl2;
     public AudioSource owl3;
     public AudioSource owl4;
+    public AudioSource cardSound;
+    public AudioSource buttonSound;
 
 
     //probability for all of the locations.
