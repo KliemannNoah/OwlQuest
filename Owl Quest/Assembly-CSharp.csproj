@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\QuestPictures.cs" />
     <Compile Include="Assets\Scripts\Quests.cs" />
     <Compile Include="Assets\Scripts\Restart.cs" />
+    <Compile Include="Assets\Scripts\Resume.cs" />
     <Compile Include="Assets\Scripts\ScaleCamera.cs" />
     <Compile Include="Assets\Scripts\StartMenu.cs" />
     <Compile Include="Assets\Scripts\StaticStart.cs" />
