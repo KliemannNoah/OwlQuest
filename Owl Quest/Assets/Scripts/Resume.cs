@@ -11,7 +11,6 @@ public class Resume : MonoBehaviour
 	public bool isRestart;
 	public bool isQuit;
 	public bool isMenu;
-	public Text Winner;
 	
     // Start is called before the first frame update
     void Start()
