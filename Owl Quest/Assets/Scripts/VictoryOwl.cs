@@ -5,13 +5,17 @@ using UnityEngine;
 public class VictoryOwl : MonoBehaviour
 {
     Animator animator;
-    // Start is called before the first frame update
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Initializes the animator
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Alters what owl appears on the victory screen according to who has won the game
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
     void Update()
     {
         int winner = StaticStart.winningPlayer;

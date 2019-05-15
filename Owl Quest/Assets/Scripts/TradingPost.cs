@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Sets up the correct card on the trading post
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 public class TradingPost : MonoBehaviour
 {
     Animator animator;

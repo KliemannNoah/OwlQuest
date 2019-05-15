@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Shows the correct corresponding quest cards
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 public class QuestPictures : MonoBehaviour
 {
     Animator animator; //gets animator
@@ -36,8 +40,8 @@ public class QuestPictures : MonoBehaviour
                     difficulty = 2;
                     i = i - 14;
                 }
-                animator.SetInteger("AnimState",i);
-                animator.SetInteger("Difficulty",difficulty);
+                animator.SetInteger("AnimState",i); //tells animator which card on a given page it is
+                animator.SetInteger("Difficulty",difficulty); //tells animator if card is on the easy, medium, or hard page
                 break;
             }
         }

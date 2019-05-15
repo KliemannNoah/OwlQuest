@@ -7,6 +7,10 @@ public class MainMusic : MonoBehaviour
 {
     static bool AudioBegin = false;
     AudioSource audio;
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Initializes the main music of the game
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
     void Awake()
     {
         if (!AudioBegin)
@@ -17,6 +21,11 @@ public class MainMusic : MonoBehaviour
             AudioBegin = true;
         }
     }
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Checks for victory screen
+    //Ends music if screen is detected
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "VictoryScreen")

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Code that allows easy camera scaling
+//Found via unity tutorial, do not claim code as own
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 [ExecuteInEditMode]
 public class ScaleCamera : MonoBehaviour
 {

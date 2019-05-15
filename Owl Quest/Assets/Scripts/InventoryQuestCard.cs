@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Displays correct corresponding card to given player inventory
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 public class InventoryQuestCard : MonoBehaviour
 {
 
     public backend b;
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Given player number, get the correct card values
+    //send those values to an update function for visuals to be updated accordingly
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public void GetInventoryCards(int player, GameObject inventoryCard, int spot, Animator animator)
     {
         Quests[] cardArray;
@@ -14,6 +20,7 @@ public class InventoryQuestCard : MonoBehaviour
 		AI aiValue;
         inventoryCard.gameObject.SetActive(true);
 
+        //set cardArray to correct inventory and playerValue to correct player
         if (player == 1)
         {
             cardArray = b.player1.completedQuests;
@@ -48,15 +55,20 @@ public class InventoryQuestCard : MonoBehaviour
 			}
         }
 
+        //called to update the visuals
         Updatethecards(animator, cardArray[spot], spot);
 
     }
 
 
-    //the animator
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Displays correct corresponding card to given player inventory
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public void Updatethecards(Animator animator, Quests cardArray, int spot)
     {
         int difficulty;
+
+        //shows blank cards when there is nothing in the array
         if (cardArray == null)
         {
             animator.SetInteger("AnimState", 10);
@@ -82,8 +94,8 @@ public class InventoryQuestCard : MonoBehaviour
                     difficulty = 2;
                     i = i - 14;
                 }
-                animator.SetInteger("AnimState", i);
-                animator.SetInteger("Difficulty", difficulty);
+                animator.SetInteger("AnimState", i); //indicates which card on a page to show
+                animator.SetInteger("Difficulty", difficulty); //indicates if the card is on the easy, medium, or hard page
                 return;
             }
         }

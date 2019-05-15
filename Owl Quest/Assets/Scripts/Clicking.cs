@@ -8,24 +8,21 @@ using UnityEngine.UI;
 public class Clicking : MonoBehaviour
 {
 	public int spot;
-	//Animator animator;
 	public backend b;
     public Turn turns;
     public GameObject c;
     public GameObject button;
-    // Start is called before the first frame update
-    void Start()
-    {
-        // animator = GetComponent<Animator>();
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //determine if the click is valid
         if (Input.GetMouseButtonDown(0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit2D hit = Physics2D.GetRayIntersection (ray, Mathf.Infinity);
 			if (hit.collider != null && hit.collider.name == name) {
+
+                //functionality if clicking on location object
                 if (hit.collider.gameObject.tag == "Location")
                 {
                     if (!b.completedAction && !b.questLocation)
@@ -50,6 +47,7 @@ public class Clicking : MonoBehaviour
                     }
                 }
 
+                //functionality if clicking on quests
                 else
                 {
                     if (!b.completedAction && b.questLocation)
