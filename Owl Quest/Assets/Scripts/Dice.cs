@@ -68,14 +68,14 @@ public class Dice : MonoBehaviour {
 		rend.sprite = diceSides[val-1];
         finalSide = val;
 		if (finalSide >= b.probability[location] && location != 4){
-			Outcome.text = "Success +1 " + b.locationsText[System.Array.IndexOf(b.occupied, playerNumber)];
+			Outcome.text = "Success!\n+1 " + b.locationsText[System.Array.IndexOf(b.occupied, playerNumber)];
 		}else if(location == 4){
 			if (finalSide >= (4)) {
-				Outcome.text = "Success +1 " + b.locationsText[b.tradingResource];
+				Outcome.text = "Success!\n+1 " + b.locationsText[b.tradingResource];
 				yield break;
 			}
 			else if (finalSide >= (3) && b.tradingResource < 2) {
-				Outcome.text = "Success +1 " + b.locationsText[b.tradingResource];
+				Outcome.text = "Success!\n+1 " + b.locationsText[b.tradingResource];
 			}else{
 				Outcome.text = "Failure";
 			}
