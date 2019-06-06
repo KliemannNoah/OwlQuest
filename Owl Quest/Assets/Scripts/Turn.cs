@@ -10,9 +10,12 @@ public class Turn : MonoBehaviour
 {
 	public backend b;
     public GameObject signForTurns;
+    public GameObject signCover;
+    Animator signAnimator;
     public TurnDefs player;
     public TurnDefs.Player currentPlayer = TurnDefs.Player.ONE;
     private float completedRound = 0;
+    private int anim = 0;
 	int numPlayers = StaticStart.numberOfPlayers;
 	
 	public GameObject roundScreen;
@@ -31,7 +34,11 @@ public class Turn : MonoBehaviour
 	public Text warning;
 	
 	public bool waited = false;
-	
+
+    private void Awake()
+    {
+        signAnimator = signForTurns.GetComponent<Animator>();
+    }
     public void AdvanceTurn()
     {
 		
@@ -56,7 +63,8 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				Invoke("printText", .3f);
+                anim = 3;
+                Invoke("printText", .3f);
 				//printText();
 				Invoke("rollDice", .3f);
 				//rollDice();
@@ -65,7 +73,8 @@ public class Turn : MonoBehaviour
             }
             else
             {
-				turnSign();
+                anim = 2;
+                turnSign();
 				currentPlayer = TurnDefs.Player.TWO;
             }
         }
@@ -75,16 +84,18 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				Invoke("printText", .3f);
+                anim = 4;
+                Invoke("printText", .3f);
 				//printText();
 				Invoke("rollDice", .3f);
 				//rollDice();
 				currentPlayer = TurnDefs.Player.FOUR;
-				//roundSign();
+                //roundSign();
             }
             else
             {
-				turnSign();
+                anim = 3;
+                turnSign();
 				currentPlayer = TurnDefs.Player.THREE;
             }
         }
@@ -94,7 +105,8 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				Invoke("printText", .3f);
+                anim = 1;
+                Invoke("printText", .3f);
 				//printText();
 				Invoke("rollDice", .3f);
 				//rollDice();
@@ -103,7 +115,8 @@ public class Turn : MonoBehaviour
             }
             else
             {
-				turnSign();
+                anim = 4;
+                turnSign();
 				currentPlayer = TurnDefs.Player.FOUR;
             }
         }
@@ -113,7 +126,8 @@ public class Turn : MonoBehaviour
         {
             if (completedRound >= 3)
             {
-				Invoke("printText", .3f);
+                anim = 2;
+                Invoke("printText", .3f);
 				//printText();
 				Invoke("rollDice", .3f);
 				//rollDice();
@@ -122,7 +136,8 @@ public class Turn : MonoBehaviour
             }
             else
             {
-				turnSign();
+                anim = 1;
+                turnSign();
 				currentPlayer = TurnDefs.Player.ONE;
             }
         }
@@ -280,17 +295,15 @@ public class Turn : MonoBehaviour
 	
 	private void turnSign()
     {
-        signForTurns.SetActive(false);
         StartCoroutine("SwapTurn");
     }
 	
 	// Coroutine that rolls the dice
     private IEnumerator SwapTurn()
     {
-        signForTurns.SetActive(true);
+        signAnimator.SetInteger("AnimState", anim);
         yield return new WaitForSeconds(.5f);
         //Do animation
-        //signForTurns.SetActive(true);
         completedRound++;
 		resetVariables();
     }
@@ -317,5 +330,10 @@ public class Turn : MonoBehaviour
 		d3.Outcome.text = "";
 		d4.Outcome.text = "";
 		resetVariables();
+    }
+
+    public void ChangeAnimation()
+    {
+        signAnimator.SetInteger("AnimState", anim);
     }
 }
