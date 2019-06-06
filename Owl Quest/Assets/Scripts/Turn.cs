@@ -9,7 +9,7 @@ using static backend;
 public class Turn : MonoBehaviour
 {
 	public backend b;
-	
+    public GameObject signForTurns;
     public TurnDefs player;
     public TurnDefs.Player currentPlayer = TurnDefs.Player.ONE;
     private float completedRound = 0;
@@ -137,7 +137,8 @@ public class Turn : MonoBehaviour
 		b.questLocation = false;
 		b.selectingCard = false;
 		b.canPurchase = false;
-	}
+        
+    }
 	
 	public void printText(){
 		if(System.Array.IndexOf(b.occupied, 1) != -1){
@@ -279,15 +280,18 @@ public class Turn : MonoBehaviour
 	
 	private void turnSign()
     {
+        signForTurns.SetActive(false);
         StartCoroutine("SwapTurn");
     }
 	
 	// Coroutine that rolls the dice
     private IEnumerator SwapTurn()
     {
-		yield return new WaitForSeconds(.5f);
-		//Do animation
-		completedRound++;
+        signForTurns.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        //Do animation
+        //signForTurns.SetActive(true);
+        completedRound++;
 		resetVariables();
     }
 	
