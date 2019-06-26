@@ -20,6 +20,7 @@ public class Clicking : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit2D hit = Physics2D.GetRayIntersection (ray, Mathf.Infinity);
+			if(!EventSystem.current.IsPointerOverGameObject()){
 			if (hit.collider != null && hit.collider.name == name) {
 
                 //functionality if clicking on location object
@@ -87,6 +88,7 @@ public class Clicking : MonoBehaviour
                 }
              
 			}
+		}
 		}
     }
 }

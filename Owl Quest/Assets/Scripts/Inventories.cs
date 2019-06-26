@@ -45,6 +45,7 @@ public class Inventories : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+			if(!EventSystem.current.IsPointerOverGameObject()){
             if (hit.collider != null && hit.collider.name == name)
             {
                 if (hit.collider.gameObject.tag == "Owl")
@@ -86,6 +87,7 @@ public class Inventories : MonoBehaviour
                     }
                 }
             }
+		}
         }
 
     }
